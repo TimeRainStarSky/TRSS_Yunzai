@@ -14,6 +14,7 @@ bash -c "$(curl -L https://gitee.com/mo2/linux/raw/2/2)"
 ```
 curl -LO "https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Install.sh" && bash Install.sh
 ```
+视频教程：https://b23.tv/av983453309
 
 ## 使用说明
 - Yunzai <-调用-> OICQ <-网络连接-> QQ服务器
