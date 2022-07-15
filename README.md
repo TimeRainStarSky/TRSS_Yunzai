@@ -16,7 +16,13 @@ curl -LO "https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Install.sh" && 
 ```
 
 ## 使用说明
-- 咕咕咕
+- YunzaiBot <-调用-> OICQ <-网络连接-> QQ服务器
+- OICQ：提供QQ账号管理，收发消息等功能
+- YunzaiBot：对消息进行处理，完成目标操作
+
+## 常见问题
+- 问：我有其他问题  
+答：提供详细问题描述，通过下方 联系方式 反馈问题
 
 ## 联系方式
 - QQ群组：[211414032](https://jq.qq.com/?k=QU1xGLEB)
