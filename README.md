@@ -32,3 +32,7 @@ curl -LO "https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Install.sh" && 
 - 酷安：[时雨丶星空](http://www.coolapk.com/u/2650948)
 - QQ：[2536554304](https://qm.qq.com/cgi-bin/qm/qr?k=x8LtlP8vwZs7qLwmsbCsyLoAHy7Et1Pj)
 - Telegram：[TimeRainStarSky](https://t.me/TimeRainStarSky)
+
+## 界面展示
+[![主界面](https://cdn.jsdelivr.net/gh/TimeRainStarSky/TRSS_Yunzai@main/Picture/Main.png)](https://github.com/TimeRainStarSky/TRSS_Yunzai)
+[![Yunzai](https://cdn.jsdelivr.net/gh/TimeRainStarSky/TRSS_Yunzai@main/Picture/Yunzai.png)](https://github.com/Le-niao/Yunzai-Bot)
