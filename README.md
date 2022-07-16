@@ -35,4 +35,5 @@ curl -LO "https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Install.sh" && 
 
 ## 界面展示
 [![主界面](https://cdn.jsdelivr.net/gh/TimeRainStarSky/TRSS_Yunzai@main/Picture/Main.png)](https://github.com/TimeRainStarSky/TRSS_Yunzai)
-[![Yunzai](https://cdn.jsdelivr.net/gh/TimeRainStarSky/TRSS_Yunzai@main/Picture/Yunzai.png)](https://github.com/Le-niao/Yunzai-Bot)
+[![Yunzai2](https://cdn.jsdelivr.net/gh/TimeRainStarSky/TRSS_Yunzai@main/Picture/Yunzai2.png)](https://github.com/TimeRainStarSky/Yunzai-Bot-2)
+[![Yunzai3](https://cdn.jsdelivr.net/gh/TimeRainStarSky/TRSS_Yunzai@main/Picture/Yunzai3.png)](https://github.com/Le-niao/Yunzai-Bot)
