@@ -5,7 +5,7 @@
 [![访问量](https://profile-counter.glitch.me/TimeRainStarSky-TRSS_Yunzai/count.svg)](https://timerainstarsky.github.io/TRSS_Yunzai)
 
 ## 使用教程
-1. 准备：[Ubuntu 18.04](https://releases.ubuntu.com/18.04) 推荐使用[TMOE](https://gitee.com/mo2/linux)安装：
+1. 准备：[Arch Linux](https://releases.ubuntu.com/18.04) 推荐使用[TMOE](https://gitee.com/mo2/linux)安装：
 ```
 bash -c "$(curl -L https://gitee.com/mo2/linux/raw/2/2)"
 ```
