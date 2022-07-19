@@ -22,8 +22,13 @@ curl -LO "https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Install.sh" && 
 - Yunzai：对消息进行处理，完成目标操作
 
 ## 常见问题
-- 问：我有其他问题  
-答：提供详细问题描述，通过下方 联系方式 反馈问题
+- 问：未知错误：open terminal failed: not a terminal
+- 答：
+  - 1.TMOE proot 容器首次启动会出现，退出容器重启就行了，推荐使用 chroot 容器
+  - 2.Windows 出现这种情况，是你使用的终端不支持 tmux，请换一个终端
+
+- 问：我有其他问题
+- 答：提供详细问题描述，通过下方 联系方式 反馈问题
 
 ## 联系方式
 - QQ群组：[211414032](https://jq.qq.com/?k=QU1xGLEB)
