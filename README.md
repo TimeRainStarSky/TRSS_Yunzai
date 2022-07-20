@@ -27,13 +27,6 @@ curl -LO "https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Install.sh" && 
   - 1.TMOE proot 容器首次启动会出现，退出容器重启就行了，推荐使用 chroot 容器
   - 2.Windows 出现这种情况，是你使用的终端不支持 tmux，请换一个终端
 
-- 问：请先开启 Redis
-- 答：你的内核版本过旧，无法运行最新版 Redis
-  - 1.Linux 请升级内核 或 安装旧版 Redis
-  - 2.Android 请在 Termux 中直接安装启动 Redis  
-安装：`pkg install redis`  
-启动：`redis-server --daemonize yes`
-
 - 问：我有其他问题
 - 答：提供详细问题描述，通过下方 联系方式 反馈问题
 
