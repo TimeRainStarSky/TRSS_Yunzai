@@ -27,6 +27,9 @@ curl -LO "https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Install.sh" && 
   - 1.TMOE proot 容器首次启动会出现，退出容器重启就行了，推荐使用 chroot 容器
   - 2.Windows 出现这种情况，是你使用的终端不支持 tmux，请换一个终端
 
+- 问：请先开启 Redis
+- 答：脚本会自动在后台启动 Redis，如果遇到这种情况，说明 Redis 未正常启动，请在终端中输入 `redis-server` 查看具体问题
+
 - 问：我有其他问题
 - 答：提供详细问题描述，通过下方 联系方式 反馈问题
 
