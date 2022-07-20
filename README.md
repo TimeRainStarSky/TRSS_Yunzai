@@ -6,11 +6,11 @@
 
 ## 使用教程
 1. 准备：[Arch Linux](https://archlinux.org)
-- [Termux](https://github.com/hanxinhao000/ZeroTermux) 或 `其他 Linux 发行版` 推荐使用 [TMOE](https://gitee.com/mo2/linux) 安装 [Arch Linux](https://archlinux.org) 容器：
+- [Termux](https://github.com/hanxinhao000/ZeroTermux) 或`其他 Linux 发行版`推荐使用 [TMOE](https://gitee.com/mo2/linux) 安装 [Arch Linux](https://archlinux.org) 容器：
 ```
 bash -c "$(curl -L https://gitee.com/mo2/linux/raw/2/2)"
 ```
-- 有 `root 权限` 使用 `chroot 容器`，否则使用 `proot 容器`
+- 有`root 权限`使用`chroot 容器`，否则使用`proot 容器`
 - 进入 proot/chroot 容器：`tmoe p/c a`
 
 2. 安装：
@@ -34,7 +34,7 @@ curl -LO "https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Install.sh" && 
   - 2.Windows 出现这种情况，是你使用的终端不支持 tmux，请换一个终端
 
 - 问：请先开启 Redis
-- 答：脚本会自动在后台启动 Redis，如果遇到这种情况，说明 Redis 未正常启动，请在终端中输入 `redis-server` 查看具体问题
+- 答：脚本会自动在后台启动 Redis，如果遇到这种情况，说明 Redis 未正常启动，请在终端中输入`redis-server`查看具体问题
 
 - 问：我有其他问题
 - 答：提供详细问题描述，通过下方 联系方式 反馈问题
