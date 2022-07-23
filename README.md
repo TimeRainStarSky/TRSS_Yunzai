@@ -23,9 +23,9 @@ curl -LO "https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Install.sh" && 
 视频教程：https://b23.tv/av983453309
 
 ## 使用说明
-- Yunzai <-调用-> OICQ <-网络连接-> QQ服务器
-- OICQ：提供QQ账号管理，收发消息等功能
-- Yunzai：对消息进行处理，完成目标操作
+- [Yunzai](https://github.com/Le-niao/Yunzai-Bot) <-调用-> [OICQ](https://oicqjs.github.io/oicq) <-网络连接-> [QQ服务器](https://im.qq.com)
+- [OICQ](https://oicqjs.github.io/oicq)：提供QQ账号管理，收发消息等功能
+- [Yunzai](https://github.com/Le-niao/Yunzai-Bot)：对消息进行处理，完成目标操作
 
 ## 常见问题
 - 问：open terminal failed: not a terminal
