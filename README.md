@@ -20,7 +20,7 @@ curl -LO "https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Install.sh" && 
 
 3. 启动：`tsyz`
 
-视频教程：https://b23.tv/av983453309
+视频教程：<https://b23.tv/av983453309>
 
 ## 使用说明
 - [Yunzai](https://github.com/Le-niao/Yunzai-Bot) <-调用-> [OICQ](https://oicqjs.github.io/oicq) <-网络连接-> [QQ服务器](https://im.qq.com)
