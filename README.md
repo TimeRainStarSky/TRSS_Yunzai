@@ -28,10 +28,11 @@ curl -LO "https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Install.sh" && 
 - [Yunzai](https://github.com/Le-niao/Yunzai-Bot)：对消息进行处理，完成目标操作
 
 ## 常见问题
+- 问：发消息错误：46
+- 答：账号被风控
+
 - 问：open terminal failed: not a terminal
-- 答：
-  - 1.TMOE proot 容器首次启动会出现，退出容器重启就行了
-  - 2.Windows 出现这种情况，是你使用的终端不支持 tmux，请换一个终端
+- 答：TMOE proot 容器首次启动会出现，退出容器重启就行了
 
 - 问：请先开启 Redis
 - 答：脚本会自动在后台启动 Redis，如果遇到这种情况，说明 Redis 未正常启动，请在终端中输入`redis-server`查看具体问题
