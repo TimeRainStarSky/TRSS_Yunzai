@@ -6,6 +6,7 @@
 
 ## 使用教程
 1. 准备：[Arch Linux](https://archlinux.org)
+- [Windows](https://www.microsoft.com/windows) 推荐使用 [ArchWSL](https://github.com/yuk7/ArchWSL)
 - [Termux](https://github.com/hanxinhao000/ZeroTermux) 或`其他 Linux 发行版`推荐使用 [TMOE](https://gitee.com/mo2/linux) 安装 [Arch Linux](https://archlinux.org) 容器：
 ```
 bash -c "$(curl -L https://gitee.com/mo2/linux/raw/2/2)"
