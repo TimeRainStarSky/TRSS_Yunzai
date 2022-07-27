@@ -36,7 +36,7 @@ curl -LO "https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Install.sh" && 
 - 答：脚本会自动在后台启动 Redis，如果遇到这种情况，说明 Redis 未正常启动，请在终端中输入`redis-server`查看具体问题
 
 - 问：address already in use
-- 答：WebSocket 端口被占用，请尝试停止占用进程、重启设备，或修改配置文件，更改端口
+- 答：端口被占用，请尝试停止占用进程、重启设备，或修改配置文件，更改端口
 
 - 问：open terminal failed: not a terminal
 - 答：TMOE proot 容器首次启动会出现，退出容器重启就行了
