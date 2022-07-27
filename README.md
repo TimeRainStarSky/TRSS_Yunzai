@@ -32,11 +32,14 @@ curl -LO "https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Install.sh" && 
 - 问：发消息错误：46
 - 答：账号被风控
 
-- 问：open terminal failed: not a terminal
-- 答：TMOE proot 容器首次启动会出现，退出容器重启就行了
-
 - 问：请先开启 Redis
 - 答：脚本会自动在后台启动 Redis，如果遇到这种情况，说明 Redis 未正常启动，请在终端中输入`redis-server`查看具体问题
+
+- 问：address already in use
+- 答：WebSocket 端口被占用，请尝试停止占用进程、重启设备，或修改配置文件，更改端口
+
+- 问：open terminal failed: not a terminal
+- 答：TMOE proot 容器首次启动会出现，退出容器重启就行了
 
 - 问：我有其他问题
 - 答：提供详细问题描述，通过下方 联系方式 反馈问题
