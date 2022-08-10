@@ -39,7 +39,7 @@ curl -LO "https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Install.sh" && 
 - 答：端口被占用，请尝试停止占用进程、重启设备，或修改配置文件，更改端口
 
 - 问：open terminal failed: not a terminal
-- 答：TMOE proot 容器首次启动会出现，退出容器重启就行了
+- 答：TMOE proot 容器首次启动会出现，重启容器就行了
 
 - 问：我有其他问题
 - 答：提供详细问题描述，通过下方 联系方式 反馈问题
