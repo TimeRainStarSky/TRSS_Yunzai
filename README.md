@@ -62,18 +62,10 @@ curl -LO "https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Install.sh" && 
 - Telegram：[TimeRainStarSky](https://t.me/TimeRainStarSky)
 
 ## 界面展示
-<a href="https://TimeRainStarSky.GitHub.io/TRSS_Yunzai">
-  <img src="Picture/Main.png" alt="主界面">
-</a>
-<a href="https://github.com/TimeRainStarSky/Yunzai-Bot-2">
-  <img src="Picture/Yunzai2.png" alt="Yunzai2">
-</a>
-<a href="https://github.com/Le-niao/Yunzai-Bot">
-  <img src="Picture/Yunzai3.png" alt="Yunzai3">
-</a>
-<a href="https://docs.adachi.top">
-  <img src="Picture/Adachi.png" alt="Adachi">
-</a>
+[![主界面](Picture/Main.png)](https://TimeRainStarSky.GitHub.io/TRSS_Yunzai)
+[![Yunzai2](Picture/Yunzai2.png)](https://github.com/TimeRainStarSky/Yunzai-Bot-2)
+[![Yunzai3](Picture/Yunzai3.png)](https://github.com/Le-niao/Yunzai-Bot)
+[![Adachi](Picture/Adachi.png)](https://docs.adachi.top)
 
 ## 赞助支持
 - 爱发电：<https://afdian.net/@TimeRainStarSky>
