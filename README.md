@@ -50,6 +50,9 @@ curl -LO "https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Install.sh" && 
 - 问：open terminal failed: not a terminal
 - 答：TMOE proot 容器首次启动会出现，重启容器就行了
 
+- 问：[server exited unexpectedly]
+- 答：tmux 进程意外退出，可能是系统资源不足引起的，如果在 Termux 中经常出现，请检查设置：电池优化、后台运行权限
+
 - 问：我有其他问题
 - 答：提供详细问题描述，通过下方 联系方式 反馈问题
 
