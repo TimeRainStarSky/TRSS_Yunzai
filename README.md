@@ -7,9 +7,9 @@
 
 [![Stars](https://img.shields.io/github/stars/TimeRainStarSky/TRSS_Yunzai?color=yellow&label=收藏)](https://github.com/TimeRainStarSky/TRSS_Yunzai/stargazers)
 [![Downloads](https://img.shields.io/github/downloads/TimeRainStarSky/TRSS_Yunzai/total?color=blue&label=下载)](https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Install.sh)
-[![Releases](https://img.shields.io/github/v/release/TimeRainStarSky/TRSS_Yunzai?color=green&label=发布版本)](https://github.com/TimeRainStarSky/TRSS_Yunzai/releases/latest)
+[![Releases](https://img.shields.io/github/v/release/TimeRainStarSky/TRSS_Yunzai?color=green&label=发行版)](https://github.com/TimeRainStarSky/TRSS_Yunzai/releases/latest)
 
-[![访问量](https://profile-counter.glitch.me/TimeRainStarSky-TRSS_Yunzai/count.svg)](https://timerainstarsky.github.io/TRSS_Yunzai)
+[![访问量](https://profile-counter.glitch.me/TimeRainStarSky-TRSS_Yunzai/count.svg)](https://github.com/TimeRainStarSky/TRSS_Yunzai)
 
 </div>
 

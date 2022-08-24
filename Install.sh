@@ -1,5 +1,5 @@
 #TRSS Yunzai 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202208211
+NAME=v1.0.0;VERSION=202208240
 R="[1;31m";G="[1;32m";Y="[1;33m";C="[1;36m";B="[1;m";O="[m"
 echo "$B————————————————————————————
 $R TRSS$Y Yunzai$G Install$C Script$O
@@ -20,7 +20,7 @@ echo "zh_CN.UTF-8 UTF-8">/etc/locale.gen&&locale-gen||abort "语言设置失败"
 abort_update(){ echo "
 $R! $@$O";[ "$N" -lt 10 ]&&{ let N++;download;}||abort "脚本下载失败，请检查网络，并尝试重新下载";}
 download(){ case "$N" in
-  2)SERVER="GitHub";URL="https://raw.githubusercontent.com/TimeRainStarSky/TRSS_Yunzai/main";;
+  2)SERVER="GitHub";URL="https://github.com/TimeRainStarSky/TRSS_Yunzai/raw/main";;
   1)SERVER="Gitee";URL="https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main";;
   3)SERVER="Agit";URL="https://agit.ai/TimeRainStarSky/TRSS_Yunzai/raw/branch/main";;
   4)SERVER="GitLab";URL="https://gitlab.com/TimeRainStarSky/TRSS_Yunzai/raw/main";;
