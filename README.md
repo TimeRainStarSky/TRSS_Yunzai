@@ -70,6 +70,12 @@ curl -LO "https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Install.sh" && 
 [![Yunzai3](Picture/Yunzai3.png)](https://github.com/Le-niao/Yunzai-Bot)
 [![Adachi](Picture/Adachi.png)](https://docs.adachi.top)
 
+## 相关项目
+[![TRSS Liteyuki 管理脚本](https://github-readme-stats.vercel.app/api/pin/?username=TimeRainStarSky&repo=TRSS_Liteyuki&show_owner=true)](https://github.com/TimeRainStarSky/TRSS_Liteyuki)
+[![TRSS Yunzai 管理脚本](https://github-readme-stats.vercel.app/api/pin/?username=TimeRainStarSky&repo=TRSS_Yunzai&show_owner=true)](https://github.com/TimeRainStarSky/TRSS_Yunzai)
+[![TRSS Sagiri 管理脚本](https://github-readme-stats.vercel.app/api/pin/?username=TimeRainStarSky&repo=TRSS_Sagiri&show_owner=true)](https://github.com/TimeRainStarSky/TRSS_Sagiri)
+[![TRSS OneBot 管理脚本](https://github-readme-stats.vercel.app/api/pin/?username=TimeRainStarSky&repo=TRSS_OneBot&show_owner=true)](https://github.com/TimeRainStarSky/TRSS_OneBot)
+
 ## 赞助支持
 - 爱发电：<https://afdian.net/@TimeRainStarSky>
 - Partme：<https://partme.com/TimeRainStarSky>
