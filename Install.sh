@@ -1,5 +1,5 @@
 #TRSS Yunzai 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202208240
+NAME=v1.0.0;VERSION=202208280
 R="[1;31m";G="[1;32m";Y="[1;33m";C="[1;36m";B="[1;m";O="[m"
 echo "$B————————————————————————————
 $R TRSS$Y Yunzai$G Install$C Script$O
@@ -7,7 +7,7 @@ $R TRSS$Y Yunzai$G Install$C Script$O
 $B————————————————————————————
       ${G}作者：${C}时雨🌌星空$O"
 abort(){ echo "
-$R! $@$O";rm -rf "$0";exit 1;}
+$R! $@$O";exit 1;}
 DIR="$HOME/TRSS_Yunzai"
 command -v pacman &>/dev/null&&echo "
 $Y- 正在安装依赖$O
@@ -35,6 +35,6 @@ download(){ case "$N" in
 $B  最新版本：$G$NEWNAME$C ($NEWVER)$O
 
   开始下载";mkdir -vp "$DIR";geturl "$URL/Main.sh">"$DIR/Main.sh"||abort_update "下载失败";[ "$(md5sum "$DIR/Main.sh"|head -c 32)" != "$MD5" ]&&abort_update "下载文件校验错误";echo -n "bash '$DIR/Main.sh' "'"$@"'>/bin/tsyz||abort "脚本执行命令/bin/tsyz设置失败";chmod 755 /bin/tsyz||abort "脚本权限设置失败";echo "
-$G- 脚本安装完成，输入tsyz执行$O";rm -rf "$0";exit;}
+$G- 脚本安装完成，输入tsyz执行$O";exit;}
 echo "
 $Y- 正在下载脚本$O";geturl(){ curl -L --retry 2 --connect-timeout 5 "$@";};N=1;download
