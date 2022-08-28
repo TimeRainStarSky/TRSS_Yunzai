@@ -1,8 +1,10 @@
 该教程用于在 Termux 和 Linux 中安装 Arch Linux 容器
+
+[![访问量](https://profile-counter.glitch.me/TimeRainStarSky-TMOE/count.svg)](https://gitee.com/mo2/linux)
 ***
 TMOE 启动命令：
 ```
-bash -c "$(curl -L https://gitee.com/mo2/linux/raw/2/2)"
+bash <(curl -L https://gitee.com/mo2/linux/raw/2/2)
 
 ```
 在 Linux 中启动 TMOE，会出现以下选项，请选择 Manager
