@@ -25,7 +25,7 @@ bash <(curl -L https://gitee.com/mo2/linux/raw/2/2)
 
 ![4](TMOE/4.jpg)
 ***
-进入 TMOE 后，有`root 权限`使用`chroot 容器`，否则使用`proot 容器`
+进入 TMOE 后，有`root 权限`使用`chroot 容器`，否则使用`PRoot 容器`
 
 ![5](TMOE/5.jpg)
 ***
@@ -65,6 +65,6 @@ bash <(curl -L https://gitee.com/mo2/linux/raw/2/2)
 
 4. 启动tmoe tools?：`选择 否` (需要使用输入 tmoe 启动即可)
 ***
-进入容器命令：`tmoe p/c a`(p指proot容器，c指chroot容器)
+进入容器命令：`tmoe p/c a`(p 指 PRoot 容器，c 指 chroot 容器)
 
 管理容器命令：`tmoe`

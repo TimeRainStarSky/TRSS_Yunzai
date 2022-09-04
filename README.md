@@ -16,7 +16,7 @@
 ## 使用教程
 1. 准备：[Arch Linux](https://archlinux.org)
 - [Windows](https://www.microsoft.com/windows) 推荐使用 [ArchWSL](https://github.com/yuk7/ArchWSL) [详细教程](https://bytem.io/posts/install-arch-wsl)
-- [Termux](https://github.com/hanxinhao000/ZeroTermux) 或`其他 Linux 发行版`推荐使用 [TMOE](https://gitee.com/mo2/linux) 安装 [Arch Linux](https://archlinux.org) 容器
+- [Termux](https://github.com/termux/termux-app) 或`其他 Linux 发行版`推荐使用 [TMOE](https://gitee.com/mo2/linux) 安装 [Arch Linux](https://archlinux.org) 容器
 - [详细教程 Guide/TMOE.md](Guide/TMOE.md)
 
 2. 安装：
@@ -44,7 +44,7 @@ bash <(curl -L https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Install.sh
 - 答：端口被占用，请尝试停止占用进程、重启设备，或修改配置文件，更改端口
 
 - 问：open terminal failed: not a terminal
-- 答：TMOE proot 容器首次启动会出现，重启容器就行了
+- 答：TMOE PRoot 容器首次启动会出现，重启容器就行了
 
 - 问：[server exited unexpectedly]
 - 答：tmux 进程意外退出，可能是系统资源不足引起的，如果在 Termux 中经常出现，请检查设置：电池优化、后台运行权限
