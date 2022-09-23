@@ -12,7 +12,7 @@ DIR="$HOME/TRSS_Yunzai"
 which pacman &>/dev/null&&echo "
 $Y- 正在安装依赖$O
 "||abort "找不到 pacman 命令，请确认安装了正确的 Arch Linux 环境"
-pacman -Syu --noconfirm --needed --overwrite "*" curl git libnewt micro neofetch perl tmux||abort "依赖安装失败"
+pacman -Syu --noconfirm --needed --overwrite "*" curl git libnewt micro neofetch perl ranger tmux||abort "依赖安装失败"
 which locale-gen &>/dev/null&&{ echo "
 $Y- 正在设置语言$O
 "
