@@ -273,13 +273,16 @@ echo 'FROM hub-mirror.c.163.com/library/archlinux
 COPY mirrorlist /etc/pacman.d
 COPY pacman.conf /etc
 COPY zh_CN /usr/share/i18n/locales
-COPY tsyz /bin
 RUN pacman -Syy --noconfirm --needed --overwrite "*" archlinux-keyring archlinuxcn-keyring &&\
     pacman -Syu --noconfirm --needed --overwrite "*" curl git libnewt micro neofetch perl ranger tmux &&\
     sed -i "s/#zh_CN.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/g" /etc/locale.gen &&\
-    locale-gen &&\
-    chmod 755 /bin/tsyz'>Dockerfile
+    locale-gen
+COPY tsyz /bin
+RUN chmod 755 /bin/tsyz'>Dockerfile
 docker build -t trss:yunzai .||abort "Docker 容器构建失败"
+echo "
+$Y- 正在启动 Docker 容器$O
+"
 docker run -itd --name TRSS_Yunzai -v "$DIR":/root/TRSS_Yunzai --restart=always trss:yunzai||abort "Docker 容器启动失败"
 echo -n "docker exec -it TRSS_Yunzai bash '/root/TRSS_Yunzai/Main.sh' "'"$@"'>/bin/tsyz||abort "脚本执行命令/bin/tsyz设置失败"
 chmod 755 /bin/tsyz||abort "脚本权限设置失败"

@@ -15,7 +15,7 @@
 
 ## 使用教程
 1. 准备：[Arch Linux](https://archlinux.org)
-- [Windows](https://www.microsoft.com/windows) 推荐使用 [Guide/ArchWSL.md](Guide/ArchWSL.md)
+- [Windows](https://microsoft.com/windows) 推荐使用 [Guide/ArchWSL.md](Guide/ArchWSL.md)
 - [Linux](https://kernel.org) 和 [Mac](https://apple.com/mac) 推荐使用 [Guide/Docker.md](Guide/Docker.md)
 - [Android Termux](https://github.com/termux/termux-app) 推荐使用 [Guide/TMOE.md](Guide/TMOE.md)
 
