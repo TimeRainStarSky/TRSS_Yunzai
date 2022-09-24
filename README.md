@@ -15,12 +15,9 @@
 
 ## 使用教程
 1. 准备：[Arch Linux](https://archlinux.org)
-- [Windows](https://www.microsoft.com/windows) 推荐使用 [ArchWSL](https://github.com/yuk7/ArchWSL)
-- [详细教程 Guide/ArchWSL.md](Guide/ArchWSL.md)
-- [Android Termux](https://github.com/termux/termux-app) 或`其他 Linux 发行版`推荐使用 [TMOE](https://gitee.com/mo2/linux)
-- [详细教程 Guide/TMOE.md](Guide/TMOE.md)
-- 全平台通用 [Docker](https://docker.com)
-- [详细教程 Guide/Docker.md](Guide/Docker.md)
+- [Windows](https://www.microsoft.com/windows) 推荐使用 [Guide/ArchWSL.md](Guide/ArchWSL.md)
+- [Linux](https://kernel.org) 和 [Mac](https://apple.com/mac) 推荐使用 [Guide/Docker.md](Guide/Docker.md)
+- [Android Termux](https://github.com/termux/termux-app) 推荐使用 [Guide/TMOE.md](Guide/TMOE.md)
 
 2. 安装：
 ```
