@@ -1,15 +1,30 @@
 #TRSS Yunzai Docker 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202209230
+NAME=v1.0.0;VERSION=202209240
 R="[1;31m";G="[1;32m";Y="[1;33m";C="[1;36m";B="[1;m";O="[m"
 echo "$B———————————————————————————
 $R TRSS$Y Yunzai$G Docker$C Script$O
     $G$NAME$C ($VERSION)$O
 $B———————————————————————————
      ${G}作者：${C}时雨🌌星空$O"
+DIR="$HOME/TRSS_Yunzai"
 abort(){ echo "
 $R! $@$O";exit 1;}
-DIR="$HOME/TRSS_Yunzai"
-which docker||abort "找不到 docker 命令，请确认安装了正确的 docker 环境"
+mktmp(){ TMP="$DIR/tmp"&&rm -rf "$TMP"&&mkdir -p "$TMP"||abort "创建缓存文件夹失败";}
+if which docker &>/dev/null;then
+  echo "
+$G- Docker 已安装$O"
+elif which pacman &>/dev/null;then
+  echo "
+$Y- 正在使用 pacman 安装 Docker$O
+"
+  pacman -Syu --noconfirm --needed --overwrite "*" docker||abort "Docker 安装失败"
+elif which apt &>/dev/null;then
+  echo "
+$Y- 正在使用 apt 安装 Docker$O
+"
+  apt update&&apt install -y docker.io||abort "Docker 安装失败"
+else abort "请先安装 Docker"
+fi
 abort_update(){ echo "
 $R! $@$O";[ "$N" -lt 10 ]&&{ let N++;download;}||abort "脚本下载失败，请检查网络，并尝试重新下载";}
 download(){ case "$N" in
@@ -23,22 +38,42 @@ download(){ case "$N" in
   8)SERVER="JiHuLab";URL="https://jihulab.com/TimeRainStarSky/TRSS_Yunzai/raw/main";;
   9)SERVER="Bitbucket";URL="https://bitbucket.org/TimeRainStarSky/TRSS_Yunzai/raw/main";;
   10)SERVER="Jsdelivr";URL="https://cdn.jsdelivr.net/gh/TimeRainStarSky/TRSS_Yunzai@main"
-  esac;echo "
-  正在从 $SERVER 服务器 下载版本信息";GETVER="$(geturl "$URL/version")"||abort_update "下载失败";NEWVER="$(echo -n "$GETVER"|sed -n s/^version=//p)";NEWNAME="$(echo -n "$GETVER"|sed -n s/^name=//p)";MD5="$(echo -n "$GETVER"|sed -n s/^md5=//p)";[ -n "$NEWVER" ]&&[ -n "$NEWNAME" ]&&[ -n "$MD5" ]||abort_update "下载文件版本信息缺失";echo "
+esac
+echo "
+  正在从 $SERVER 服务器 下载版本信息"
+GETVER="$(geturl "$URL/version")"||abort_update "下载失败"
+NEWVER="$(echo -n "$GETVER"|sed -n s/^version=//p)"
+NEWNAME="$(echo -n "$GETVER"|sed -n s/^name=//p)";MD5="$(echo -n "$GETVER"|sed -n s/^md5=//p)"
+[ -n "$NEWVER" ]&&[ -n "$NEWNAME" ]&&[ -n "$MD5" ]||abort_update "下载文件版本信息缺失"
+echo "
 $B  最新版本：$G$NEWNAME$C ($NEWVER)$O
 
-  开始下载";mkdir -vp "$DIR";geturl "$URL/Main.sh">"$DIR/Main.sh"||abort_update "下载失败";[ "$(md5sum "$DIR/Main.sh"|head -c 32)" != "$MD5" ]&&abort_update "下载文件校验错误";echo -n "bash '$DIR/Main.sh' "'"$@"'>/bin/tsyz||abort "脚本执行命令/bin/tsyz设置失败";chmod 755 /bin/tsyz||abort "脚本权限设置失败";echo "
+  开始下载"
+mkdir -vp "$DIR"
+geturl "$URL/Main.sh">"$DIR/Main.sh"||abort_update "下载失败"
+[ "$(md5sum "$DIR/Main.sh"|head -c 32)" = "$MD5" ]||abort_update "下载文件校验错误"
+echo "
 $G- 脚本下载完成$O";}
 echo "
 $Y- 正在下载脚本$O";geturl(){ curl -L --retry 2 --connect-timeout 5 "$@";};N=1;download
 echo "
-$Y- 正在构建 Docker 容器$O"
-cd "$DIR"
+$Y- 正在构建 Docker 容器$O
+"
+mktmp&&cd "$TMP"
 echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
 Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
 Server = https://mirrors.bfsu.edu.cn/archlinux/$repo/os/$arch
 Server = https://mirrors.aliyun.com/archlinux/$repo/os/$arch'>mirrorlist
-echo '
+echo '[options]
+Architecture = auto
+Color
+ParallelDownloads = 5
+[core]
+Include = /etc/pacman.d/mirrorlist
+[extra]
+Include = /etc/pacman.d/mirrorlist
+[community]
+Include = /etc/pacman.d/mirrorlist
 [archlinuxcn]
 Server = https://mirrors.bfsu.edu.cn/archlinuxcn/$arch
 Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
@@ -236,17 +271,17 @@ END LC_MEASUREMENT'>zh_CN
 echo -n "bash '$DIR/Main.sh' "'"$@"'>tsyz
 echo 'FROM hub-mirror.c.163.com/library/archlinux
 COPY mirrorlist /etc/pacman.d
-COPY pacman.conf /tmp
+COPY pacman.conf /etc
 COPY zh_CN /usr/share/i18n/locales
-COPY Main.sh /root/TRSS_Yunzai/Main.sh
 COPY tsyz /bin
-RUN cat /tmp/pacman.conf >>/etc/pacman.conf &&\
-    pacman -Syy --noconfirm --needed --overwrite "*" archlinux-keyring archlinuxcn-keyring &&\
+RUN pacman -Syy --noconfirm --needed --overwrite "*" archlinux-keyring archlinuxcn-keyring &&\
     pacman -Syu --noconfirm --needed --overwrite "*" curl git libnewt micro neofetch perl ranger tmux &&\
     sed -i "s/#zh_CN.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/g" /etc/locale.gen &&\
     locale-gen &&\
     chmod 755 /bin/tsyz'>Dockerfile
-docker build -t trss:yunzai||abort "Docker 容器构建失败"
-docker run -itd --restart=always --name TRSS_Yunzai trss:yunzai
-echo -n "docker exec -it TRSS_Yunzai bash '$DIR/Main.sh' "'"$@"'>/bin/tsyz||abort "脚本执行命令/bin/tsyz设置失败";chmod 755 /bin/tsyz||abort "脚本权限设置失败";echo "
-$G- Docker 容器安装完成，输入tsyz执行$O";exit;}
+docker build -t trss:yunzai .||abort "Docker 容器构建失败"
+docker run -itd --name TRSS_Yunzai -v "$DIR":/root/TRSS_Yunzai --restart=always trss:yunzai||abort "Docker 容器启动失败"
+echo -n "docker exec -it TRSS_Yunzai bash '/root/TRSS_Yunzai/Main.sh' "'"$@"'>/bin/tsyz||abort "脚本执行命令/bin/tsyz设置失败"
+chmod 755 /bin/tsyz||abort "脚本权限设置失败"
+echo "
+$G- Docker 容器安装完成，输入tsyz执行$O"

@@ -1,5 +1,5 @@
 #TRSS Yunzai 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202209230
+NAME=v1.0.0;VERSION=202209240
 R="[1;31m";G="[1;32m";Y="[1;33m";C="[1;36m";B="[1;m";O="[m"
 echo "$B————————————————————————————
 $R TRSS$Y Yunzai$G Install$C Script$O
@@ -30,11 +30,24 @@ download(){ case "$N" in
   8)SERVER="JiHuLab";URL="https://jihulab.com/TimeRainStarSky/TRSS_Yunzai/raw/main";;
   9)SERVER="Bitbucket";URL="https://bitbucket.org/TimeRainStarSky/TRSS_Yunzai/raw/main";;
   10)SERVER="Jsdelivr";URL="https://cdn.jsdelivr.net/gh/TimeRainStarSky/TRSS_Yunzai@main"
-  esac;echo "
-  正在从 $SERVER 服务器 下载版本信息";GETVER="$(geturl "$URL/version")"||abort_update "下载失败";NEWVER="$(echo -n "$GETVER"|sed -n s/^version=//p)";NEWNAME="$(echo -n "$GETVER"|sed -n s/^name=//p)";MD5="$(echo -n "$GETVER"|sed -n s/^md5=//p)";[ -n "$NEWVER" ]&&[ -n "$NEWNAME" ]&&[ -n "$MD5" ]||abort_update "下载文件版本信息缺失";echo "
+esac
+echo "
+  正在从 $SERVER 服务器 下载版本信息"
+GETVER="$(geturl "$URL/version")"||abort_update "下载失败"
+NEWVER="$(echo -n "$GETVER"|sed -n s/^version=//p)"
+NEWNAME="$(echo -n "$GETVER"|sed -n s/^name=//p)"
+MD5="$(echo -n "$GETVER"|sed -n s/^md5=//p)"
+[ -n "$NEWVER" ]&&[ -n "$NEWNAME" ]&&[ -n "$MD5" ]||abort_update "下载文件版本信息缺失"
+echo "
 $B  最新版本：$G$NEWNAME$C ($NEWVER)$O
 
-  开始下载";mkdir -vp "$DIR";geturl "$URL/Main.sh">"$DIR/Main.sh"||abort_update "下载失败";[ "$(md5sum "$DIR/Main.sh"|head -c 32)" != "$MD5" ]&&abort_update "下载文件校验错误";echo -n "bash '$DIR/Main.sh' "'"$@"'>/bin/tsyz||abort "脚本执行命令/bin/tsyz设置失败";chmod 755 /bin/tsyz||abort "脚本权限设置失败";echo "
+  开始下载"
+mkdir -vp "$DIR"
+geturl "$URL/Main.sh">"$DIR/Main.sh"||abort_update "下载失败"
+[ "$(md5sum "$DIR/Main.sh"|head -c 32)" != "$MD5" ]&&abort_update "下载文件校验错误"
+echo -n "bash '$DIR/Main.sh' "'"$@"'>/bin/tsyz||abort "脚本执行命令/bin/tsyz设置失败"
+chmod 755 /bin/tsyz||abort "脚本权限设置失败"
+echo "
 $G- 脚本安装完成，输入tsyz执行$O";exit;}
 echo "
 $Y- 正在下载脚本$O";geturl(){ curl -L --retry 2 --connect-timeout 5 "$@";};N=1;download
