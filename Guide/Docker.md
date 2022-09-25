@@ -6,6 +6,34 @@
 bash <(curl -L https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Guide/Docker.sh)
 ```
 ***
+ArchLinux, Debian, Ubuntu 可直接运行脚本，自动安装 Docker
+
+其他发行版请手动安装 Docker <https://docker.com>
+***
+终端输入`docker ps`，显示以下内容则表示安装成功
+```
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+```
+***
+## 常见问题
+***
+```
+Cannot connect to the Docker daemon at unix:///var/run/docker.sock
+```
+若显示以上内容，请先启动 Docker Deamon
+```
+systemctl enable docker
+systemctl start docker
+```
+***
+```
+Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock
+```
+若显示以上内容，请添加当前用户到 docker 组
+```
+gpasswd -a "$USER" docker
+```
+***
 服务器 Linux 发行版 推荐使用`Debian 11`以上，如果只有`Debian 10`，可执行以下命令升级`Debian 11`后重启服务器即可
 ```
 apt update && apt full-upgrade -y
