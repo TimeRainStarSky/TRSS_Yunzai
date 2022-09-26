@@ -20,7 +20,7 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 ```
 Cannot connect to the Docker daemon at unix:///var/run/docker.sock
 ```
-若显示以上内容，请先启动 Docker Deamon
+若显示以上内容，请先启动 Docker Daemon
 ```
 systemctl enable docker
 systemctl start docker
