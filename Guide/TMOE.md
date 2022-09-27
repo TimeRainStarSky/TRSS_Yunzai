@@ -4,8 +4,7 @@
 ***
 TMOE 启动命令：
 ```
-bash <(curl -L https://gitee.com/mo2/linux/raw/2/2)
-
+curl -LO https://l.tmoe.me/2.awk && awk -f 2.awk
 ```
 在 Linux 中启动 TMOE，会出现以下选项，请选择 Manager
 

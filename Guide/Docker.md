@@ -34,7 +34,7 @@ Got permission denied while trying to connect to the Docker daemon socket at uni
 gpasswd -a "$USER" docker
 ```
 ***
-服务器 Linux 发行版 推荐使用`Debian 11`以上，如果只有`Debian 10`，可执行以下命令升级`Debian 11`后重启服务器即可
+服务器 Linux 发行版 推荐使用`Debian 11`以上，若只有`Debian 10`，可执行以下命令并重启服务器后升级到`Debian 11`
 ```
 apt update && apt full-upgrade -y
 sed -i 's/buster/bullseye/g' /etc/apt/sources.list
