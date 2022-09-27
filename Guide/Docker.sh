@@ -281,6 +281,7 @@ RUN pacman -Syy --noconfirm --needed --overwrite "*" archlinux-keyring archlinux
 COPY tsyz /bin
 RUN chmod 755 /bin/tsyz'>Dockerfile
 docker build -t trss:yunzai .||abort "Docker 容器构建失败"
+docker image prune -f
 echo "
 $Y- 正在启动 Docker 容器$O
 "
