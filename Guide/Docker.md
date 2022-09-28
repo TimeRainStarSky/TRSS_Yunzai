@@ -10,7 +10,7 @@ ArchLinux, Debian, Ubuntu 可直接运行脚本，自动安装 Docker
 
 其他发行版请手动安装 Docker <https://docker.com>
 ***
-终端输入`docker ps`，显示以下内容则表示安装成功
+终端输入 `docker ps`，显示以下内容则表示安装成功
 ```
 CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 ```
@@ -34,7 +34,11 @@ Got permission denied while trying to connect to the Docker daemon socket at uni
 gpasswd -a "$USER" docker
 ```
 ***
-服务器 Linux 发行版 推荐使用`Debian 11`以上，若只有`Debian 10`，可执行以下命令并重启服务器后升级到`Debian 11`
+服务器 Linux 发行版 推荐使用 `Debian 11` 以上
+
+服务器安装视频教程：<https://www.bilibili.com/video/BV1ie4y1b7zE>
+
+若只有 `Debian 10`，可执行以下命令并重启服务器后升级到 `Debian 11`
 ```
 apt update && apt full-upgrade -y
 sed -i 's/buster/bullseye/g' /etc/apt/sources.list

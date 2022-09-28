@@ -2,13 +2,13 @@
 
 [![访问量](https://profile-counter.glitch.me/TimeRainStarSky-ArchWSL/count.svg)](https://github.com/yuk7/ArchWSL)
 ***
-在`终端(管理员)`或`Windows 功能`中：
+在 `终端(管理员)` 或 `Windows 功能` 中：
 
-启用`适用于 Linux 的 Windows 子系统`
+启用 `适用于 Linux 的 Windows 子系统`
 ```
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 ```
-启用`虚拟机平台`
+启用 `虚拟机平台`
 ```
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 ```
@@ -26,7 +26,7 @@ wsl --set-default-version 2
 wsl --update
 ```
 ***
-从 [ArchWSL GitHub Releases Assets](https://github.com/yuk7/ArchWSL/releases/latest) 中下载`Arch.zip`并解压
+从 [ArchWSL GitHub Releases Assets](https://github.com/yuk7/ArchWSL/releases/latest) 中下载 `Arch.zip` 并解压
 
 若速度太慢，可使用 GitHub 加速，如：[GitHub Proxy](https://ghproxy.com)
 
@@ -38,15 +38,15 @@ Installation complete
 Press enter to continue...
 ```
 ***
-在`文件资源管理器`中打开：
+在 `文件资源管理器` 中打开：
 ```
 \\wsl$\Arch\etc\pacman.d
 ```
-编辑`mirrorlist`，在`China`后选择你喜欢的镜像源，删除开头的`#`，保存
+编辑 `mirrorlist`，在 `China` 后选择你喜欢的镜像源，删除开头的 `#`，保存
 ```
 \\wsl$\Arch\etc
 ```
-编辑`pacman.conf`，在文件末尾添加以下内容并保存：
+编辑 `pacman.conf`，在文件末尾添加以下内容并保存：
 ```
 [archlinuxcn]
 Server = https://mirrors.bfsu.edu.cn/archlinuxcn/$arch
@@ -55,7 +55,7 @@ Server = https://repo.archlinuxcn.org/$arch
 SigLevel = Never
 ```
 ***
-启动`Arch.exe`，输出以下内容则表示 ArchWSL 启动成功
+启动 `Arch.exe`，输出以下内容则表示 ArchWSL 启动成功
 ```
 [root@xxx Arch]#
 ```
@@ -64,7 +64,7 @@ SigLevel = Never
 pacman -Syy archlinux-keyring archlinuxcn-keyring && pacman -Syu
 ```
 ***
-启动：运行`Arch.exe`或终端输入`wsl`
+启动：运行 `Arch.exe` 或终端输入 `wsl`
 
 在`文件资源管理器`中打开 ArchWSL 主目录：
 ```
