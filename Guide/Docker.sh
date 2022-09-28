@@ -285,7 +285,7 @@ docker image prune -f
 echo "
 $Y- 正在启动 Docker 容器$O
 "
-docker run -itPd --name TRSS_Yunzai -v "$DIR":/root/TRSS_Yunzai --restart=always trss:yunzai||abort "Docker 容器启动失败，若要重装容器，请先停止并删除已安装容器"
+docker run -itPd -h TRSS-Yunzai --name TRSS_Yunzai -v "$DIR":/root/TRSS_Yunzai --restart=always trss:yunzai||abort "Docker 容器启动失败，若要重装容器，请先停止并删除已安装容器"
 echo -n "docker exec -it TRSS_Yunzai bash '/root/TRSS_Yunzai/Main.sh' "'"$@"'>/bin/tsyz||abort "脚本执行命令/bin/tsyz设置失败"
 chmod 755 /bin/tsyz||abort "脚本权限设置失败"
 echo "
