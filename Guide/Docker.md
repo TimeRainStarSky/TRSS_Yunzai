@@ -36,7 +36,7 @@ gpasswd -a "$USER" docker
 ***
 服务器 Linux 发行版 推荐使用 `Debian 11` 以上
 
-服务器安装视频教程：<https://www.bilibili.com/video/BV1ie4y1b7zE>
+服务器安装视频教程：<https://bilibili.com/video/BV1ie4y1b7zE>
 
 若只有 `Debian 10`，可执行以下命令并重启服务器后升级到 `Debian 11`
 ```

@@ -1,5 +1,5 @@
 #TRSS Yunzai Docker 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202209280
+NAME=v1.0.0;VERSION=202209290
 R="[1;31m";G="[1;32m";Y="[1;33m";C="[1;36m";B="[1;m";O="[m"
 echo "$B———————————————————————————
 $R TRSS$Y Yunzai$G Docker$C Script$O
@@ -278,15 +278,14 @@ RUN pacman -Syy --noconfirm --needed --overwrite "*" archlinux-keyring archlinux
     sed -i "s/#.*zh_CN\.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/g" /etc/locale.gen &&\
     locale-gen &&\
     rm -rf /var/cache
-COPY tsyz /bin
-RUN chmod 755 /bin/tsyz'>Dockerfile
+COPY tsyz /usr/local/bin
+RUN chmod 755 /usr/local/bin/tsyz'>Dockerfile
 docker build -t trss:yunzai .||abort "Docker 容器构建失败"
 docker image prune -f
 echo "
 $Y- 正在启动 Docker 容器$O
 "
 docker run -itPd -h TRSS-Yunzai --name TRSS_Yunzai -v "$DIR":/root/TRSS_Yunzai --restart=always trss:yunzai||abort "Docker 容器启动失败，若要重装容器，请先停止并删除已安装容器"
-echo -n "docker exec -it TRSS_Yunzai bash '/root/TRSS_Yunzai/Main.sh' "'"$@"'>/bin/tsyz||abort "脚本执行命令/bin/tsyz设置失败"
-chmod 755 /bin/tsyz||abort "脚本权限设置失败"
+echo -n "docker exec -it TRSS_Yunzai bash '/root/TRSS_Yunzai/Main.sh' "'"$@"'>/usr/local/bin/tsyz&&chmod 755 /usr/local/bin/tsyz||abort "脚本执行命令 /usr/local/bin/tsyz 设置失败，手动执行命令：docker exec -it TRSS_Yunzai bash '/root/TRSS_Yunzai/Main.sh'"
 echo "
 $G- Docker 容器安装完成，输入tsyz执行$O"
