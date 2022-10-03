@@ -32,6 +32,14 @@ bash <(curl -L https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Install.sh
 - [Yunzai](https://github.com/Le-niao/Yunzai-Bot) <-调用-> [OICQ](https://oicqjs.github.io/oicq) <-网络连接-> [QQ服务器](https://im.qq.com)
 - [OICQ](https://oicqjs.github.io/oicq)：提供QQ账号管理，收发消息等功能
 - [Yunzai](https://github.com/Le-niao/Yunzai-Bot)：对消息进行处理，完成目标操作
+- WSL / Docker / chroot 容器：程序运行于容器环境，不易受主机系统环境影响
+- Dialog 对话框：支持 触屏 / 鼠标 操作的交互式对话框
+- [Tmux 终端复用器](https://github.com/tmux/tmux)：支持 触屏 / 鼠标 操作的交互式终端会话
+- [Micro 文本编辑器](https://micro-editor.github.io)：支持 触屏 / 鼠标 操作的终端文本编辑器
+- [Ranger 文件管理器](https://ranger.github.io)：支持 触屏 / 鼠标 操作的终端文件管理器
+- 插件管理：一键 安装 / 管理 插件，无需输入复杂安装命令
+- 滚动更新：实时更新到最新版本，修复已知问题并添加更多功能
+- 更多功能等待你来提出……
 
 ## 常见问题
 - 问：发消息错误：46
