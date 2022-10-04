@@ -1,5 +1,5 @@
 #TRSS Yunzai Docker 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202210030
+NAME=v1.0.0;VERSION=202210040
 R="[1;31m";G="[1;32m";Y="[1;33m";C="[1;36m";B="[1;m";O="[m"
 echo "$B———————————————————————————
 $R TRSS$Y Yunzai$G Docker$C Script$O
@@ -10,15 +10,15 @@ DIR="$HOME/TRSS_Yunzai"
 abort(){ echo "
 $R! $@$O";exit 1;}
 mktmp(){ TMP="$DIR/tmp"&&rm -rf "$TMP"&&mkdir -p "$TMP"||abort "创建缓存文件夹失败";}
-if which docker &>/dev/null;then
+if type docker &>/dev/null;then
   echo "
 $G- Docker 已安装$O"
-elif which pacman &>/dev/null;then
+elif type pacman &>/dev/null;then
   echo "
 $Y- 正在使用 pacman 安装 Docker$O
 "
   pacman -Syu --noconfirm --needed --overwrite "*" docker||abort "Docker 安装失败"
-elif which apt &>/dev/null;then
+elif type apt &>/dev/null;then
   echo "
 $Y- 正在使用 apt 安装 Docker$O
 "
