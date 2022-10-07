@@ -1,5 +1,5 @@
 #TRSS Yunzai Docker 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202210072
+NAME=v1.0.0;VERSION=202210073
 R="[1;31m";G="[1;32m";Y="[1;33m";C="[1;36m";B="[1;m";O="[m"
 echo "$B———————————————————————————
 $R TRSS$Y Yunzai$G Docker$C Script$O
@@ -269,6 +269,7 @@ LC_MEASUREMENT
 copy "i18n"
 END LC_MEASUREMENT'>zh_CN
 echo 'FROM hub-mirror.c.163.com/library/archlinux
+ENV TERM=xterm-256color
 COPY mirrorlist /etc/pacman.d
 COPY pacman.conf /etc
 COPY zh_CN /usr/share/i18n/locales
