@@ -1,5 +1,5 @@
 #TRSS Yunzai Docker 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202210071
+NAME=v1.0.0;VERSION=202210072
 R="[1;31m";G="[1;32m";Y="[1;33m";C="[1;36m";B="[1;m";O="[m"
 echo "$B———————————————————————————
 $R TRSS$Y Yunzai$G Docker$C Script$O
@@ -277,7 +277,6 @@ RUN pacman -Syy --noconfirm --needed --overwrite "*" archlinux-keyring archlinux
     sed -i "s/#.*zh_CN\.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/g" /etc/locale.gen &&\
     locale-gen &&\
     rm -rf /var/cache
-COPY tsyz /usr/local/bin
 RUN echo -n '\''bash /root/TRSS_Yunzai/Main.sh "$@"'\''>/usr/local/bin/tsyz &&\
     chmod 755 /usr/local/bin/tsyz &&\
     pacman -Syu --noconfirm --needed --overwrite "*" nodejs pnpm redis &&\
