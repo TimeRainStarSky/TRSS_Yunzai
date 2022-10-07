@@ -1,5 +1,5 @@
 #TRSS Yunzai Docker 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202210040
+NAME=v1.0.0;VERSION=202210070
 R="[1;31m";G="[1;32m";Y="[1;33m";C="[1;36m";B="[1;m";O="[m"
 echo "$B———————————————————————————
 $R TRSS$Y Yunzai$G Docker$C Script$O
@@ -279,7 +279,9 @@ RUN pacman -Syy --noconfirm --needed --overwrite "*" archlinux-keyring archlinux
     locale-gen &&\
     rm -rf /var/cache
 COPY tsyz /usr/local/bin
-RUN chmod 755 /usr/local/bin/tsyz'>Dockerfile
+RUN chmod 755 /usr/local/bin/tsyz &&\
+    pacman -Syu --noconfirm --needed --overwrite "*" nodejs pnpm redis &&\
+    rm -rf /var/cache'>Dockerfile
 docker build -t trss:yunzai .||abort "Docker 容器构建失败"
 docker image prune -f
 echo "
