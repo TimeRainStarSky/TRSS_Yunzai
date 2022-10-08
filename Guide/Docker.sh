@@ -1,5 +1,5 @@
 #TRSS Yunzai Docker 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202210073
+NAME=v1.0.0;VERSION=202210080
 R="[1;31m";G="[1;32m";Y="[1;33m";C="[1;36m";B="[1;m";O="[m"
 echo "$B———————————————————————————
 $R TRSS$Y Yunzai$G Docker$C Script$O
@@ -7,6 +7,8 @@ $R TRSS$Y Yunzai$G Docker$C Script$O
 $B———————————————————————————
      ${G}作者：${C}时雨🌌星空$O"
 DIR="$HOME/TRSS_Yunzai"
+CMD="${CMD:-tsyz}"
+CMDPATH="${CMDPATH:-/usr/local/bin}"
 abort(){ echo "
 $R! $@$O";exit 1;}
 mktmp(){ TMP="$DIR/tmp"&&rm -rf "$TMP"&&mkdir -p "$TMP"||abort "创建缓存文件夹失败";}
@@ -288,6 +290,6 @@ echo "
 $Y- 正在启动 Docker 容器$O
 "
 docker run -itPd -h TRSS-Yunzai --name TRSS_Yunzai -v "$DIR":/root/TRSS_Yunzai --restart=always trss:yunzai||abort "Docker 容器启动失败，若要重装容器，请先停止并删除已安装容器"
-echo -n "docker exec -it TRSS_Yunzai bash '/root/TRSS_Yunzai/Main.sh' "'"$@"'>/usr/local/bin/tsyz&&chmod 755 /usr/local/bin/tsyz||abort "脚本执行命令 /usr/local/bin/tsyz 设置失败，手动执行命令：docker exec -it TRSS_Yunzai bash '/root/TRSS_Yunzai/Main.sh'"
+echo -n "docker exec -it TRSS_Yunzai bash /root/TRSS_Yunzai/Main.sh "'"$@"'>$CMDPATH/$CMD&&chmod 755 $CMDPATH/$CMD||abort "脚本执行命令 $CMDPATH/$CMD 设置失败，手动执行命令：docker exec -it TRSS_Yunzai bash /root/TRSS_Yunzai/Main.sh"
 echo "
-$G- Docker 容器安装完成，输入tsyz执行$O"
+$G- Docker 容器安装完成，输入 $CMD 执行$O"
