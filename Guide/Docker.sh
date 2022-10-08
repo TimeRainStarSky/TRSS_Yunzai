@@ -292,4 +292,4 @@ $Y- 正在启动 Docker 容器$O
 docker run -itPd -h TRSS-Yunzai --name TRSS_Yunzai -v "$DIR":/root/TRSS_Yunzai --restart=always trss:yunzai||abort "Docker 容器启动失败，若要重装容器，请先停止并删除已安装容器"
 echo -n "docker exec -it TRSS_Yunzai bash /root/TRSS_Yunzai/Main.sh "'"$@"'>$CMDPATH/$CMD&&chmod 755 $CMDPATH/$CMD||abort "脚本执行命令 $CMDPATH/$CMD 设置失败，手动执行命令：docker exec -it TRSS_Yunzai bash /root/TRSS_Yunzai/Main.sh"
 echo "
-$G- Docker 容器安装完成，输入 $CMD 执行$O"
+$G- Docker 容器安装完成，启动命令：$CMD$O"

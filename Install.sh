@@ -49,6 +49,6 @@ geturl "$URL/Main.sh">"$DIR/Main.sh"||abort_update "下载失败"
 [ "$(md5sum "$DIR/Main.sh"|head -c 32)" != "$MD5" ]&&abort_update "下载文件校验错误"
 echo -n "bash '$DIR/Main.sh' "'"$@"'>$CMDPATH/$CMD&&chmod 755 $CMDPATH/$CMD||abort "脚本执行命令 $CMDPATH/$CMD 设置失败，手动执行命令：bash '$DIR/Main.sh'"
 echo "
-$G- 脚本安装完成，输入 $CMD 执行$O";exit;}
+$G- 脚本安装完成，启动命令：$CMD$O";exit;}
 echo "
 $Y- 正在下载脚本$O";geturl(){ curl -L --retry 2 --connect-timeout 5 "$@";};N=1;download
