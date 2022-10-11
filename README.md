@@ -3,6 +3,7 @@
 [![亚托莉](Picture/亚托莉.png)](https://moegirl.org.cn/亚托莉)
 
 # TRSS Yunzai
+
 云崽机器人管理脚本
 
 [![Stars](https://img.shields.io/github/stars/TimeRainStarSky/TRSS_Yunzai?color=yellow&label=收藏)](../../stargazers)
@@ -14,29 +15,39 @@
 </div>
 
 ## 使用教程
+
 1. 准备：[Arch Linux](https://archlinuxcn.org)
+
 - [Windows](https://microsoft.com/windows) 安装教程 [Guide/ArchWSL.md](Guide/ArchWSL.md)
 - [Linux](https://kernel.org) / [Mac](https://apple.com/mac) 安装教程 [Guide/Docker.md](Guide/Docker.md)
 - [Android](https://github.com/termux/termux-app) / [Linux](https://kernel.org) 安装教程 [Guide/TMOE.md](Guide/TMOE.md)
 
 2. 安装：
+
 ```
 bash <(curl -L https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Install.sh)
-```
-附加功能：自定义 安装路径 `HOME` 和 启动命令 `CMD`（可用于多开）
-
-举例：将脚本安装至 `/Bot` 启动命令 `trss`
-```
-HOME=/Bot CMD=trss bash xxx
 ```
 
 3. 启动：`tsyz`
 
 视频教程：<https://bilibili.com/av983453309>
 
+<details><summary>附加功能</summary>
+
+自定义 安装路径 `HOME` 和 启动命令 `CMD`（可用于多开）
+
+举例：将脚本安装至 `/Bot` 启动命令 `trss`
+
+```
+HOME=/Bot CMD=trss bash xxx
+```
+
+</details>
+
 ## 使用说明
-- [Yunzai](https://github.com/Le-niao/Yunzai-Bot) <-调用-> [OICQ](https://oicqjs.github.io/oicq) <-网络连接-> [QQ服务器](https://im.qq.com)
-- [OICQ](https://oicqjs.github.io/oicq)：提供QQ账号管理，收发消息等功能
+
+- [Yunzai](https://github.com/Le-niao/Yunzai-Bot) <-调用-> [OICQ](https://oicqjs.github.io/oicq) <-网络连接-> [QQ 服务器](https://im.qq.com)
+- [OICQ](https://oicqjs.github.io/oicq)：提供 QQ 账号管理，收发消息等功能
 - [Yunzai](https://github.com/Le-niao/Yunzai-Bot)：对消息进行处理，完成目标操作
 - WSL / Docker / chroot 容器：程序运行于容器环境，不易受主机系统环境影响
 - Dialog 对话框：支持 触屏 / 鼠标 操作的交互式对话框
@@ -48,6 +59,9 @@ HOME=/Bot CMD=trss bash xxx
 - 更多功能等待你来提出……
 
 ## 常见问题
+
+<details><summary>展开</summary>
+
 - 问：发消息错误：46
 - 答：账号被风控
 
@@ -66,25 +80,37 @@ HOME=/Bot CMD=trss bash xxx
 - 问：我有其他问题
 - 答：提供详细问题描述，通过下方 联系方式 反馈问题
 
+</details>
+
 ## 联系方式
-- QQ群组：[211414032](https://jq.qq.com/?k=QU1xGLEB)
+
+- QQ 群组：[211414032](https://jq.qq.com/?k=QU1xGLEB)
+
 ### 时雨🌌星空
+
 - GitHub：[TimeRainStarSky](https://github.com/TimeRainStarSky)
 - 酷安：[时雨丶星空](http://www.coolapk.com/u/2650948)
 - QQ：[2536554304](https://qm.qq.com/cgi-bin/qm/qr?k=x8LtlP8vwZs7qLwmsbCsyLoAHy7Et1Pj)
 - Telegram：[TimeRainStarSky](https://t.me/TimeRainStarSky)
 
 ## 赞助支持
+
 - 爱发电：<https://afdian.net/a/TimeRainStarSky>
 - Partme：<https://partme.com/TimeRainStarSky>
 
 ## 界面展示
+
+<details><summary>展开</summary>
+
 [![主界面](Picture/Main.png)](https://github.com/TimeRainStarSky/TRSS_Yunzai)
 [![Yunzai2](Picture/Yunzai2.png)](https://github.com/TimeRainStarSky/Yunzai-Bot-2)
 [![Yunzai3](Picture/Yunzai3.png)](https://github.com/Le-niao/Yunzai-Bot)
 [![Adachi](Picture/Adachi.png)](https://docs.adachi.top)
 
+</details>
+
 ## 相关项目
+
 [![TRSS Liteyuki 管理脚本](https://github-readme-stats.vercel.app/api/pin/?username=TimeRainStarSky&repo=TRSS_Liteyuki&show_owner=true)](../../../TRSS_Liteyuki)
 [![TRSS Yunzai 管理脚本](https://github-readme-stats.vercel.app/api/pin/?username=TimeRainStarSky&repo=TRSS_Yunzai&show_owner=true)](../../../TRSS_Yunzai)
 [![TRSS Sagiri 管理脚本](https://github-readme-stats.vercel.app/api/pin/?username=TimeRainStarSky&repo=TRSS_Sagiri&show_owner=true)](../../../TRSS_Sagiri)
