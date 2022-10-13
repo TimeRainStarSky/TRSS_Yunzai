@@ -2,31 +2,41 @@
 
 [![访问量](https://profile-counter.glitch.me/TimeRainStarSky-Docker/count.svg)](https://docker.com)
 
----
+## 容器安装
 
-```
-bash <(curl -L https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Guide/Docker.sh)
-```
+1. 安装 [Docker](https://docker.com)
 
----
-
-ArchLinux, Debian, Ubuntu 可直接运行脚本，自动安装 Docker
-
-其他发行版请手动安装 Docker <https://docker.com>
-
----
-
-终端输入 `docker ps`，显示以下内容则表示安装成功
+- ArchLinux, Debian, Ubuntu 可直接运行脚本，自动安装 Docker
+- 终端输入 `docker ps`，显示以下内容则表示安装成功
 
 ```
 CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 ```
 
----
+2. 安装容器
+
+```
+bash <(curl -L https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Guide/Docker.sh)
+```
+
+## 容器管理
+
+- 启动容器：`docker start TRSS_Yunzai`（默认为开机自启，无需手动启动）
+- 停止容器：`docker stop -t 0 TRSS_Yunzai`
+- 删除容器：`docker rm TRSS_Yunzai`
+- 重建容器：
+
+```
+docker run -itPd
+  -h TRSS-Yunzai #主机名
+  --name TRSS_Yunzai #容器名
+  -v ~/TRSS_Yunzai:/root/TRSS_Yunzai #数据映射
+  --restart=always #自启动
+  -p 2536:80 #端口映射
+  trss:yunzai
+```
 
 ## 常见问题
-
----
 
 ```
 Cannot connect to the Docker daemon at unix:///var/run/docker.sock
