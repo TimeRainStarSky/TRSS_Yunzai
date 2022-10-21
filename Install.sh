@@ -1,5 +1,5 @@
 #TRSS Yunzai 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202210140
+NAME=v1.0.0;VERSION=202210210
 R="[1;31m";G="[1;32m";Y="[1;33m";C="[1;36m";B="[1;m";O="[m"
 echo "$B————————————————————————————
 $R TRSS$Y Yunzai$G Install$C Script$O
@@ -47,7 +47,7 @@ $B  最新版本：$G$NEWNAME$C ($NEWVER)$O
 mkdir -vp "$DIR"
 geturl "$URL/Main.sh">"$DIR/Main.sh"||abort_update "下载失败"
 [ "$(md5sum "$DIR/Main.sh"|head -c 32)" != "$MD5" ]&&abort_update "下载文件校验错误"
-echo -n "bash '$DIR/Main.sh' "'"$@"'>$CMDPATH/$CMD&&chmod 755 $CMDPATH/$CMD||abort "脚本执行命令 $CMDPATH/$CMD 设置失败，手动执行命令：bash '$DIR/Main.sh'"
+echo -n "bash '$DIR/Main.sh' "'"$@"'>"$CMDPATH/$CMD"&&chmod 755 "$CMDPATH/$CMD"||abort "脚本执行命令 $CMDPATH/$CMD 设置失败，手动执行命令：bash '$DIR/Main.sh'"
 echo "
 $G- 脚本安装完成，启动命令：$CMD$O";exit;}
 echo "
