@@ -282,7 +282,9 @@ echo 'ENV TERM=xterm-256color
 COPY mirrorlist /etc/pacman.d
 COPY pacman.conf /etc
 COPY zh_CN /usr/share/i18n/locales
-RUN pacman -Syy --noconfirm --needed --overwrite "*" archlinux-keyring archlinuxcn-keyring &&\
+RUN pacman-key --init &&\
+    pacman-key --populate &&\
+    pacman -Syy --noconfirm --needed --overwrite "*" archlinux-keyring archlinuxcn-keyring &&\
     pacman -Syu --noconfirm --needed --overwrite "*" curl dialog git tmux perl micro ranger neofetch htop nethogs ncdu chromium ffmpeg python-poetry &&\
     sed -i "s/#.*zh_CN\.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/g" /etc/locale.gen &&\
     locale-gen &&\
