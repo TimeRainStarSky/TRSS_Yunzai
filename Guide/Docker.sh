@@ -1,5 +1,5 @@
 #TRSS Yunzai Docker 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202210252
+NAME=v1.0.0;VERSION=202210253
 R="[1;31m";G="[1;32m";Y="[1;33m";C="[1;36m";B="[1;m";O="[m"
 echo "$B———————————————————————————
 $R TRSS$Y Yunzai$G Docker$C Script$O
@@ -281,7 +281,7 @@ COPY mirrorlist /etc/pacman.d
 COPY pacman.conf /etc
 COPY zh_CN /usr/share/i18n/locales
 RUN pacman -Syu --noconfirm --needed --overwrite "*" curl dialog git tmux perl micro ranger neofetch htop nethogs ncdu chromium ffmpeg python-poetry &&\
-    sed -i "s/#.*zh_CN\.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/g" /etc/locale.gen &&\
+    echo "zh_CN.UTF-8 UTF-8">/etc/locale.gen &&\
     locale-gen &&\
     ln -vsf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime &&\
     rm -rf /var/cache
