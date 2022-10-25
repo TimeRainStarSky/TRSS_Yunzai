@@ -1,5 +1,5 @@
 #TRSS Yunzai Docker 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202210251
+NAME=v1.0.0;VERSION=202210252
 R="[1;31m";G="[1;32m";Y="[1;33m";C="[1;36m";B="[1;m";O="[m"
 echo "$B———————————————————————————
 $R TRSS$Y Yunzai$G Docker$C Script$O
@@ -265,6 +265,7 @@ Architecture = auto'>pacman.conf;echo "FROM hub-mirror.c.163.com/library/archlin
 esac
 echo 'Color
 ParallelDownloads = 5
+SigLevel = Never
 [core]
 Include = /etc/pacman.d/mirrorlist
 [extra]
@@ -274,24 +275,20 @@ Include = /etc/pacman.d/mirrorlist
 [archlinuxcn]
 Server = https://mirrors.bfsu.edu.cn/archlinuxcn/$arch
 Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
-Server = https://repo.archlinuxcn.org/$arch
-SigLevel = Never'>>pacman.conf
+Server = https://repo.archlinuxcn.org/$arch'>>pacman.conf
 echo 'ENV TERM=xterm-256color
 COPY mirrorlist /etc/pacman.d
 COPY pacman.conf /etc
 COPY zh_CN /usr/share/i18n/locales
-RUN pacman-key --init &&\
-    pacman-key --populate &&\
-    pacman -Syy --noconfirm --needed --overwrite "*" archlinux-keyring archlinuxcn-keyring &&\
-    pacman -Syu --noconfirm --needed --overwrite "*" curl dialog git tmux perl micro ranger neofetch htop nethogs ncdu chromium ffmpeg python-poetry &&\
+RUN pacman -Syu --noconfirm --needed --overwrite "*" curl dialog git tmux perl micro ranger neofetch htop nethogs ncdu chromium ffmpeg python-poetry &&\
     sed -i "s/#.*zh_CN\.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/g" /etc/locale.gen &&\
     locale-gen &&\
     ln -vsf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime &&\
     rm -rf /var/cache
+RUN pacman -Syu --noconfirm --needed --overwrite "*" nodejs pnpm redis &&\
+    rm -rf /var/cache
 RUN echo -n '\''bash /root/TRSS_Yunzai/Main.sh "$@"'\''>/usr/local/bin/tsyz &&\
-    chmod 755 /usr/local/bin/tsyz &&\
-    pacman -Syu --noconfirm --needed --overwrite "*" nodejs pnpm redis &&\
-    rm -rf /var/cache'>>Dockerfile
+    chmod 755 /usr/local/bin/tsyz'>>Dockerfile
 docker build -t trss:yunzai .||abort "Docker 容器构建失败"
 docker image prune -f
 echo "
