@@ -70,9 +70,19 @@ Press enter to continue...
 
 ```
 [archlinuxcn]
+Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
 Server = https://mirrors.bfsu.edu.cn/archlinuxcn/$arch
 Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+Server = https://mirrors.aliyun.com/archlinuxcn/$arch
+Server = https://mirrors.163.com/archlinux-cn/$arch
+Server = https://mirrors.tencent.com/archlinuxcn/$arch
 Server = https://repo.archlinuxcn.org/$arch
+SigLevel = Never
+[arch4edu]
+Server = https://mirrors.bfsu.edu.cn/arch4edu/$arch
+Server = https://mirrors.tuna.tsinghua.edu.cn/arch4edu/$arch
+Server = https://mirrors.aliyun.com/arch4edu/$arch
+Server = https://mirrors.tencent.com/arch4edu/$arch
 SigLevel = Never
 ```
 
@@ -87,7 +97,7 @@ SigLevel = Never
 更新软件包
 
 ```
-pacman -Syy archlinux-keyring archlinuxcn-keyring && pacman -Syu
+pacman -Syy archlinux-keyring && pacman -Syu
 ```
 
 ---

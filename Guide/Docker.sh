@@ -253,14 +253,17 @@ case "$(uname -m)" in
   aarch64|arm64|armv8*|armv9*)echo 'Server = https://mirrors.ustc.edu.cn/archlinuxarm/$arch/$repo
 Server = https://mirrors.bfsu.edu.cn/archlinuxarm/$arch/$repo
 Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxarm/$arch/$repo
+Server = https://mirrors.aliyun.com/archlinuxarm/$arch/$repo
 Server = https://mirrors.163.com/archlinuxarm/$arch/$repo
+Server = https://mirrors.tencent.com/archlinuxarm/$arch/$repo
 Server = https://mirror.archlinuxarm.org/$arch/$repo'>mirrorlist;echo '[options]
 Architecture = aarch64'>pacman.conf;echo "FROM menci/archlinuxarm">Dockerfile;;
   *)echo 'Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
 Server = https://mirrors.bfsu.edu.cn/archlinux/$repo/os/$arch
 Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
 Server = https://mirrors.aliyun.com/archlinux/$repo/os/$arch
-Server = http://mirrors.163.com/archlinux/$repo/os/$arch'>mirrorlist;echo '[options]
+Server = https://mirrors.163.com/archlinux/$repo/os/$arch
+Server = https://mirrors.tencent.com/archlinux/$repo/os/$arch'>mirrorlist;echo '[options]
 Architecture = auto'>pacman.conf;echo "FROM hub-mirror.c.163.com/library/archlinux">Dockerfile
 esac
 echo 'Color
@@ -273,9 +276,18 @@ Include = /etc/pacman.d/mirrorlist
 [community]
 Include = /etc/pacman.d/mirrorlist
 [archlinuxcn]
+Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
 Server = https://mirrors.bfsu.edu.cn/archlinuxcn/$arch
 Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
-Server = https://repo.archlinuxcn.org/$arch'>>pacman.conf
+Server = https://mirrors.aliyun.com/archlinuxcn/$arch
+Server = https://mirrors.163.com/archlinux-cn/$arch
+Server = https://mirrors.tencent.com/archlinuxcn/$arch
+Server = https://repo.archlinuxcn.org/$arch
+[arch4edu]
+Server = https://mirrors.bfsu.edu.cn/arch4edu/$arch
+Server = https://mirrors.tuna.tsinghua.edu.cn/arch4edu/$arch
+Server = https://mirrors.aliyun.com/arch4edu/$arch
+Server = https://mirrors.tencent.com/arch4edu/$arch'>>pacman.conf
 echo 'ENV TERM=xterm-256color
 COPY mirrorlist /etc/pacman.d
 COPY pacman.conf /etc
