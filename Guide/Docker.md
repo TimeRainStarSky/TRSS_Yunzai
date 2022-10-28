@@ -26,7 +26,7 @@ bash <(curl -L https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Guide/Dock
 举例：将脚本安装至 `/Bot` 启动命令 `trss` 容器名 `TRSS` 
 
 ```
-DIR=/Bot CMD=trss DKNAME=TRSS bash xxx
+DIR=/Bot CMD=trss DKNAME=TRSS bash <(x
 ```
 
 </details>
