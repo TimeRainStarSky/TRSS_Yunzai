@@ -19,6 +19,18 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 bash <(curl -L https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Guide/Docker.sh)
 ```
 
+<details><summary>附加功能</summary>
+
+自定义 安装路径 `DIR` 启动命令 `CMD` 容器名 `DKNAME` （可用于多开）
+
+举例：将脚本安装至 `/Bot` 启动命令 `trss` 容器名 `TRSS` 
+
+```
+DIR=/Bot CMD=trss DKNAME=TRSS bash xxx
+```
+
+</details>
+
 ## 容器管理
 
 - 启动容器：`docker start TRSS_Yunzai`（默认为开机自启，无需手动启动）

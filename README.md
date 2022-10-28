@@ -34,12 +34,12 @@ bash <(curl -L https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Install.sh
 
 <details><summary>附加功能</summary>
 
-自定义 安装路径 `HOME` 和 启动命令 `CMD`（可用于多开）
+自定义 安装路径 `DIR` 和 启动命令 `CMD`（可用于多开）
 
 举例：将脚本安装至 `/Bot` 启动命令 `trss`
 
 ```
-HOME=/Bot CMD=trss bash xxx
+DIR=/Bot CMD=trss bash xxx
 ```
 
 </details>
