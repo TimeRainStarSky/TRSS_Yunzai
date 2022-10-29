@@ -1,5 +1,5 @@
 #TRSS Yunzai Docker 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202210281
+NAME=v1.0.0;VERSION=202210290
 R="[1;31m";G="[1;32m";Y="[1;33m";C="[1;36m";B="[1;m";O="[m"
 echo "$B———————————————————————————
 $R TRSS$Y Yunzai$G Docker$C Script$O
@@ -101,19 +101,18 @@ Server = https://mirrors.tuna.tsinghua.edu.cn/arch4edu/$arch
 Server = https://mirrors.aliyun.com/arch4edu/$arch
 Server = https://mirrors.tencent.com/arch4edu/$arch'>>pacman.conf
 echo 'FROM dockerproxy.com/menci/archlinuxarm
-ENV LANG=zh_CN.UTF-8
-ENV TERM=xterm-256color
+ENV LANG=zh_CN.UTF-8 TERM=xterm-256color
 COPY mirrorlist /etc/pacman.d
 COPY pacman.conf /etc
-RUN echo "zh_CN.UTF-8 UTF-8">/etc/locale.gen &&\
-    locale-gen &&\
-    ln -vsf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime &&\
-    pacman -Syu --noconfirm --needed --overwrite "*" curl dialog git tmux perl micro ranger fastfetch htop nethogs ncdu chromium ffmpeg python-poetry &&\
-    rm -rf /var/cache
-RUN pacman -Syu --noconfirm --needed --overwrite "*" nodejs pnpm redis &&\
-    rm -rf /var/cache
-RUN echo -n '\''bash /root/TRSS_Yunzai/Main.sh "$@"'\''>/usr/local/bin/tsyz &&\
-    chmod 755 /usr/local/bin/tsyz'>Dockerfile
+RUN echo "zh_CN.UTF-8 UTF-8">/etc/locale.gen\
+ && locale-gen\
+ && ln -vsf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime\
+ && pacman -Syu --noconfirm --needed --overwrite "*" curl dialog git tmux perl micro ranger fastfetch htop nethogs ncdu chromium ffmpeg python-poetry\
+ && rm -rf /var/cache
+RUN pacman -Syu --noconfirm --needed --overwrite "*" nodejs pnpm redis\
+ && rm -rf /var/cache
+RUN echo -n '\''bash /root/TRSS_Yunzai/Main.sh "$@"'\''>/usr/local/bin/tsyz\
+ && chmod 755 /usr/local/bin/tsyz'>Dockerfile
 docker build -t trss:yunzai .||abort "Docker 容器构建失败"
 docker image prune -f
 echo "
