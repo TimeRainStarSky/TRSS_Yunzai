@@ -112,7 +112,8 @@ RUN echo "zh_CN.UTF-8 UTF-8">/etc/locale.gen\
 RUN pacman -Syu --noconfirm --needed --overwrite "*" nodejs pnpm redis\
  && rm -rf /var/cache
 RUN echo -n '\''bash /root/TRSS_Yunzai/Main.sh "$@"'\''>/usr/local/bin/tsyz\
- && chmod 755 /usr/local/bin/tsyz'>Dockerfile
+ && chmod 755 /usr/local/bin/tsyz
+EXPOSE 50831 54980'>Dockerfile
 docker build -t trss:yunzai .||abort "Docker 容器构建失败"
 docker image prune -f
 echo "
