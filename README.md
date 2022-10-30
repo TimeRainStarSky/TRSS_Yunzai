@@ -25,7 +25,7 @@
 2. 安装：
 
 ```
-bash <(curl -L https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Install.sh)
+bash <(curl -L gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Install.sh)
 ```
 
 3. 启动：`tsyz`

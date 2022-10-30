@@ -4,19 +4,8 @@
 
 ## 容器安装
 
-1. 安装 [Docker](https://docker.com)
-
-- ArchLinux, Debian, Ubuntu 可直接运行脚本，自动安装 Docker
-- 终端输入 `docker ps`，显示以下内容则表示安装成功
-
 ```
-CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
-```
-
-2. 安装容器
-
-```
-bash <(curl -L https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Guide/Docker.sh)
+bash <(curl -L gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Guide/Docker.sh)
 ```
 
 <details><summary>附加功能</summary>
@@ -49,6 +38,15 @@ docker run -itPd
 ```
 
 ## 常见问题
+
+```
+Docker 安装失败
+```
+
+- Docker 官方教程：https://docker.com
+- Docker-Practice 教程：https://vuepress.mirror.docker-practice.com/install
+
+---
 
 ```
 Cannot connect to the Docker daemon at unix:///var/run/docker.sock
