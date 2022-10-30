@@ -1,5 +1,7 @@
 该教程用于在 Windows 中安装 ArchWSL
 
+[![访问量](https://visitor-badge.glitch.me/badge?page_id=TimeRainStarSky.ArchWSL&right_color=red&left_text=访%20问%20量)](https://github.com/yuk7/ArchWSL)
+
 [![访问量](https://profile-counter.glitch.me/TimeRainStarSky-ArchWSL/count.svg)](https://github.com/yuk7/ArchWSL)
 
 ---
