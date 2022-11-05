@@ -39,6 +39,8 @@ wsl --set-default-version 2
 wsl --update
 ```
 
+注：若卡在这一步，可手动下载安装更新包：<https://aka.ms/wsl2kernel>
+
 ---
 
 从 [ArchWSL GitHub Releases Assets](https://github.com/yuk7/ArchWSL/releases/latest) 中下载 `Arch.zip` 并解压
