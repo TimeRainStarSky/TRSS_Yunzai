@@ -59,8 +59,10 @@ DIR=/Bot CMD=trss bash <(x
 - [Tmux](https://github.com/tmux/tmux) 终端会话管理
 - [Micro](https://micro-editor.github.io) 文本编辑
 - [Ranger](https://ranger.github.io) 文件管理
+- [fish](https://fishshell.com) 交互式 Shell
+- [btop](https://github.com/aristocratos/btop) 资源监视
 - [htop](https://htop.dev) 进程管理
-- NetHogs 实时网速
+- [NetHogs](https://github.com/raboof/nethogs) 实时网速
 - [Ncdu](https://dev.yorhel.nl/ncdu) 存储分析
 - tar.zst 备份管理
 - 自启动管理
