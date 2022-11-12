@@ -113,8 +113,8 @@ RUN echo "zh_CN.UTF-8 UTF-8">/etc/locale.gen\
  && locale-gen\
  && ln -vsf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime\
  && pacman -Syu --noconfirm --needed --overwrite "*" curl dialog git tmux perl micro ranger fastfetch fish btop htop nethogs ncdu ack fzf bat ffmpeg chromium python-poetry\
- && pacman -Rdd --noconfirm adobe-source-code-pro-fonts cantarell-fonts ttf-liberation\
- && rm -rf /var/cache
+ && { type ack &>/dev/null||ln -vsf vendor_perl/ack /usr/bin/ack;}\
+ && { pacman -Rdd --noconfirm adobe-source-code-pro-fonts cantarell-fonts ttf-liberation;rm -rf /var/cache;}
 RUN pacman -Syu --noconfirm --needed --overwrite "*" nodejs pnpm redis\
  && rm -rf /var/cache
 RUN echo -n '\''bash /root/TRSS_Yunzai/Main.sh "$@"'\''>/usr/local/bin/tsyz\
