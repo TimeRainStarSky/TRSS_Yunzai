@@ -77,9 +77,6 @@ DIR=/Bot CMD=trss bash <(x
 - 问：发消息错误：46
 - 答：账号被风控
 
-- 问：请先开启 Redis
-- 答：脚本会自动在后台启动 Redis，如果遇到这种情况，说明 Redis 未正常启动，请在终端中输入`redis-server`查看具体问题
-
 - 问：address already in use
 - 答：端口被占用，请尝试停止占用进程、重启设备，或修改配置文件，更改端口
 
@@ -88,6 +85,9 @@ DIR=/Bot CMD=trss bash <(x
 
 - 问：[server exited unexpectedly]
 - 答：tmux 进程意外退出，可能是系统资源不足引起的，如果在 Termux 中经常出现，请检查设置：电池优化、后台运行权限
+
+- 问：未能同步所有数据库（无法锁定数据库）
+- 答：`rm /var/lib/pacman/db.lck`
 
 - 问：我有其他问题
 - 答：提供详细问题描述，通过下方 联系方式 反馈问题
