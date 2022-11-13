@@ -111,6 +111,7 @@ DIR=/Bot CMD=trss bash <(x
 
 - 爱发电：<https://afdian.net/a/TimeRainStarSky>
 - Partme：<https://partme.com/TimeRainStarSky>
+- 感谢名单：<https://github.com/TimeRainStarSky/SponsorList>
 
 ## 界面展示
 
