@@ -117,7 +117,7 @@ RUN echo "zh_CN.UTF-8 UTF-8">/etc/locale.gen\
  && { pacman -Rdd --noconfirm adobe-source-code-pro-fonts cantarell-fonts ttf-liberation;rm -rf /var/cache;}
 RUN pacman -Syu --noconfirm --needed --overwrite "*" nodejs pnpm redis\
  && rm -rf /var/cache
-RUN echo -n '\''bash /root/TRSS_Yunzai/Main.sh "$@"'\''>/usr/local/bin/tsyz\
+RUN echo -n '\''exec bash /root/TRSS_Yunzai/Main.sh "$@"'\''>/usr/local/bin/tsyz\
  && chmod 755 /usr/local/bin/tsyz
 EXPOSE 50831 54980'>Dockerfile
 docker build -t trss:yunzai .||abort "Docker 容器构建失败"
@@ -126,7 +126,7 @@ echo "
 $Y- 正在启动 Docker 容器$O
 "
 docker run -itPd -h TRSS-Yunzai --name $DKNAME -v "$DIR":/root/TRSS_Yunzai --restart=always trss:yunzai||abort "Docker 容器启动失败，若要重装容器，请先删除已安装容器，若要多开容器，请修改容器名"
-echo -n "docker exec -it $DKNAME bash /root/TRSS_Yunzai/Main.sh "'"$@"'>"$CMDPATH/$CMD"&&chmod 755 "$CMDPATH/$CMD"||abort "脚本执行命令 $CMDPATH/$CMD 设置失败，手动执行命令：docker exec -it $DKNAME bash /root/TRSS_Yunzai/Main.sh"
+echo -n "exec docker exec -it $DKNAME bash /root/TRSS_Yunzai/Main.sh "'"$@"'>"$CMDPATH/$CMD"&&chmod 755 "$CMDPATH/$CMD"||abort "脚本执行命令 $CMDPATH/$CMD 设置失败，手动执行命令：docker exec -it $DKNAME bash /root/TRSS_Yunzai/Main.sh"
 echo "
 $G- Docker 容器安装完成，启动命令：$CMD$O";exit;}
 echo "
