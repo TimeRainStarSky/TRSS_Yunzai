@@ -56,10 +56,10 @@ DIR=/Bot CMD=trss bash <(x
 - 一键 安装、启动、管理 项目
 - WSL / Docker / chroot 容器
 - Dialog 交互式对话框
-- [Tmux](https://github.com/tmux/tmux) 终端会话管理
-- [Micro](https://micro-editor.github.io) 文本编辑
-- [Ranger](https://ranger.github.io) 文件管理
-- [tar](https://www.gnu.org/software/tar).[zst](https://facebook.github.io/zstd) 备份管理
+- [tmux](https://github.com/tmux/tmux) 终端会话管理
+- [micro](https://micro-editor.github.io) 文本编辑
+- [ranger](https://ranger.github.io) 文件管理
+- [tar](https://gnu.org/software/tar).[zst](https://facebook.github.io/zstd) 备份管理
 - [fish](https://fishshell.com) 交互式 Shell
 - [btop](https://github.com/aristocratos/btop) 资源监视
 - [htop](https://htop.dev) 进程管理
@@ -103,7 +103,7 @@ DIR=/Bot CMD=trss bash <(x
 ### 时雨🌌星空
 
 - GitHub：[TimeRainStarSky](https://github.com/TimeRainStarSky)
-- 酷安：[时雨丶星空](http://www.coolapk.com/u/2650948)
+- 酷安：[时雨丶星空](https://coolapk.com/u/2650948)
 - QQ：[2536554304](https://qm.qq.com/cgi-bin/qm/qr?k=x8LtlP8vwZs7qLwmsbCsyLoAHy7Et1Pj)
 - Telegram：[TimeRainStarSky](https://t.me/TimeRainStarSky)
 
