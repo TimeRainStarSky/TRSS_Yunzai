@@ -21,7 +21,8 @@
 
 - [Windows](https://microsoft.com/windows) 安装教程 [Guide/ArchWSL.md](Guide/ArchWSL.md)
 - [Linux](https://kernel.org) / [Mac](https://apple.com/mac) 安装教程 [Guide/Docker.md](Guide/Docker.md)
-- [Android](https://github.com/termux/termux-app) / [Linux](https://kernel.org) 安装教程 [Guide/TMOE.md](Guide/TMOE.md)
+- [Android MT管理器](https://mt2.cn) 安装教程 [Guide/MT管理器.md](../../../TRSS-MTArch)
+- [Android Termux](https://github.com/termux/termux-app) / [Linux](https://kernel.org) 安装教程 [Guide/TMOE.md](Guide/TMOE.md)
 
 2. 安装：
 
