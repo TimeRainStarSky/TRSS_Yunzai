@@ -14,7 +14,7 @@ CMDPATH="${CMDPATH:-/usr/local/bin}"
 type pacman &>/dev/null&&echo "
 $Y- 正在安装依赖$O
 "||abort "找不到 pacman 命令，请确认安装了正确的 Arch Linux 环境"
-pacman -Syu --noconfirm --needed --overwrite "*" curl dialog git tmux perl micro ranger fastfetch fish btop htop nethogs ncdu ack fzf bat||abort "依赖安装失败"
+pacman -Syu --noconfirm --needed --overwrite "*" curl dialog git tmux perl micro ranger fastfetch fish btop htop nethogs ncdu ack fd fzf bat||abort "依赖安装失败"
 type ack &>/dev/null||ln -vsf vendor_perl/ack /usr/bin/ack
 type locale-gen &>/dev/null&&{ echo "
 $Y- 正在设置语言$O
