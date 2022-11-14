@@ -50,16 +50,17 @@ esac
 echo "
   正在从 $SERVER 服务器 下载版本信息"
 GETVER="$(geturl "$URL/version")"||abort_update "下载失败"
-NEWVER="$(echo -n "$GETVER"|sed -n s/^version=//p)"
-NEWNAME="$(echo -n "$GETVER"|sed -n s/^name=//p)";MD5="$(echo -n "$GETVER"|sed -n s/^md5=//p)"
-[ -n "$NEWVER" ]&&[ -n "$NEWNAME" ]&&[ -n "$MD5" ]||abort_update "下载文件版本信息缺失"
+NEWVER="$(sed -n s/^version=//p<<<"$GETVER")"
+NEWNAME="$(sed -n s/^name=//p<<<"$GETVER")"
+NEWMD5="$(sed -n s/^md5=//p<<<"$GETVER")"
+[ -n "$NEWVER" ]&&[ -n "$NEWNAME" ]&&[ -n "$NEWMD5" ]||abort_update "下载文件版本信息缺失"
 echo "
 $B  最新版本：$G$NEWNAME$C ($NEWVER)$O
 
   开始下载"
 mkdir -vp "$DIR"
 geturl "$URL/Main.sh">"$DIR/Main.sh"||abort_update "下载失败"
-[ "$(md5sum "$DIR/Main.sh"|head -c 32)" = "$MD5" ]||abort_update "下载文件校验错误"
+[ "$(md5sum "$DIR/Main.sh"|head -c 32)" = "$NEWMD5" ]||abort_update "下载文件校验错误"
 echo "
 $G- 脚本下载完成$O
 
