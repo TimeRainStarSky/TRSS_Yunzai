@@ -19,6 +19,7 @@
 
 1. 准备：[Arch Linux](https://archlinuxcn.org)
 
+- [Windows](https://microsoft.com/windows) 安装教程 [Guide/MSYS2.md](Guide/MSYS2.md)
 - [Windows](https://microsoft.com/windows) 安装教程 [Guide/ArchWSL.md](Guide/ArchWSL.md)
 - [Linux](https://kernel.org) / [Mac](https://apple.com/mac) 安装教程 [Guide/Docker.md](Guide/Docker.md)
 - [Android MT管理器](https://mt2.cn) 安装教程 [Guide/MT管理器.md](../../../TRSS-MTArch)
