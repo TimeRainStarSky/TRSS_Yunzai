@@ -6,7 +6,7 @@
 
 ---
 
-1. 准备：[MSYS2](https://msys2.org)
+1. 准备：[MSYS2 UCRT64](https://msys2.org)
 
 2. 安装（首次安装可能会自动关闭，再次启动即可）：
 
