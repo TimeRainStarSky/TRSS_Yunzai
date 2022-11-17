@@ -1,5 +1,5 @@
 #TRSS Yunzai MSYS2 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202211171
+NAME=v1.0.0;VERSION=202211172
 R="[1;31m";G="[1;32m";Y="[1;33m";C="[1;36m";B="[1;m";O="[m"
 echo "$B————————————————————————————
 $R TRSS$Y Yunzai$G Install$C Script$O
@@ -46,7 +46,7 @@ type ffmpeg &>/dev/null||{ echo "
 $Y- 正在安装 FFmpeg$O
 "
 mktmp;geturl "$URL/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl-shared.zip">"$TMP/ffmpeg.zip"||abort "下载失败"
-unzip -o "$TMP/ffmpeg.zip" -d "$TMP"||abort "解压失败"
+unzip -oq "$TMP/ffmpeg.zip" -d "$TMP"||abort "解压失败"
 mv -vf "$TMP/ffmpeg-master-latest-win64-gpl-shared/bin/"* /usr/bin||abort "安装失败";}
 
 type redis-server &>/dev/null||{ echo "
@@ -67,7 +67,7 @@ $Y- 正在安装 pnpm$O
 "
 GETVER="$(curl -L https://registry.npmmirror.com/pnpm/latest|sed 's/.*"version":"//;s/",.*//')"
 mktmp;geturl "https://registry.npmmirror.com/pnpm/-/pnpm-$GETVER.tgz">"$TMP/pnpm.tgz"||abort "下载失败"
-tar -xvzf "$TMP/pnpm.tgz" -C "$TMP"||abort "解压失败"
+tar -xzf "$TMP/pnpm.tgz" -C "$TMP"||abort "解压失败"
 mkdir -vp /usr/lib/node_modules&&\
 mv -vf "$TMP/package" /usr/lib/node_modules/pnpm&&\
 echo -n 'exec /usr/lib/node_modules/pnpm/bin/pnpm.cjs "$@"'>/usr/bin/pnpm&&\
