@@ -1,5 +1,5 @@
 #TRSS Yunzai MSYS2 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202211173
+NAME=v1.0.0;VERSION=202211175
 R="[1;31m";G="[1;32m";Y="[1;33m";C="[1;36m";B="[1;m";O="[m"
 echo "$B————————————————————————————
 $R TRSS$Y Yunzai$G Install$C Script$O
@@ -12,10 +12,11 @@ export LANG=zh_CN.UTF-8
 DIR="${DIR:-$HOME/TRSS_Yunzai}"
 CMD="${CMD:-tsyz}"
 CMDPATH="${CMDPATH:-/usr/local/bin}"
+MSYS2ENV=mingw-w64-ucrt-x86_64
 type pacman &>/dev/null&&echo "
 $Y- 正在安装依赖$O
 "||abort "找不到 pacman 命令，请确认安装了正确的 MSYS2 环境"
-pacman -Syu --noconfirm --needed --overwrite "*" curl dialog git tmux perl fish ncdu perl-ack mingw-w64-ucrt-x86_64-fd mingw-w64-ucrt-x86_64-fzf mingw-w64-ucrt-x86_64-bat mingw-w64-ucrt-x86_64-python-pip mingw-w64-ucrt-x86_64-python-poetry unzip mingw-w64-ucrt-x86_64-gcc&&pip config set global.index-url "https://pypi.mirrors.ustc.edu.cn/simple"&&pip install ranger-fm||abort "依赖安装失败，请确认使用的是 MSYS2 UCRT64"
+pacman -Syu --noconfirm --needed --overwrite "*" curl dialog git tmux perl fish ncdu perl-ack unzip python-pip gcc $MSYS2ENV-fd $MSYS2ENV-fzf $MSYS2ENV-bat&&pip config set global.index-url "https://pypi.mirrors.ustc.edu.cn/simple"&&pip install poetry ranger-fm||abort "依赖安装失败"
 
 Title="TRSS Yunzai Install Script $NAME ($VERSION)";BackTitle="作者：时雨🌌星空"
 menubox(){ MenuBox="$1";shift;dialog --title "$Title" --backtitle "$BackTitle $(date "+%F %T.%N")" --ok-button "确认" --cancel-button "取消" --menu "$MenuBox" 0 0 0 "$@" 3>&1 1>&2 2>&3;}
