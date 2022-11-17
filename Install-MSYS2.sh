@@ -72,7 +72,7 @@ mktmp;geturl "https://registry.npmmirror.com/-/binary/node/$GETVER/win-x64/node.
 mv -vf "$TMP/node.exe" /usr/bin;}
 
 type pnpm &>/dev/null||{ echo "
-$Y- 正在安装 Node.js$O
+$Y- 正在安装 pnpm$O
 "
 GETVER="$(curl -L https://registry.npmmirror.com/pnpm/latest|sed 's/.*"version":"//;s/",.*//')"
 mktmp;geturl "https://registry.npmmirror.com/pnpm/-/pnpm-$GETVER.tgz">"$TMP/pnpm.tgz"||abort "下载失败"
