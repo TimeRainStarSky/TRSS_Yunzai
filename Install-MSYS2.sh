@@ -41,15 +41,6 @@ case "$Choose" in
   8)Server="FastGitRelease";URL="https://download.fastgit.org"
 esac;}
 gitserver||exit
-getver_github(){ GitRepo="$1";shift
-echo "
-  正在从 GitHub 服务器 下载版本信息"
-GETVER="$(geturl "https://api.github.com/repos/$GitRepo/releases/latest")"||abort "下载失败"
-NEWVER="$(grep '"id": '<<<"$GETVER"|head -n 1|sed -n 's/"id": //;s/,//p'|tr -d ' ')"
-NEWNAME="$(grep '"tag_name": '<<<"$GETVER"|sed -n 's/"tag_name": "//;s/",//p'|tr -d ' ')"
-[ -n "$NEWVER" ]&&[ "$NEWVER" -ge 0 ]&&[ -n "$NEWNAME" ]||abort "下载文件版本信息缺失"
-echo "
-$B  最新版本：$G$NEWNAME$C ($NEWVER)$O";}
 
 type ffmpeg &>/dev/null||{ echo "
 $Y- 正在安装 FFmpeg$O
