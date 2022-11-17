@@ -8,6 +8,8 @@
 
 1. 准备：[MSYS2 UCRT64](https://msys2.org)
 
+- [GitHub Proxy 镜像源](https://ghproxy.com/github.com/msys2/msys2-installer/releases/download/nightly-x86_64/msys2-x86_64-latest.exe)
+
 2. 安装（首次安装可能会自动关闭，再次启动即可）：
 
 ```
