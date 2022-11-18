@@ -56,8 +56,7 @@ type redis-server redis-cli &>/dev/null||{ echo "
 $Y- 正在安装 Redis$O
 "
 gitserver||exit
-mktmp;geturl "$URL/TimeRainStarSky/redis-windows/raw/master/redis-server.exe">"$TMP/redis-server.exe"||abort "下载失败"
-geturl "$URL/TimeRainStarSky/redis-windows/raw/master/redis-cli.exe">"$TMP/redis-cli.exe"||abort "下载失败"
+mktmp;geturl "$URL/TimeRainStarSky/redis-windows/raw/master/redis-server.exe">"$TMP/redis-server.exe"&&geturl "$URL/TimeRainStarSky/redis-windows/raw/master/redis-cli.exe">"$TMP/redis-cli.exe"||abort "下载失败"
 mv -vf "$TMP/redis-server.exe" "$TMP/redis-cli.exe" /usr/bin;}
 
 type node &>/dev/null||{ echo "
