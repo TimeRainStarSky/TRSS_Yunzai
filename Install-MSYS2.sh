@@ -69,7 +69,7 @@ mv -vf "$TMP/node.exe" /usr/bin;}
 type pnpm &>/dev/null||{ echo "
 $Y- 正在安装 pnpm$O
 "
-GETVER="$(geturl https://registry.npmmirror.com/pnpm/latest|sed 's/.*"version":"//;s/",.*//')"
+GETVER="$(geturl "https://registry.npmmirror.com/pnpm/latest"|sed 's/.*"version":"//;s/",.*//')"
 mktmp;geturl "https://registry.npmmirror.com/pnpm/-/pnpm-$GETVER.tgz">"$TMP/pnpm.tgz"||abort "下载失败"
 tar -xzf "$TMP/pnpm.tgz" -C "$TMP"||abort "解压失败"
 mkdir -vp /usr/lib/node_modules&&\
