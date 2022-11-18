@@ -1,5 +1,5 @@
 #TRSS Yunzai MSYS2 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202211182
+NAME=v1.0.0;VERSION=202211183
 R="[1;31m";G="[1;32m";Y="[1;33m";C="[1;36m";B="[1;m";O="[m"
 echo "$B————————————————————————————
 $R TRSS$Y Yunzai$G Install$C Script$O
@@ -22,7 +22,7 @@ pacman -Syu --noconfirm --needed --overwrite "*" curl dialog git tmux perl fish 
 Title="TRSS Yunzai Install Script $NAME ($VERSION)";BackTitle="作者：时雨🌌星空"
 menubox(){ MenuBox="$1";shift;dialog --title "$Title" --backtitle "$BackTitle $(date "+%F %T.%N")" --ok-button "确认" --cancel-button "取消" --menu "$MenuBox" 0 0 0 "$@" 3>&1 1>&2 2>&3;}
 mktmp(){ TMP="$DIR/tmp"&&rm -rf "$TMP"&&mkdir -p "$TMP"||abort "创建缓存目录失败";}
-geturl(){ geturl --retry 2 --connect-timeout 5 "$@";}
+geturl(){ curl -L --retry 2 --connect-timeout 5 "$@";}
 gitserver(){ [ -n "$URL" ]&&return
 Choose="$(menubox "- 请选择 GitHub 镜像源"\
   1 "GitHub"\
