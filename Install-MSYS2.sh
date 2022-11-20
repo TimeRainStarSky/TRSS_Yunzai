@@ -103,7 +103,7 @@ echo -n 'python -m pip "$@"'>/usr/bin/pip||abort "安装失败";}
 type poetry &>/dev/null||{ echo "
 $Y- 正在安装 Poetry$O
 "
-python "$TMP/pip.pyz" install -U poetry&&\
+pip install -U poetry&&\
 echo -n 'python -m poetry "$@"'>/usr/bin/poetry||abort "安装失败";}
 
 abort_update(){ echo "
