@@ -77,6 +77,35 @@ mv -vf "$TMP/package" /usr/lib/node_modules/pnpm&&\
 echo -n 'exec /usr/lib/node_modules/pnpm/bin/pnpm.cjs "$@"'>/usr/bin/pnpm&&\
 echo -n 'exec /usr/lib/node_modules/pnpm/bin/pnpx.cjs "$@"'>/usr/bin/pnpx||abort "安装失败";}
 
+type python &>/dev/null||{ echo "
+$Y- 正在安装 Python 3.10.8$O
+"
+mktmp;geturl "https://registry.npmmirror.com/-/binary/python/3.10.8/python-3.10.8-embed-amd64.zip">"$TMP/python.zip"||abort "下载失败"
+mkdir -vp /usr/share/python/lib&&\
+unzip -oq "$TMP/python.zip" -d /usr/share/python&&\
+unzip -oq /usr/share/python/*.zip -d /usr/share/python/lib&&\
+rm -vrf /usr/share/python/*.zip /usr/share/python/*._pth||abort "解压失败"
+echo -n "import sys
+import io
+sys.stdin = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
+sys.stderr = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')">/usr/share/python/sitecustomize.py&&\
+echo -n '/usr/share/python/python "$@"'>/usr/bin/python||abort "安装失败";}
+
+type pip &>/dev/null||{ echo "
+$Y- 正在安装 pip$O
+"
+mktmp;geturl "https://bootstrap.pypa.io/pip/pip.pyz">"$TMP/pip.pyz"||abort "下载失败"
+python "$TMP/pip.pyz" config set global.index-url "https://pypi.mirrors.ustc.edu.cn/simple"&&\
+python "$TMP/pip.pyz" install -U pip&&\
+echo -n 'python -m pip "$@"'>/usr/bin/pip||abort "安装失败";}
+
+type poetry &>/dev/null||{ echo "
+$Y- 正在安装 Poetry$O
+"
+python "$TMP/pip.pyz" install -U poetry&&\
+echo -n 'python -m poetry "$@"'>/usr/bin/poetry||abort "安装失败";}
+
 abort_update(){ echo "
 $R! $@$O";[ "$N" -lt 10 ]&&{ let N++;download;}||abort "脚本下载失败，请检查网络，并尝试重新下载";}
 download(){ case "$N" in
