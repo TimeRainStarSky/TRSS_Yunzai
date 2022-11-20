@@ -1,5 +1,5 @@
 #TRSS Yunzai MSYS2 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202211200
+NAME=v1.0.0;VERSION=202211210
 R="[1;31m";G="[1;32m";Y="[1;33m";C="[1;36m";B="[1;m";O="[m"
 echo "$B————————————————————————————
 $R TRSS$Y Yunzai$G Install$C Script$O
@@ -51,24 +51,25 @@ gitserver||exit
 mktmp
 geturl "$URL/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl-shared.zip">"$TMP/ffmpeg.zip"||abort "下载失败"
 unzip -oq "$TMP/ffmpeg.zip" -d "$TMP"||abort "解压失败"
-mv -vf "$TMP/ffmpeg-master-latest-win64-gpl-shared/bin/"* /usr/bin||abort "安装失败";}
+mv -vf "$TMP/"*/bin/* /usr/bin||abort "安装失败";}
 
 type redis-server redis-cli &>/dev/null||{ echo "
 $Y- 正在安装 Redis$O
 "
 gitserver||exit
 mktmp
-geturl "$URL/TimeRainStarSky/redis-windows/raw/master/redis-server.exe">"$TMP/redis-server.exe"&&\
-geturl "$URL/TimeRainStarSky/redis-windows/raw/master/redis-cli.exe">"$TMP/redis-cli.exe"||abort "下载失败"
-mv -vf "$TMP/redis-server.exe" "$TMP/redis-cli.exe" /usr/bin;}
+geturl "$URL/TimeRainStarSky/redis-windows/archive/master.tar.gz">"$TMP/redis.tgz"||abort "下载失败"
+tar -xzf "$TMP/redis.tgz" -C "$TMP"||abort "解压失败"
+mv -vf "$TMP/"*/redis-server.exe "$TMP/"*/redis-cli.exe /usr/bin||abort "安装失败";}
 
 type node &>/dev/null||{ echo "
 $Y- 正在安装 Node.js$O
 "
 mktmp
 GETVER="$(geturl "https://registry.npmmirror.com/-/binary/node/index.tab"|sed -n 2p|cut -f1)"&&\
-geturl "https://registry.npmmirror.com/-/binary/node/$GETVER/win-x64/node.exe">"$TMP/node.exe"||abort "下载失败"
-mv -vf "$TMP/node.exe" /usr/bin;}
+geturl "https://registry.npmmirror.com/-/binary/node/$GETVER/node-$GETVER-win-x64.zip">"$TMP/node.zip"||abort "下载失败"
+unzip -oq "$TMP/node.zip" -d "$TMP"||abort "解压失败"
+mv -vf "$TMP/"*/node.exe /usr/bin||abort "安装失败";}
 
 type pnpm &>/dev/null||{ echo "
 $Y- 正在安装 pnpm$O
