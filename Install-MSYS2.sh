@@ -93,9 +93,9 @@ unzip -oq /usr/share/python/*.zip -d /usr/share/python/lib&&\
 rm -vrf /usr/share/python/*.zip /usr/share/python/*._pth||abort "解压失败"
 echo -n "import sys
 import io
-sys.stdin = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
+sys.stdin = io.TextIOWrapper(sys.stdin.buffer,encoding='utf8')
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
-sys.stderr = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')">/usr/share/python/sitecustomize.py&&\
+sys.stderr = io.TextIOWrapper(sys.stderr.buffer,encoding='utf8')">/usr/share/python/sitecustomize.py&&\
 echo -n 'exec /usr/share/python/python "$@"'>/usr/bin/python||abort "安装失败";}
 
 type pip &>/dev/null||{ echo "
