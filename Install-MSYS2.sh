@@ -61,7 +61,7 @@ gitserver||exit
 mktmp
 geturl "$URL/TimeRainStarSky/redis-windows/archive/master.tar.gz">"$TMP/redis.tgz"||abort "下载失败"
 tar -xzf "$TMP/redis.tgz" -C "$TMP"||abort "解压失败"
-mv -vf "$TMP/"*/redis-server.exe "$TMP/"*/redis-cli.exe /usr/bin||abort "安装失败";}
+mv -vf "$TMP/"*/*.exe /usr/bin||abort "安装失败";}
 
 type node &>/dev/null||{ echo "
 $Y- 正在安装 Node.js$O
