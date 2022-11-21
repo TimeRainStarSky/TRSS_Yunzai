@@ -70,7 +70,7 @@ mktmp
 GETVER="$(geturl "https://registry.npmmirror.com/-/binary/node/index.tab"|sed -n 2p|cut -f1)"&&\
 geturl "https://registry.npmmirror.com/-/binary/node/$GETVER/node-$GETVER-win-x64.zip">"$TMP/node.zip"||abort "下载失败"
 unzip -oq "$TMP/node.zip" -d "$TMP"||abort "解压失败"
-mv -vf "$TMP/"*/node.exe /usr/bin||abort "安装失败";}
+mv -vf "$TMP/"*/*.exe /usr/bin||abort "安装失败";}
 
 type pnpm &>/dev/null||{ echo "
 $Y- 正在安装 pnpm$O
