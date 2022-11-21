@@ -1,8 +1,8 @@
 该教程用于在 Docker 中安装 TRSS Yunzai
 
-[![访问量](https://visitor-badge.glitch.me/badge?page_id=TimeRainStarSky.Docker&right_color=red&left_text=访%20问%20量)](https://docker.com)
+[![访问量](https://visitor-badge.glitch.me/badge?page_id=TimeRainStarSky.TRSS_Yunzai-Docker&right_color=red&left_text=访%20问%20量)](https://docker.com)
 
-[![访问量](https://profile-counter.glitch.me/TimeRainStarSky-Docker/count.svg)](https://docker.com)
+[![访问量](https://profile-counter.glitch.me/TimeRainStarSky-TRSS_Yunzai-Docker/count.svg)](https://docker.com)
 
 ## 容器安装
 
