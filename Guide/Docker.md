@@ -24,6 +24,7 @@ DIR=/Bot CMD=trss DKNAME=TRSS bash <(x
 
 ## 容器管理
 
+- 查看容器：`docker ps -a`
 - 启动容器：`docker start TRSS_Yunzai`（默认为开机自启，无需手动启动）
 - 停止容器：`docker stop -t 0 TRSS_Yunzai`
 - 删除容器：`docker rm TRSS_Yunzai`
@@ -81,8 +82,9 @@ sudo gpasswd -a "$USER" docker
 若只有 `Debian 10`，可执行以下命令并重启服务器后升级到 `Debian 11`
 
 ```
-apt update && apt full-upgrade -y
-sed -i 's/buster/bullseye/g' /etc/apt/sources.list
+echo 'deb http://ftp.cn.debian.org/debian bullseye main contrib non-free
+deb http://ftp.cn.debian.org/debian bullseye-updates main contrib non-free
+deb http://ftp.cn.debian.org/debian-security bullseye-security main contrib non-free'>/etc/apt/sources.list
 apt update && apt full-upgrade -y
 apt autoremove --purge -y && apt clean
 ```
