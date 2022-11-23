@@ -1,5 +1,5 @@
 #TRSS Yunzai MSYS2 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202211210
+NAME=v1.0.0;VERSION=202211230
 R="[1;31m";G="[1;32m";Y="[1;33m";C="[1;36m";B="[1;m";O="[m"
 echo "$B————————————————————————————
 $R TRSS$Y Yunzai$G Install$C Script$O
@@ -16,7 +16,7 @@ MSYS2ENV=mingw-w64-ucrt-x86_64
 type pacman &>/dev/null&&echo "
 $Y- 正在安装依赖$O
 "||abort "找不到 pacman 命令，请确认安装了正确的 MSYS2 环境"
-pacman -Syu --noconfirm --needed --overwrite "*" curl dialog git tmux perl neofetch fish ncdu perl-ack unzip $MSYS2ENV-fd $MSYS2ENV-fzf $MSYS2ENV-bat||abort "依赖安装失败"
+pacman -Syu --noconfirm --needed --overwrite "*" curl dialog git tmux perl neofetch unzip fish ncdu perl-ack $MSYS2ENV-fd $MSYS2ENV-fzf $MSYS2ENV-bat||abort "依赖安装失败"
 type fastfetch &>/dev/null||ln -vsf neofetch "$(dirname "$(command -v neofetch)")/fastfetch"
 [ -s /ucrt64/bin/fdo ]||{ mv -vf /ucrt64/bin/fd /ucrt64/bin/fdo;echo -n 'fdo "$@"|tr '"'\\' '/'">/ucrt64/bin/fd;}
 
