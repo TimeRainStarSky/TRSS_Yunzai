@@ -19,7 +19,7 @@ $Y- 正在安装依赖$O
 pacman -Syu --noconfirm --needed --overwrite "*" curl dialog git tmux perl neofetch unzip fish ncdu perl-ack $MSYS2ENV-fd $MSYS2ENV-fzf $MSYS2ENV-bat||abort "依赖安装失败"
 type fastfetch &>/dev/null||ln -vsf neofetch "$(dirname "$(command -v neofetch)")/fastfetch"
 [ -s /ucrt64/bin/fd ]&&{ mv -vf /ucrt64/bin/fd /ucrt64/bin/fdo;}
-[ -s /usr/bin/fd ]||echo -n '/ucrt64/bin/fdo "$@"|cygpath -uf -'>/usr/bin/fd
+[ -s /usr/bin/fd ]||echo -n '/ucrt64/bin/fdo "$@"|cygpath -mf -'>/usr/bin/fd
 [ -s /usr/bin/fzf ]||echo -n 'exec /ucrt64/bin/fzf "$@"'>/usr/bin/fzf
 [ -s /usr/bin/bat ]||echo -n 'exec /ucrt64/bin/bat "$@"'>/usr/bin/bat
 
