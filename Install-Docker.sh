@@ -15,7 +15,7 @@ CMDPATH="${CMDPATH:-/usr/local/bin}"
 DKNAME="${DKNAME:-TRSS_Yunzai}"
 abort(){ echo "
 $R! $@$O";exit 1;}
-mktmp(){ TMP="$DIR/tmp"&&rm -rf "$TMP"&&mkdir -p "$TMP"||abort "创建缓存目录失败";}
+mktmp(){ TMP="$DIR/tmp"&&rm -rf "$TMP"&&mkdir -p "$TMP"||abort "缓存目录创建失败";}
 if type docker;then
   echo "
 $G- Docker 已安装$O
