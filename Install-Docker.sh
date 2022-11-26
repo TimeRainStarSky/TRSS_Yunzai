@@ -13,6 +13,7 @@ DIR="${DIR:-$HOME/TRSS_Yunzai}"
 CMD="${CMD:-tsyz}"
 CMDPATH="${CMDPATH:-/usr/local/bin}"
 DKNAME="${DKNAME:-TRSS_Yunzai}"
+DKURL="${DKURL:-dockerproxy.com}"
 abort(){ echo "
 $R! $@$O";exit 1;}
 mktmp(){ TMP="$DIR/tmp"&&rm -rf "$TMP"&&mkdir -p "$TMP"||abort "缓存目录创建失败";}
@@ -106,7 +107,7 @@ Server = https://mirrors.bfsu.edu.cn/arch4edu/$arch
 Server = https://mirrors.tuna.tsinghua.edu.cn/arch4edu/$arch
 Server = https://mirrors.aliyun.com/arch4edu/$arch
 Server = https://mirrors.tencent.com/arch4edu/$arch'>>pacman.conf
-echo 'FROM dockerproxy.com/menci/archlinuxarm
+echo 'FROM $DKURL/menci/archlinuxarm
 ENV LANG=zh_CN.UTF-8 TERM=xterm-256color
 COPY mirrorlist /etc/pacman.d
 COPY pacman.conf /etc
