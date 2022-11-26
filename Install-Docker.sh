@@ -107,7 +107,7 @@ Server = https://mirrors.bfsu.edu.cn/arch4edu/$arch
 Server = https://mirrors.tuna.tsinghua.edu.cn/arch4edu/$arch
 Server = https://mirrors.aliyun.com/arch4edu/$arch
 Server = https://mirrors.tencent.com/arch4edu/$arch'>>pacman.conf
-echo 'FROM $DKURL/menci/archlinuxarm
+echo "FROM $DKURL"'/menci/archlinuxarm
 ENV LANG=zh_CN.UTF-8 TERM=xterm-256color
 COPY mirrorlist /etc/pacman.d
 COPY pacman.conf /etc
