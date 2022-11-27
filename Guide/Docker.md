@@ -79,12 +79,11 @@ sudo gpasswd -a "$USER" docker
 
 服务器安装视频教程：<https://bilibili.com/video/BV1ie4y1b7zE>
 
-若只有 `Debian 10`，可执行以下命令并重启服务器后升级到 `Debian 11`
+若只有 `Debian 10` 以下，可执行以下命令并重启服务器后升级到 `Debian 11`
 
 ```
 echo 'deb http://ftp.cn.debian.org/debian bullseye main contrib non-free
 deb http://ftp.cn.debian.org/debian bullseye-updates main contrib non-free
 deb http://ftp.cn.debian.org/debian-security bullseye-security main contrib non-free'>/etc/apt/sources.list
-apt update && apt full-upgrade -y
-apt autoremove --purge -y && apt clean
+apt update && apt full-upgrade -y && apt autoremove --purge -y && apt clean
 ```
