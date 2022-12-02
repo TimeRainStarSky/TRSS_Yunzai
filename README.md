@@ -65,12 +65,15 @@ DIR=/Bot CMD=trss bash <(x
 - [ranger](https://ranger.github.io) 文件管理
 - [tar](https://gnu.org/software/tar).[zst](https://facebook.github.io/zstd) 备份管理
 - [fish](https://fishshell.com) 交互式 Shell
+- [aliyunpan](https://github.com/tickstep/aliyunpan) 阿里云盘
+- [BaiduPCS-Go](https://github.com/qjfoidnh/BaiduPCS-Go) 百度网盘
 - [btop](https://github.com/aristocratos/btop) 资源监视
 - [htop](https://htop.dev) 进程管理
 - [NetHogs](https://github.com/raboof/nethogs) 实时网速
 - [Ncdu](https://dev.yorhel.nl/ncdu) 存储分析
 - [ack](https://beyondgrep.com) 文本搜索
 - [fzf](https://github.com/junegunn/fzf) 文件搜索
+- [lolcat](https://github.com/busyloop/lolcat) 🌈彩虹输出
 - 自启动管理
 - 插件管理
 - 滚动更新
