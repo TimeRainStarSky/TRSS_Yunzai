@@ -1,5 +1,5 @@
 #TRSS Yunzai Docker 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202211300
+NAME=v1.0.0;VERSION=202212040
 R="[1;31m";G="[1;32m";Y="[1;33m";C="[1;36m";B="[1;m";O="[m"
 echo "$B———————————————————————————
 $R TRSS$Y Yunzai$G Docker$C Script$O
@@ -26,6 +26,11 @@ elif type pacman &>/dev/null;then
 $Y- 正在使用 pacman 安装 Docker$O
 "
   pacman -Syu --noconfirm --needed --overwrite "*" docker||abort "Docker 安装失败"
+elif type apt &>/dev/null;then
+  echo "
+$Y- 正在使用 apt 安装 Docker$O
+"
+  apt install -y docker.io||abort "Docker 安装失败"
 else
   echo "
 $Y- 正在使用 官方脚本 安装 Docker$O
