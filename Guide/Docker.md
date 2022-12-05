@@ -25,8 +25,9 @@ DIR=/Bot CMD=trss DKNAME=TRSS bash <(x
 ## 容器管理
 
 - 查看容器：`docker ps -a`
-- 启动容器：`docker start TRSS_Yunzai`（默认为开机自启，无需手动启动）
-- 停止容器：`docker stop -t 0 TRSS_Yunzai`
+- 启动容器：`docker start TRSS_Yunzai`（默认开机自启，无需手动启动）
+- 重启容器：`docker restart -t0 TRSS_Yunzai`
+- 停止容器：`docker stop -t0 TRSS_Yunzai`
 - 删除容器：`docker rm -f TRSS_Yunzai`
 - 重建容器：
 
