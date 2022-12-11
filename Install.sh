@@ -1,5 +1,5 @@
 #TRSS Yunzai 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202212110
+NAME=v1.0.0;VERSION=202212111
 R="[1;31m";G="[1;32m";Y="[1;33m";C="[1;36m";B="[1;m";O="[m"
 echo "$B————————————————————————————
 $R TRSS$Y Yunzai$G Install$C Script$O
@@ -21,7 +21,7 @@ $R! 语言设置失败$O";}
 type pacman &>/dev/null&&echo "
 $Y- 正在安装依赖$O
 "||abort "找不到 pacman 命令，请确认安装了正确的 Arch Linux 环境"
-pacman -Syu --noconfirm --needed --overwrite "*" curl dialog git tmux perl micro ranger fastfetch unzip fish btop htop nethogs ncdu ripgrep fd fzf bat catimg clash tsocks lolcat||abort "依赖安装失败"
+pacman -Syu --noconfirm --needed --overwrite "*" curl dialog||abort "依赖安装失败"
 abort_update(){ echo "
 $R! $@$O";[ "$N" -lt 10 ]&&{ ((N++));download;}||abort "脚本下载失败，请检查网络，并尝试重新下载";}
 download(){ case "$N" in
