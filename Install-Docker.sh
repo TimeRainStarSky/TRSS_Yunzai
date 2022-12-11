@@ -1,5 +1,5 @@
 #TRSS Yunzai Docker 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202212090
+NAME=v1.0.0;VERSION=202212110
 R="[1;31m";G="[1;32m";Y="[1;33m";C="[1;36m";B="[1;m";O="[m"
 echo "$B———————————————————————————
 $R TRSS$Y Yunzai$G Docker$C Script$O
@@ -40,7 +40,7 @@ fi
 docker info||{ systemctl enable --now docker&&docker info;}&&echo "
 $G- Docker 已启动$O"||abort "Docker 启动失败"
 abort_update(){ echo "
-$R! $@$O";[ "$N" -lt 10 ]&&{ let N++;download;}||abort "脚本下载失败，请检查网络，并尝试重新下载";}
+$R! $@$O";[ "$N" -lt 10 ]&&{ ((N++));download;}||abort "脚本下载失败，请检查网络，并尝试重新下载";}
 download(){ case "$N" in
   2)SERVER="GitHub" URL="https://github.com/TimeRainStarSky/TRSS_Yunzai/raw/main";;
   1)SERVER="Gitee" URL="https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main";;
