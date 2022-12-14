@@ -1,8 +1,6 @@
 该教程用于在 Termux 和 Linux 中安装 Arch Linux 容器
 
-[![访问量](https://visitor-badge.glitch.me/badge?page_id=TimeRainStarSky.TMOE&right_color=red&left_text=访%20问%20量)](https://gitee.com/mo2/linux)
-
-[![访问量](https://profile-counter.glitch.me/TimeRainStarSky-TMOE/count.svg)](https://gitee.com/mo2/linux)
+[![访问量](https://visitor-badge.glitch.me/badge?page_id=TimeRainStarSky.TMOE&right_color=red&left_text=访%20问%20量) ![访问量](https://profile-counter.glitch.me/TimeRainStarSky-TMOE/count.svg)](https://gitee.com/mo2/linux)
 
 ---
 
@@ -14,7 +12,7 @@ curl -LO gitee.com/mo2/linux/raw/2/2.awk && awk -f 2.awk
 ```
 在 Linux 中启动 TMOE，会出现以下选项，请选择 Manager
 
-![1.jpg](TMOE/1.jpg)
+![1](TMOE/1.jpg)
 
 ---
 
@@ -46,7 +44,7 @@ curl -LO gitee.com/mo2/linux/raw/2/2.awk && awk -f 2.awk
 
 首次进入，按提示选择配置：
 
-1. DNS 推荐选择：`[2400:3200::1] (Ali) 阿里云`
+1. DNS 推荐选择：`[240c::6666](CFIEC)`
 
 2. 一言：`按需选择`
 
