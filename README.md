@@ -17,9 +17,10 @@
 
 ## 使用文档
 
-- [Vercel](https://TRSS-Script.vercel.app)
-- [GitHub](https://TimeRainStarSky.github.io/TRSS_Script)
-- [Gitee](https://gitee.com/TimeRainStarSky/TRSS_Script)
+- [🌌 TRSS](https://TRSS.me)
+- [🔼 Vercel](https://TRSS-Script.Vercel.app)
+- [🐱 GitHub](https://TimeRainStarSky.GitHub.io/TRSS_Script)
+- [🇬 Gitee](https://Gitee.com/TimeRainStarSky/TRSS_Script)
 
 ## 安装教程
 
