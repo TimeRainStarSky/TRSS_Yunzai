@@ -19,7 +19,7 @@
 
 - [Vercel](https://TRSS-Script.vercel.app)
 - [GitHub](https://TimeRainStarSky.github.io/TRSS_Script)
-- [Gitee](https://TimeRainStarSky.gitee.io/TRSS_Script)
+- [Gitee](https://gitee.com/TimeRainStarSky/TRSS_Script)
 
 ## 安装教程
 
