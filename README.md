@@ -75,6 +75,9 @@ DIR=/Bot CMD=trss bash <(x
 - 问：未能同步所有数据库（无法锁定数据库）
 - 答：`rm /var/lib/pacman/db.lck`
 
+- 问：无效或已损坏的软件包
+- 答：`pacman -Syy archlinux-keyring`
+
 - 问：我有其他问题
 - 答：提供详细问题描述，通过下方 联系方式 反馈问题
 
