@@ -1,5 +1,5 @@
 #TRSS Yunzai MSYS2 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202212230
+NAME=v1.0.0;VERSION=202212240
 R="[1;31m";G="[1;32m";Y="[1;33m";C="[1;36m";B="[1;m";O="[m"
 echo "$B————————————————————————————
 $R TRSS$Y Yunzai$G Install$C Script$O
@@ -105,13 +105,13 @@ mktmp
 geturl "https://bootstrap.pypa.io/pip/pip.pyz">"$TMP/pip.pyz"||abort "下载失败"
 python "$TMP/pip.pyz" config set global.index-url "https://pypi.mirrors.ustc.edu.cn/simple"&&\
 python "$TMP/pip.pyz" install -U pip&&\
-echo -n 'exec python -m pip "$@"'>/usr/bin/pip||abort "安装失败";}
+echo -n 'exec /usr/bin/python -m pip "$@"'>/usr/bin/pip||abort "安装失败";}
 
 type poetry &>/dev/null||{ echo "
 $Y- 正在安装 Poetry$O
 "
 pip install -U poetry&&\
-echo -n 'exec python -m poetry "$@"'>/usr/bin/poetry||abort "安装失败";}
+echo -n 'exec /usr/bin/python -m poetry "$@"'>/usr/bin/poetry||abort "安装失败";}
 
 abort_update(){ echo "
 $R! $@$O";[ "$N" -lt 10 ]&&{ ((N++));download;}||abort "脚本下载失败，请检查网络，并尝试重新下载";}
