@@ -1,5 +1,5 @@
 #TRSS Yunzai MSYS2 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202212240
+NAME=v1.0.0;VERSION=202212241
 R="[1;31m";G="[1;32m";Y="[1;33m";C="[1;36m";B="[1;m";O="[m"
 echo "$B————————————————————————————
 $R TRSS$Y Yunzai$G Install$C Script$O
@@ -8,7 +8,8 @@ $B——————————————————————————
       $G作者：$C时雨🌌星空$O"
 abort(){ echo "
 $R! $@$O";exit 1;}
-export LANG=zh_CN.UTF-8
+export LANG=zh_CN.UTF-8 USERPROFILE="$(cygpath -w "$HOME")"
+export APPDATA="$USERPROFILE\\AppData\\Roaming" LOCALAPPDATA="$USERPROFILE\\AppData\\Local"
 DIR="${DIR:-$HOME/TRSS_Yunzai}"
 CMD="${CMD:-tsyz}"
 CMDPATH="${CMDPATH:-/usr/local/bin}"
