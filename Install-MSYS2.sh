@@ -1,6 +1,6 @@
 #TRSS Yunzai MSYS2 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202212241
-R="[1;31m";G="[1;32m";Y="[1;33m";C="[1;36m";B="[1;m";O="[m"
+NAME=v1.0.0;VERSION=202301020
+R="[1;31m" G="[1;32m" Y="[1;33m" C="[1;36m" B="[1;m" O="[m"
 echo "$B————————————————————————————
 $R TRSS$Y Yunzai$G Install$C Script$O
      $G$NAME$C ($VERSION)$O
@@ -146,4 +146,6 @@ mkdir -vp "$CMDPATH"&&echo -n "exec bash '$DIR/Main.sh' "'"$@"'>"$CMDPATH/$CMD"&
 echo "
 $G- 脚本安装完成，启动命令：$CMD$O";exit;}
 echo "
-$Y- 正在下载脚本$O";N=1;download
+$Y- 正在下载脚本$O"
+N=1
+download

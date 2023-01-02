@@ -1,6 +1,6 @@
 #TRSS Yunzai Docker 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202212310
-R="[1;31m";G="[1;32m";Y="[1;33m";C="[1;36m";B="[1;m";O="[m"
+NAME=v1.0.0;VERSION=202301020
+R="[1;31m" G="[1;32m" Y="[1;33m" C="[1;36m" B="[1;m" O="[m"
 echo "$B———————————————————————————
 $R TRSS$Y Yunzai$G Docker$C Script$O
     $G$NAME$C ($VERSION)$O
@@ -135,4 +135,7 @@ mkdir -vp "$CMDPATH"&&echo -n "exec docker exec -it $DKNAME bash /root/TRSS_Yunz
 echo "
 $G- Docker 容器安装完成，启动命令：$CMD$O";exit;}
 echo "
-$Y- 正在下载脚本$O";geturl(){ curl -L --retry 2 --connect-timeout 5 "$@";};N=1;download
+$Y- 正在下载脚本$O"
+geturl(){ curl -L --retry 2 --connect-timeout 5 "$@";}
+N=1
+download
