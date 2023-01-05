@@ -1,5 +1,5 @@
 #TRSS Yunzai MSYS2 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202301020
+NAME=v1.0.0;VERSION=202301050
 R="[1;31m" G="[1;32m" Y="[1;33m" C="[1;36m" B="[1;m" O="[m"
 echo "$B————————————————————————————
 $R TRSS$Y Yunzai$G Install$C Script$O
@@ -66,7 +66,7 @@ type node &>/dev/null||{ echo "
 $Y- 正在安装 Node.js$O
 "
 mktmp
-GETVER="$(geturl "https://registry.npmmirror.com/-/binary/node/index.tab"|sed -n 2p|cut -f1)"&&\
+GETVER="$(geturl "https://registry.npmmirror.com/-/binary/node/index.tab"|sed -n 2p|cut -f1)"&&
 geturl "https://registry.npmmirror.com/-/binary/node/$GETVER/node-$GETVER-win-x64.zip">"$TMP/node.zip"||abort "下载失败"
 unzip -oq "$TMP/node.zip" -d "$TMP"||abort "解压失败"
 mv -vf "$TMP/"*/*.exe /usr/bin||abort "安装失败";}
@@ -75,43 +75,47 @@ type pnpm &>/dev/null||{ echo "
 $Y- 正在安装 pnpm$O
 "
 mktmp
-GETVER="$(geturl "https://registry.npmmirror.com/pnpm/latest"|sed 's/.*"version":"//;s/",.*//')"&&\
+GETVER="$(geturl "https://registry.npmmirror.com/pnpm/latest"|sed 's/.*"version":"//;s/",.*//')"&&
 geturl "https://registry.npmmirror.com/pnpm/-/pnpm-$GETVER.tgz">"$TMP/pnpm.tgz"||abort "下载失败"
 tar -xzf "$TMP/pnpm.tgz" -C "$TMP"||abort "解压失败"
-mkdir -vp /usr/lib/node_modules&&\
-mv -vf "$TMP/package" /usr/lib/node_modules/pnpm&&\
-echo -n 'exec /usr/lib/node_modules/pnpm/bin/pnpm.cjs "$@"'>/usr/bin/pnpm&&\
-echo -n 'exec /usr/lib/node_modules/pnpm/bin/pnpx.cjs "$@"'>/usr/bin/pnpx||abort "安装失败";}
+mkdir -vp /usr/Lib/node_modules&&
+mv -vf "$TMP/package" /usr/Lib/node_modules/pnpm&&
+echo -n 'exec /usr/Lib/node_modules/pnpm/bin/pnpm.cjs "$@"'>/usr/bin/pnpm&&
+echo -n 'exec /usr/Lib/node_modules/pnpm/bin/pnpx.cjs "$@"'>/usr/bin/pnpx||abort "安装失败";}
 
-type python &>/dev/null||{ echo "
-$Y- 正在安装 Python 3.10.8$O
+type python &>/dev/null||{ GETVER="3.10.8" PYPATH="/usr/share/python"
+echo "
+$Y- 正在安装 Python $GETVER$O
 "
 mktmp
-geturl "https://registry.npmmirror.com/-/binary/python/3.10.8/python-3.10.8-embed-amd64.zip">"$TMP/python.zip"||abort "下载失败"
-mkdir -vp /usr/share/python/lib&&\
-unzip -oq "$TMP/python.zip" -d /usr/share/python&&\
-unzip -oq /usr/share/python/*.zip -d /usr/share/python/lib&&\
-rm -vrf /usr/share/python/*.zip /usr/share/python/*._pth||abort "解压失败"
+geturl "https://registry.npmmirror.com/-/binary/python/$GETVER/python-$GETVER-embed-amd64.zip">"$TMP/python.zip"&&
+geturl "https://registry.npmmirror.com/-/binary/python/$GETVER/Python-$GETVER.tar.xz">"$TMP/python.txz"||abort "下载失败"
+mkdir -vp "$PYPATH/Lib"&&
+unzip -oq "$TMP/python.zip" -d "$PYPATH"&&
+unzip -oq "$PYPATH/"*.zip -d "$PYPATH/Lib"&&
+rm -vrf "$PYPATH/"*.zip "$PYPATH/"*._pth&&
+tar -xJf "$TMP/python.txz" -C "$TMP"&&
+mv -vf "$TMP/Python-$GETVER/Include" "$PYPATH"||abort "解压失败"
 echo -n "import sys
 import io
 sys.stdin = io.TextIOWrapper(sys.stdin.buffer,encoding='utf8')
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
-sys.stderr = io.TextIOWrapper(sys.stderr.buffer,encoding='utf8')">/usr/share/python/sitecustomize.py&&\
-echo -n 'exec /usr/share/python/python "$@"'>/usr/bin/python||abort "安装失败";}
+sys.stderr = io.TextIOWrapper(sys.stderr.buffer,encoding='utf8')">"$PYPATH/sitecustomize.py"&&
+echo -n "exec $PYPATH/python "'"$@"'>/usr/bin/python||abort "安装失败";}
 
 type pip &>/dev/null||{ echo "
 $Y- 正在安装 pip$O
 "
 mktmp
 geturl "https://bootstrap.pypa.io/pip/pip.pyz">"$TMP/pip.pyz"||abort "下载失败"
-python "$TMP/pip.pyz" config set global.index-url "https://pypi.mirrors.ustc.edu.cn/simple"&&\
-python "$TMP/pip.pyz" install -U pip&&\
+python "$TMP/pip.pyz" config set global.index-url "https://pypi.mirrors.ustc.edu.cn/simple"&&
+python "$TMP/pip.pyz" install -U pip&&
 echo -n 'exec /usr/bin/python -m pip "$@"'>/usr/bin/pip||abort "安装失败";}
 
 type poetry &>/dev/null||{ echo "
 $Y- 正在安装 Poetry$O
 "
-pip install -U poetry&&\
+pip install -U poetry&&
 echo -n 'exec /usr/bin/python -m poetry "$@"'>/usr/bin/poetry||abort "安装失败";}
 
 abort_update(){ echo "
