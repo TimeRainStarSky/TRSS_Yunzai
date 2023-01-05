@@ -94,7 +94,7 @@ mkdir -vp "$PYPATH/Lib"&&
 unzip -oq "$TMP/python.zip" -d "$PYPATH"&&
 unzip -oq "$PYPATH/"*.zip -d "$PYPATH/Lib"&&
 rm -vrf "$PYPATH/"*.zip "$PYPATH/"*._pth&&
-tar -xJf "$TMP/python.txz" -C "$TMP"&&
+tar -xJf "$TMP/python.txz" -C "$TMP" "Python-$GETVER/Include"&&
 mv -vf "$TMP/Python-$GETVER/Include" "$PYPATH"||abort "解压失败"
 echo -n "import sys
 import io
