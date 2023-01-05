@@ -98,9 +98,9 @@ tar -xJf "$TMP/python.txz" -C "$TMP"&&
 mv -vf "$TMP/Python-$GETVER/Include" "$PYPATH"||abort "解压失败"
 echo -n "import sys
 import io
-sys.stdin = io.TextIOWrapper(sys.stdin.buffer,encoding='utf8')
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
-sys.stderr = io.TextIOWrapper(sys.stderr.buffer,encoding='utf8')">"$PYPATH/sitecustomize.py"&&
+sys.stdin=io.TextIOWrapper(sys.stdin.buffer,encoding='utf8')
+sys.stdout=io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
+sys.stderr=io.TextIOWrapper(sys.stderr.buffer,encoding='utf8')">"$PYPATH/sitecustomize.py"&&
 echo -n "exec $PYPATH/python "'"$@"'>/usr/bin/python||abort "安装失败";}
 
 type pip &>/dev/null||{ echo "
