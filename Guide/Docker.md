@@ -57,7 +57,10 @@ Cannot connect to the Docker daemon at unix:///var/run/docker.sock
 若显示以上内容，请先启动 Docker Daemon
 
 ```
+# systemctl
 systemctl enable --now docker
+# service
+service docker start
 ```
 
 ---
@@ -69,7 +72,7 @@ Got permission denied while trying to connect to the Docker daemon socket at uni
 若显示以上内容，请添加当前用户到 docker 组
 
 ```
-sudo gpasswd -a "$USER" docker
+sudo usermod -aG docker $USER
 ```
 
 ---
