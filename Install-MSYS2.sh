@@ -1,5 +1,5 @@
 #TRSS Yunzai MSYS2 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202301050
+NAME=v1.0.0;VERSION=202301280
 R="[1;31m" G="[1;32m" Y="[1;33m" C="[1;36m" B="[1;m" O="[m"
 echo "$B————————————————————————————
 $R TRSS$Y Yunzai$G Install$C Script$O
@@ -78,10 +78,10 @@ mktmp
 GETVER="$(geturl "https://registry.npmmirror.com/pnpm/latest"|sed 's/.*"version":"//;s/",.*//')"&&
 geturl "https://registry.npmmirror.com/pnpm/-/pnpm-$GETVER.tgz">"$TMP/pnpm.tgz"||abort "下载失败"
 tar -xzf "$TMP/pnpm.tgz" -C "$TMP"||abort "解压失败"
-mkdir -vp /usr/Lib/node_modules&&
-mv -vf "$TMP/package" /usr/Lib/node_modules/pnpm&&
-echo -n 'exec /usr/Lib/node_modules/pnpm/bin/pnpm.cjs "$@"'>/usr/bin/pnpm&&
-echo -n 'exec /usr/Lib/node_modules/pnpm/bin/pnpx.cjs "$@"'>/usr/bin/pnpx||abort "安装失败";}
+mkdir -vp /usr/lib/node_modules&&
+mv -vf "$TMP/package" /usr/lib/node_modules/pnpm&&
+echo -n 'exec /usr/lib/node_modules/pnpm/bin/pnpm.cjs "$@"'>/usr/bin/pnpm&&
+echo -n 'exec /usr/lib/node_modules/pnpm/bin/pnpx.cjs "$@"'>/usr/bin/pnpx||abort "安装失败";}
 
 type python &>/dev/null||{ GETVER="3.10.8" PYPATH="/usr/share/python"
 echo "
