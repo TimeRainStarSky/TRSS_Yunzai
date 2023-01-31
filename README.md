@@ -66,7 +66,7 @@ DIR=/Bot CMD=trss bash <(x
 - 问：address already in use
 - 答：端口被占用，请尝试停止占用进程、重启设备，或修改配置文件，更改端口
 
-- 问：open terminal failed: not a terminal
+- 问：卡在正在启动进度条
 - 答：tmux 问题，请尝试重启设备或前台启动
 
 - 问：[server exited unexpectedly]
