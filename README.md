@@ -44,7 +44,7 @@ bash <(curl -L gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Install.sh)
 
 视频教程：<https://bilibili.com/av983453309>
 
-<details><summary>附加功能</summary>
+<details><summary>自定义功能</summary>
 
 自定义 安装路径 `DIR` 和 启动命令 `CMD`（可用于多开）
 
