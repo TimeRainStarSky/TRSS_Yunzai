@@ -1,5 +1,5 @@
 #TRSS Yunzai 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202301300
+NAME=v1.0.0;VERSION=202302010
 R="[1;31m" G="[1;32m" Y="[1;33m" C="[1;36m" B="[1;m" O="[m"
 echo "$B————————————————————————————
 $R TRSS$Y Yunzai$G Install$C Script$O
@@ -18,10 +18,11 @@ $Y- 正在设置语言$O
 sed -i 's/#.*zh_CN\.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/g' /etc/locale.gen&&
 locale-gen||echo "
 $R! 语言设置失败$O";}
-type pacman &>/dev/null&&echo "
+type pacman &>/dev/null||abort "找不到 pacman 命令，请确认安装了正确的 Arch Linux 环境"
+type curl dialog &>/dev/null||{ echo "
 $Y- 正在安装依赖$O
-"||abort "找不到 pacman 命令，请确认安装了正确的 Arch Linux 环境"
-pacman -Syu --noconfirm --needed --overwrite "*" curl dialog||abort "依赖安装失败"
+"
+pacman -Syu --noconfirm --needed --overwrite "*" curl dialog||abort "依赖安装失败";}
 abort_update(){ echo "
 $R! $@$O";[ "$N" -lt 10 ]&&{ ((N++));download;}||abort "脚本下载失败，请检查网络，并尝试重新下载";}
 download(){ case "$N" in
