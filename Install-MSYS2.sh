@@ -1,5 +1,5 @@
 #TRSS Yunzai MSYS2 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202302010
+NAME=v1.0.0;VERSION=202302040
 R="[1;31m" G="[1;32m" Y="[1;33m" C="[1;36m" B="[1;m" O="[m"
 echo "$B————————————————————————————
 $R TRSS$Y Yunzai$G Install$C Script$O
@@ -107,9 +107,10 @@ echo -n "exec $PYPATH/python "'"$@"'>/usr/bin/python||abort "安装失败";}
 type pip &>/dev/null||{ echo "
 $Y- 正在安装 pip$O
 "
+gitserver||exit
 mktmp
-geturl "https://bootstrap.pypa.io/pip/pip.pyz">"$TMP/pip.pyz"||abort "下载失败"
-python "$TMP/pip.pyz" config set global.index-url "https://pypi.mirrors.ustc.edu.cn/simple"&&
+geturl "$URL/TimeRainStarSky/pip/raw/main/pip.pyz">"$TMP/pip.pyz"||abort "下载失败"
+python "$TMP/pip.pyz" config set global.index-url "https://mirrors.bfsu.edu.cn/pypi/web/simple"&&
 python "$TMP/pip.pyz" install -U pip&&
 echo -n 'exec /usr/bin/python -m pip "$@"'>/usr/bin/pip||abort "安装失败";}
 
