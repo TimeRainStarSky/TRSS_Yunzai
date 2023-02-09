@@ -3,7 +3,7 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="Picture/苏半夏冬.png">
   <source media="(prefers-color-scheme: light)" srcset="Picture/苏半夏.png">
-  <img alt="苏半夏" src="https://moegirl.org.cn/苏半夏">
+  <img alt="苏半夏" src="Picture/苏半夏.png">
 </picture>
 
 # TRSS Yunzai
