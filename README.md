@@ -1,6 +1,10 @@
 <div align="center">
 
-[![苏半夏](Picture/苏半夏.png)](https://moegirl.org.cn/苏半夏)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="Picture/苏半夏冬.png">
+  <source media="(prefers-color-scheme: light)" srcset="Picture/苏半夏.png">
+  <img alt="苏半夏" src="https://moegirl.org.cn/苏半夏">
+</picture>
 
 # TRSS Yunzai
 
@@ -21,40 +25,6 @@
 - [🔼 Vercel](https://TRSS-Script.Vercel.app)
 - [🐱 GitHub](https://TimeRainStarSky.GitHub.io/TRSS_Script)
 - [🇬 Gitee](https://Gitee.com/TimeRainStarSky/TRSS_Script)
-
-## 安装教程
-
-- [Windows](https://microsoft.com/windows) 安装教程 [Guide/MSYS2.md](Guide/MSYS2.md)
-- [Linux](https://kernel.org) / [Mac](https://apple.com/mac) 安装教程 [Guide/Docker.md](Guide/Docker.md)
-- [Arch Linux](https://archlinuxcn.org) 安装教程：
-
-1. 准备：[Arch Linux](https://archlinuxcn.org)
-
-- [Windows](https://microsoft.com/windows) 安装教程 [Guide/ArchWSL.md](Guide/ArchWSL.md)
-- [Android MT管理器](https://mt2.cn) 安装教程 [Guide/MT管理器.md](../../../TRSS-MTArch)
-- [Android Termux](https://github.com/termux/termux-app) / [Linux](https://kernel.org) 安装教程 [Guide/TMOE.md](Guide/TMOE.md)
-
-2. 安装：
-
-```
-bash <(curl -L gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main/Install.sh)
-```
-
-3. 启动：`tsyz`
-
-视频教程：<https://bilibili.com/av983453309>
-
-<details><summary>自定义功能</summary>
-
-自定义 安装路径 `DIR` 和 启动命令 `CMD`（可用于多开）
-
-举例：将脚本安装至 `/Bot` 启动命令 `trss`
-
-```
-DIR=/Bot CMD=trss bash <(x
-```
-
-</details>
 
 ## 常见问题
 
