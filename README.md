@@ -1,10 +1,11 @@
 <div align="center">
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="Picture/苏半夏冬.png">
-  <source media="(prefers-color-scheme: light)" srcset="Picture/苏半夏.png">
-  <img alt="苏半夏" src="Picture/苏半夏.png">
-</picture>
+<a href="https://moegirl.org.cn/苏半夏">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="Picture/苏半夏冬.png">
+    <img alt="苏半夏" src="Picture/苏半夏.png">
+  </picture>
+</a>
 
 # TRSS Yunzai
 
