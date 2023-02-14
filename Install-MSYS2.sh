@@ -1,5 +1,5 @@
 #TRSS Yunzai MSYS2 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202302142
+NAME=v1.0.0;VERSION=202302143
 R="[1;31m" G="[1;32m" Y="[1;33m" C="[1;36m" B="[1;m" O="[m"
 echo "$B————————————————————————————
 $R TRSS$Y Yunzai$G Install$C Script$O
@@ -75,8 +75,8 @@ geturl "https://registry.npmmirror.com/pnpm/-/pnpm-$GETVER.tgz">"$TMP/pnpm.tgz"|
 tar -xzf "$TMP/pnpm.tgz" -C "$TMP"||abort "解压失败"
 mkdir -vp /usr/lib/node_modules&&
 mv -vf "$TMP/package" /usr/lib/node_modules/pnpm&&
-ln -vsf /usr/lib/node_modules/pnpm/bin/pnpm.cjs /usr/bin/pnpm&&
-ln -vsf /usr/lib/node_modules/pnpm/bin/pnpx.cjs /usr/bin/pnpx||abort "安装失败";}
+echo -n 'exec /usr/lib/node_modules/pnpm/bin/pnpm.cjs "$@"'>/usr/bin/pnpm&&
+echo -n 'exec /usr/lib/node_modules/pnpm/bin/pnpx.cjs "$@"'>/usr/bin/pnpx||abort "安装失败";}
 
 type python &>/dev/null||{ GETVER="3.10.9"
 echo "
@@ -102,15 +102,13 @@ $Y- 正在安装 pip$O
 gitserver||exit
 mktmp
 geturl "$URL/TimeRainStarSky/pip/raw/main/pip.pyz">"$TMP/pip.pyz"||abort "下载失败"
-python "$TMP/pip.pyz" config set global.index-url "https://mirrors.bfsu.edu.cn/pypi/web/simple"&&
-python "$TMP/pip.pyz" config set global.extra-index-url "https://mirrors.bfsu.edu.cn/pypi/web/simple"&&
-python "$TMP/pip.pyz" install -U pip&&
+python "$TMP/pip.pyz" install -i "https://mirrors.bfsu.edu.cn/pypi/web/simple" -U pip&&
 ln -vsf /usr/share/python/Scripts/pip /usr/bin/pip||abort "安装失败";}
 
 type poetry &>/dev/null||{ echo "
 $Y- 正在安装 Poetry$O
 "
-pip install -U poetry&&
+pip install -i "https://mirrors.bfsu.edu.cn/pypi/web/simple" -U poetry&&
 ln -vsf /usr/share/python/Scripts/poetry /usr/bin/poetry||abort "安装失败";}
 
 abort_update(){ echo "
