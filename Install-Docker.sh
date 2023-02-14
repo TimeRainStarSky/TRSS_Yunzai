@@ -131,7 +131,7 @@ $Y- 正在启动 Docker 容器$O
 "
 docker rm -f $DKNAME 2>/dev/null
 docker image prune -f
-docker run -itd -h TRSS-Yunzai --name $DKNAME -v "$DIR":/root/TRSS_Yunzai --restart always $([ $DKNAME = TRSS_Yunzai ]&&echo "-p 50831:50831 -p 54980:54980"||echo "-p 50831 -p 54980") trss:yunzai||abort "Docker 容器启动失败，若要重装容器，请先删除已安装容器，若要多开容器，请修改容器名"
+docker run -itd -h TRSS-Yunzai --name $DKNAME -v "$DIR":/root/TRSS_Yunzai --restart always $([ $DKNAME = TRSS_Yunzai ]&&echo "-p 50831:50831 -p 54980:54980"||echo "-p 50831 -p 54980") trss:yunzai||abort "Docker 容器启动失败"
 mkdir -vp "$CMDPATH"&&echo -n "exec docker exec -it $DKNAME bash /root/TRSS_Yunzai/Main.sh "'"$@"'>"$CMDPATH/$CMD"&&chmod 755 "$CMDPATH/$CMD"||abort "脚本执行命令 $CMDPATH/$CMD 设置失败，手动执行命令：docker exec -it $DKNAME bash /root/TRSS_Yunzai/Main.sh"
 echo "
 $G- Docker 容器安装完成，启动命令：$C$CMD$O";exit;}
