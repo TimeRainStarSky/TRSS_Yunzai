@@ -1,5 +1,5 @@
 #TRSS Yunzai MSYS2 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202302143
+NAME=v1.0.0;VERSION=202302144
 R="[1;31m" G="[1;32m" Y="[1;33m" C="[1;36m" B="[1;m" O="[m"
 echo "$B————————————————————————————
 $R TRSS$Y Yunzai$G Install$C Script$O
@@ -15,47 +15,37 @@ CMD="${CMD:-tsyz}"
 CMDPATH="${CMDPATH:-/usr/local/bin}"
 
 type pacman &>/dev/null||abort "找不到 pacman 命令，请确认安装了正确的 MSYS2 环境"
-type curl dialog unzip &>/dev/null||{ echo "
+type curl dialog unzip git &>/dev/null||{ echo "
 $Y- 正在安装依赖$O
 "
-pacman -Syu --noconfirm --needed --overwrite "*" curl dialog unzip||abort "依赖安装失败";}
+pacman -Syu --noconfirm --needed --overwrite "*" curl dialog unzip git||abort "依赖安装失败";}
 
-Title="TRSS Yunzai Install Script $NAME ($VERSION)";BackTitle="作者：时雨🌌星空"
-menubox(){ MenuBox="$1";shift;dialog --title "$Title" --backtitle "$BackTitle $(date "+%F %T.%N")" --ok-button "确认" --cancel-button "取消" --menu "$MenuBox" 0 0 0 "$@" 3>&1 1>&2 2>&3;}
 mktmp(){ TMP="$DIR/tmp"&&rm -rf "$TMP"&&mkdir -p "$TMP"||abort "缓存目录创建失败";}
 geturl(){ curl -L --retry 2 --connect-timeout 5 "$@";}
-gitserver(){ [ -n "$URL" ]&&return
-Choose="$(menubox "- 请选择 GitHub 镜像源"\
-  1 "GitHub（国外推荐）"\
-  2 "GHProxy（国内推荐）"\
-  3 "GitClone"\
-  4 "GHApi"\
-  5 "abskoop")"||return
-case "$Choose" in
-  1)Server="GitHub" URL="https://github.com";;
-  2)Server="GHProxy" URL="https://ghproxy.com/github.com";;
-  3)Server="GitClone" URL="https://gitclone.com/github.com";;
-  4)Server="GHApi" URL="https://gh.api.99988866.xyz/github.com";;
-  5)Server="abskoop" URL="https://github.abskoop.workers.dev/github.com"
-esac;}
+mkcmd(){ ln -vsf "$2" "/usr/bin/$1"&&
+echo -n "@echo off
+\"$(cygpath -w "$2")\" %*">"/usr/bin/$1.cmd";}
+git_clone(){ git clone --depth 1 --single-branch "$@";}
 
 type ffmpeg &>/dev/null||{ echo "
 $Y- 正在安装 FFmpeg$O
 "
-gitserver||exit
 mktmp
-geturl "$URL/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl-shared.zip">"$TMP/ffmpeg.zip"||abort "下载失败"
-unzip -oq "$TMP/ffmpeg.zip" -d "$TMP"||abort "解压失败"
-mv -vf "$TMP/"*/bin/* /usr/bin||abort "安装失败";}
+rm -rf /win/ffmpeg&&
+mkdir -vp /win&&
+git_clone "https://gitee.com/TimeRainStarSky/ffmpeg-windows" /win/ffmpeg||abort "下载失败"
+mkcmd ffmpeg /win/ffmpeg/bin/ffmpeg&&
+mkcmd ffplay /win/ffmpeg/bin/ffplay&&
+mkcmd ffprobe /win/ffmpeg/bin/ffprobe||abort "安装失败";}
 
 type redis-server redis-cli &>/dev/null||{ echo "
 $Y- 正在安装 Redis$O
 "
-gitserver||exit
 mktmp
-geturl "$URL/TimeRainStarSky/redis-windows/archive/master.tar.gz">"$TMP/redis.tgz"||abort "下载失败"
-tar -xzf "$TMP/redis.tgz" -C "$TMP"||abort "解压失败"
-mv -vf "$TMP/"*/*.exe /usr/bin||abort "安装失败";}
+rm -rf /win/redis&&
+git_clone "https://gitee.com/TimeRainStarSky/redis-windows">/win/redis||abort "下载失败"
+mkcmd redis-cli /win/redis/redis-cli&&
+mkcmd redis-server /win/redis/redis-server||abort "安装失败";}
 
 type node &>/dev/null||{ echo "
 $Y- 正在安装 Node.js$O
@@ -64,7 +54,9 @@ mktmp
 GETVER="$(geturl "https://registry.npmmirror.com/-/binary/node/index.tab"|sed -n 2p|cut -f1)"&&
 geturl "https://registry.npmmirror.com/-/binary/node/$GETVER/node-$GETVER-win-x64.zip">"$TMP/node.zip"||abort "下载失败"
 unzip -oq "$TMP/node.zip" -d "$TMP"||abort "解压失败"
-mv -vf "$TMP/"*/*.exe /usr/bin||abort "安装失败";}
+rm -rf /win/node&&
+mv -vf "$TMP/"*/ /win/node&&
+mkcmd node /win/node/node||abort "安装失败";}
 
 type pnpm &>/dev/null||{ echo "
 $Y- 正在安装 pnpm$O
@@ -76,7 +68,11 @@ tar -xzf "$TMP/pnpm.tgz" -C "$TMP"||abort "解压失败"
 mkdir -vp /usr/lib/node_modules&&
 mv -vf "$TMP/package" /usr/lib/node_modules/pnpm&&
 echo -n 'exec /usr/lib/node_modules/pnpm/bin/pnpm.cjs "$@"'>/usr/bin/pnpm&&
-echo -n 'exec /usr/lib/node_modules/pnpm/bin/pnpx.cjs "$@"'>/usr/bin/pnpx||abort "安装失败";}
+echo -n 'exec /usr/lib/node_modules/pnpm/bin/pnpx.cjs "$@"'>/usr/bin/pnpx&&
+echo -n "@echo off
+node \"$(cygpath -w /usr/lib/node_modules/pnpm/bin/pnpm.cjs)\" %*">/usr/bin/pnpm.cmd&&
+echo -n "@echo off
+node \"$(cygpath -w /usr/lib/node_modules/pnpm/bin/pnpx.cjs)\" %*">/usr/bin/pnpx.cmd||abort "安装失败";}
 
 type python &>/dev/null||{ GETVER="3.10.9"
 echo "
@@ -84,49 +80,48 @@ $Y- 正在安装 Python $GETVER$O
 "
 mktmp
 geturl "https://registry.npmmirror.com/-/binary/python/$GETVER/python-$GETVER-embed-amd64.zip">"$TMP/python.zip"||abort "下载失败"
-rm -rf /usr/share/python&&
-mkdir -vp /usr/share/python/Lib&&
-unzip -oq "$TMP/python.zip" -d /usr/share/python&&
-unzip -oq /usr/share/python/*.zip -d /usr/share/python/Lib&&
-rm -rf /usr/share/python/*.zip /usr/share/python/*._pth||abort "解压失败"
+rm -rf /win/python&&
+mkdir -vp /win/python/Lib&&
+unzip -oq "$TMP/python.zip" -d /win/python&&
+unzip -oq /win/python/*.zip -d /win/python/Lib&&
+rm -rf /win/python/*.zip /win/python/*._pth||abort "解压失败"
 echo -n "import sys
 import io
 sys.stdin=io.TextIOWrapper(sys.stdin.buffer,encoding='utf8')
 sys.stdout=io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
-sys.stderr=io.TextIOWrapper(sys.stderr.buffer,encoding='utf8')">/usr/share/python/sitecustomize.py&&
-ln -vsf /usr/share/python/python /usr/bin/python||abort "安装失败";}
+sys.stderr=io.TextIOWrapper(sys.stderr.buffer,encoding='utf8')">/win/python/sitecustomize.py&&
+mkcmd python /win/python/python||abort "安装失败";}
 
 type pip &>/dev/null||{ echo "
 $Y- 正在安装 pip$O
 "
-gitserver||exit
 mktmp
-geturl "$URL/TimeRainStarSky/pip/raw/main/pip.pyz">"$TMP/pip.pyz"||abort "下载失败"
+git_clone "https://gitee.com/TimeRainStarSky/pip" "$TMP"||abort "下载失败"
 python "$TMP/pip.pyz" install -i "https://mirrors.bfsu.edu.cn/pypi/web/simple" -U pip&&
-ln -vsf /usr/share/python/Scripts/pip /usr/bin/pip||abort "安装失败";}
+mkcmd pip /win/python/Scripts/pip||abort "安装失败";}
 
 type poetry &>/dev/null||{ echo "
 $Y- 正在安装 Poetry$O
 "
 pip install -i "https://mirrors.bfsu.edu.cn/pypi/web/simple" -U poetry&&
-ln -vsf /usr/share/python/Scripts/poetry /usr/bin/poetry||abort "安装失败";}
+mkcmd poetry /win/python/Scripts/poetry||abort "安装失败";}
 
 abort_update(){ echo "
 $R! $@$O";[ "$N" -lt 10 ]&&{ ((N++));download;}||abort "脚本下载失败，请检查网络，并尝试重新下载";}
 download(){ case "$N" in
-  2)SERVER="GitHub" URL="https://github.com/TimeRainStarSky/TRSS_Yunzai/raw/main";;
-  1)SERVER="Gitee" URL="https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main";;
-  3)SERVER="Agit" URL="https://agit.ai/TimeRainStarSky/TRSS_Yunzai/raw/branch/main";;
-  4)SERVER="Coding" URL="https://trss.coding.net/p/TRSS/d/Yunzai/git/raw/main";;
-  5)SERVER="GitLab" URL="https://gitlab.com/TimeRainStarSky/TRSS_Yunzai/raw/main";;
-  6)SERVER="GitCode" URL="https://gitcode.net/TimeRainStarSky1/TRSS_Yunzai/raw/main";;
+  2)Server="GitHub" URL="https://github.com/TimeRainStarSky/TRSS_Yunzai/raw/main";;
+  1)Server="Gitee" URL="https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main";;
+  3)Server="Agit" URL="https://agit.ai/TimeRainStarSky/TRSS_Yunzai/raw/branch/main";;
+  4)Server="Coding" URL="https://trss.coding.net/p/TRSS/d/Yunzai/git/raw/main";;
+  5)Server="GitLab" URL="https://gitlab.com/TimeRainStarSky/TRSS_Yunzai/raw/main";;
+  6)Server="GitCode" URL="https://gitcode.net/TimeRainStarSky1/TRSS_Yunzai/raw/main";;
   7)Server="GitLink" URL="https://gitlink.org.cn/api/TimeRainStarSky/TRSS_Yunzai/raw?ref=main&filepath=";;
-  8)SERVER="JiHuLab" URL="https://jihulab.com/TimeRainStarSky/TRSS_Yunzai/raw/main";;
-  9)SERVER="Jsdelivr" URL="https://cdn.jsdelivr.net/gh/TimeRainStarSky/TRSS_Yunzai@main";;
-  10)SERVER="Bitbucket" URL="https://bitbucket.org/TimeRainStarSky/TRSS_Yunzai/raw/main"
+  8)Server="JiHuLab" URL="https://jihulab.com/TimeRainStarSky/TRSS_Yunzai/raw/main";;
+  9)Server="Jsdelivr" URL="https://cdn.jsdelivr.net/gh/TimeRainStarSky/TRSS_Yunzai@main";;
+  10)Server="Bitbucket" URL="https://bitbucket.org/TimeRainStarSky/TRSS_Yunzai/raw/main"
 esac
 echo "
-  正在从 $SERVER 服务器 下载版本信息"
+  正在从 $Server 服务器 下载版本信息"
 GETVER="$(geturl "$URL/version")"||abort_update "下载失败"
 NEWVER="$(sed -n s/^version=//p<<<"$GETVER")"
 NEWNAME="$(sed -n s/^name=//p<<<"$GETVER")"
