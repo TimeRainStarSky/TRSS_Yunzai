@@ -1,5 +1,5 @@
 #TRSS Yunzai MSYS2 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202302145
+NAME=v1.0.0;VERSION=202302150
 R="[1;31m" G="[1;32m" Y="[1;33m" C="[1;36m" B="[1;m" O="[m"
 echo "$B————————————————————————————
 $R TRSS$Y Yunzai$G Install$C Script$O
@@ -65,14 +65,15 @@ mktmp
 GETVER="$(geturl "https://registry.npmmirror.com/pnpm/latest"|sed 's/.*"version":"//;s/",.*//')"&&
 geturl "https://registry.npmmirror.com/pnpm/-/pnpm-$GETVER.tgz">"$TMP/pnpm.tgz"||abort "下载失败"
 tar -xzf "$TMP/pnpm.tgz" -C "$TMP"||abort "解压失败"
-mkdir -vp /usr/lib/node_modules&&
-mv -vf "$TMP/package" /usr/lib/node_modules/pnpm&&
-echo -n 'exec /usr/lib/node_modules/pnpm/bin/pnpm.cjs "$@"'>/usr/bin/pnpm&&
-echo -n 'exec /usr/lib/node_modules/pnpm/bin/pnpx.cjs "$@"'>/usr/bin/pnpx&&
+rm -rf /win/node/node_modules/pnpm&&
+mkdir -vp /win/node/node_modules&&
+mv -vf "$TMP/package" /win/node/node_modules/pnpm&&
+echo -n 'exec /win/node/node_modules/pnpm/bin/pnpm.cjs "$@"'>/usr/bin/pnpm&&
+echo -n 'exec /win/node/node_modules/pnpm/bin/pnpx.cjs "$@"'>/usr/bin/pnpx&&
 echo -n "@echo off
-node \"$(cygpath -w /usr/lib/node_modules/pnpm/bin/pnpm.cjs)\" %*">/usr/bin/pnpm.cmd&&
+node \"$(cygpath -w /win/node/node_modules/pnpm/bin/pnpm.cjs)\" %*">/usr/bin/pnpm.cmd&&
 echo -n "@echo off
-node \"$(cygpath -w /usr/lib/node_modules/pnpm/bin/pnpx.cjs)\" %*">/usr/bin/pnpx.cmd||abort "安装失败";}
+node \"$(cygpath -w /win/node/node_modules/pnpm/bin/pnpx.cjs)\" %*">/usr/bin/pnpx.cmd||abort "安装失败";}
 
 type python &>/dev/null||{ GETVER="3.10.9"
 echo "
