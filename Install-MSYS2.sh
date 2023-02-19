@@ -1,5 +1,5 @@
 #TRSS Yunzai MSYS2 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202302150
+NAME=v1.0.0;VERSION=202302180
 R="[1;31m" G="[1;32m" Y="[1;33m" C="[1;36m" B="[1;m" O="[m"
 echo "$B————————————————————————————
 $R TRSS$Y Yunzai$G Install$C Script$O
@@ -30,7 +30,6 @@ git_clone(){ git clone --depth 1 --single-branch "$@";}
 type ffmpeg &>/dev/null||{ echo "
 $Y- 正在安装 FFmpeg$O
 "
-mktmp
 rm -rf /win/ffmpeg&&
 mkdir -vp /win&&
 git_clone "https://gitee.com/TimeRainStarSky/ffmpeg-windows" /win/ffmpeg||abort "下载失败"
@@ -41,7 +40,6 @@ mkcmd ffprobe /win/ffmpeg/bin/ffprobe||abort "安装失败";}
 type redis-server redis-cli &>/dev/null||{ echo "
 $Y- 正在安装 Redis$O
 "
-mktmp
 rm -rf /win/redis&&
 git_clone "https://gitee.com/TimeRainStarSky/redis-windows" /win/redis||abort "下载失败"
 mkcmd redis-cli /win/redis/redis-cli&&

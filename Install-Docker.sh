@@ -1,5 +1,5 @@
 #TRSS Yunzai Docker 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202302160
+NAME=v1.0.0;VERSION=202302170
 R="[1;31m" G="[1;32m" Y="[1;33m" C="[1;36m" B="[1;m" O="[m"
 echo "$B———————————————————————————
 $R TRSS$Y Yunzai$G Docker$C Script$O
@@ -119,7 +119,7 @@ COPY pacman.conf /etc
 RUN echo "zh_CN.UTF-8 UTF-8">/etc/locale.gen\
  && locale-gen\
  && ln -vsf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime\
- && pacman -Syu --noconfirm --needed --overwrite "*" curl dialog git tmux tmate perl micro ranger fastfetch unzip fish btop htop nethogs ncdu ripgrep fd fzf bat catimg proxychains-ng ffmpeg python-poetry noto-fonts-emoji alsa-lib at-spi2-core at-spi2-core at-spi2-core cairo libcups dbus libdrm mesa glib2 nspr nss pango wayland libx11 libxcb libxcomposite libxdamage libxext libxfixes libxkbcommon libxrandr\
+ && pacman -Syu --noconfirm --needed --overwrite "*" curl dialog git tmux tmate perl micro ranger fastfetch unzip fish btop htop nethogs ncdu ripgrep fd fzf bat catimg proxychains-ng ffmpeg python-poetry noto-fonts-emoji alsa-lib at-spi2-core cairo libcups dbus libdrm mesa glib2 nspr nss pango wayland libx11 libxcb libxcomposite libxdamage libxext libxfixes libxkbcommon libxrandr\
  && rm -rf /var/cache
 RUN pacman -Syu --noconfirm --needed --overwrite "*" nodejs pnpm redis chromium --assume-installed adobe-source-code-pro-fonts --assume-installed cantarell-fonts --assume-installed ttf-liberation\
  && rm -rf /var/cache
