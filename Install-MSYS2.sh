@@ -1,5 +1,5 @@
 #TRSS Yunzai MSYS2 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202302180
+NAME=v1.0.0;VERSION=202302200
 R="[1;31m" G="[1;32m" Y="[1;33m" C="[1;36m" B="[1;m" O="[m"
 echo "$B————————————————————————————
 $R TRSS$Y Yunzai$G Install$C Script$O
@@ -8,6 +8,7 @@ $B——————————————————————————
       $G作者：$C时雨🌌星空$O"
 abort(){ echo "
 $R! $@$O";exit 1;}
+[ -s /win/PATH ]&&PATH="$(</win/PATH)$PATH"
 export LANG=zh_CN.UTF-8 MSYS=winsymlinks USERPROFILE="$(cygpath -w "$HOME")"
 export APPDATA="$USERPROFILE\\AppData\\Roaming" LOCALAPPDATA="$USERPROFILE\\AppData\\Local"
 DIR="${DIR:-$HOME/TRSS_Yunzai}"
@@ -22,9 +23,7 @@ pacman -Syu --noconfirm --needed --overwrite "*" curl dialog unzip git||abort "�
 
 mktmp(){ TMP="$DIR/tmp"&&rm -rf "$TMP"&&mkdir -p "$TMP"||abort "缓存目录创建失败";}
 geturl(){ curl -L --retry 2 --connect-timeout 5 "$@";}
-mkcmd(){ ln -vsf "$2" "/usr/bin/$1"&&
-echo -n "@echo off
-\"$(cygpath -w "$2")\" %*">"/usr/bin/$1.cmd";}
+mkpath(){ PATH="$*:$PATH";echo -n "$*:">>/win/PATH;}
 git_clone(){ git clone --depth 1 --single-branch "$@";}
 
 type ffmpeg &>/dev/null||{ echo "
@@ -33,17 +32,14 @@ $Y- 正在安装 FFmpeg$O
 rm -rf /win/ffmpeg&&
 mkdir -vp /win&&
 git_clone "https://gitee.com/TimeRainStarSky/ffmpeg-windows" /win/ffmpeg||abort "下载失败"
-mkcmd ffmpeg /win/ffmpeg/bin/ffmpeg&&
-mkcmd ffplay /win/ffmpeg/bin/ffplay&&
-mkcmd ffprobe /win/ffmpeg/bin/ffprobe||abort "安装失败";}
+mkpath /win/ffmpeg/bin||abort "安装失败";}
 
 type redis-server redis-cli &>/dev/null||{ echo "
 $Y- 正在安装 Redis$O
 "
 rm -rf /win/redis&&
 git_clone "https://gitee.com/TimeRainStarSky/redis-windows" /win/redis||abort "下载失败"
-mkcmd redis-cli /win/redis/redis-cli&&
-mkcmd redis-server /win/redis/redis-server||abort "安装失败";}
+mkpath /win/redis||abort "安装失败";}
 
 type node &>/dev/null||{ echo "
 $Y- 正在安装 Node.js$O
@@ -54,7 +50,7 @@ geturl "https://registry.npmmirror.com/-/binary/node/$GETVER/node-$GETVER-win-x6
 unzip -oq "$TMP/node.zip" -d "$TMP"||abort "解压失败"
 rm -rf /win/node&&
 mv -vf "$TMP/"*/ /win/node&&
-mkcmd node /win/node/node||abort "安装失败";}
+mkpath /win/node||abort "安装失败";}
 
 type pnpm &>/dev/null||{ echo "
 $Y- 正在安装 pnpm$O
@@ -66,12 +62,12 @@ tar -xzf "$TMP/pnpm.tgz" -C "$TMP"||abort "解压失败"
 rm -rf /win/node/node_modules/pnpm&&
 mkdir -vp /win/node/node_modules&&
 mv -vf "$TMP/package" /win/node/node_modules/pnpm&&
-echo -n 'exec /win/node/node_modules/pnpm/bin/pnpm.cjs "$@"'>/usr/bin/pnpm&&
-echo -n 'exec /win/node/node_modules/pnpm/bin/pnpx.cjs "$@"'>/usr/bin/pnpx&&
+echo -n 'exec /win/node/node_modules/pnpm/bin/pnpm.cjs "$@"'>/win/node/pnpm&&
+echo -n 'exec /win/node/node_modules/pnpm/bin/pnpx.cjs "$@"'>/win/node/pnpx&&
 echo -n "@echo off
-node \"$(cygpath -w /win/node/node_modules/pnpm/bin/pnpm.cjs)\" %*">/usr/bin/pnpm.cmd&&
+node \"$(cygpath -w /win/node/node_modules/pnpm/bin/pnpm.cjs)\" %*">/win/node/pnpm.cmd&&
 echo -n "@echo off
-node \"$(cygpath -w /win/node/node_modules/pnpm/bin/pnpx.cjs)\" %*">/usr/bin/pnpx.cmd||abort "安装失败";}
+node \"$(cygpath -w /win/node/node_modules/pnpm/bin/pnpx.cjs)\" %*">/win/node/pnpx.cmd||abort "安装失败";}
 
 type python &>/dev/null||{ GETVER="3.10.9"
 echo "
@@ -89,21 +85,19 @@ import io
 sys.stdin=io.TextIOWrapper(sys.stdin.buffer,encoding='utf8')
 sys.stdout=io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
 sys.stderr=io.TextIOWrapper(sys.stderr.buffer,encoding='utf8')">/win/python/sitecustomize.py&&
-mkcmd python /win/python/python||abort "安装失败";}
+mkpath /win/python:/win/python/Scripts||abort "安装失败";}
 
 type pip &>/dev/null||{ echo "
 $Y- 正在安装 pip$O
 "
 mktmp
 git_clone "https://gitee.com/TimeRainStarSky/pip" "$TMP"||abort "下载失败"
-python "$TMP/pip.pyz" install -i "https://mirrors.bfsu.edu.cn/pypi/web/simple" -U pip&&
-mkcmd pip /win/python/Scripts/pip||abort "安装失败";}
+python "$TMP/pip.pyz" install -i "https://mirrors.bfsu.edu.cn/pypi/web/simple" -U pip||abort "安装失败";}
 
 type poetry &>/dev/null||{ echo "
 $Y- 正在安装 Poetry$O
 "
-pip install -i "https://mirrors.bfsu.edu.cn/pypi/web/simple" -U poetry&&
-mkcmd poetry /win/python/Scripts/poetry||abort "安装失败";}
+pip install -i "https://mirrors.bfsu.edu.cn/pypi/web/simple" -U poetry||abort "安装失败";}
 
 abort_update(){ echo "
 $R! $@$O";[ "$N" -lt 10 ]&&{ ((N++));download;}||abort "脚本下载失败，请检查网络，并尝试重新下载";}
