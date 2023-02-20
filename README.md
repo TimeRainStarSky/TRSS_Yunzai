@@ -58,29 +58,11 @@
 
 - QQ 群组：[211414032](https://jq.qq.com/?k=QU1xGLEB)
 
-### 时雨🌌星空
-
-- GitHub：[TimeRainStarSky](https://github.com/TimeRainStarSky)
-- 酷安：[时雨丶星空](https://coolapk.com/u/2650948)
-- QQ：[2536554304](https://qm.qq.com/cgi-bin/qm/qr?k=x8LtlP8vwZs7qLwmsbCsyLoAHy7Et1Pj)
-- Telegram：[TimeRainStarSky](https://t.me/TimeRainStarSky)
-
 ## 赞助支持
 
 - 爱发电：<https://afdian.net/a/TimeRainStarSky>
 - Partme：<https://partme.com/TimeRainStarSky>
 - 感谢名单：<https://github.com/TimeRainStarSky/SponsorList>
-
-## 界面展示
-
-<details><summary>展开</summary>
-
-[![主界面](Picture/Main.png)](https://github.com/TimeRainStarSky/TRSS_Yunzai)
-[![Yunzai2](Picture/Yunzai2.png)](https://github.com/TimeRainStarSky/Yunzai-Bot-2)
-[![Yunzai3](Picture/Yunzai3.png)](https://github.com/Le-niao/Yunzai-Bot)
-[![Adachi](Picture/Adachi.png)](https://docs.adachi.top)
-
-</details>
 
 ## 相关项目
 
