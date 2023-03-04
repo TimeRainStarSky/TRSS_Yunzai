@@ -1,5 +1,5 @@
 #TRSS Yunzai Docker 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202303030
+NAME=v1.0.0;VERSION=202303040
 R="[1;31m" G="[1;32m" Y="[1;33m" C="[1;36m" B="[1;m" O="[m"
 echo "$B———————————————————————————
 $R TRSS$Y Yunzai$G Docker$C Script$O
@@ -70,6 +70,15 @@ geturl "$URL/Main.sh">"$DIR/Main.sh"||abort_update "下载失败"
 echo "
 $G- 脚本下载完成$O
 
+$Y- 正在下载 Docker 容器$O
+"
+until docker pull "$DKURL/menci/archlinuxarm";do
+  echo "
+$R! 下载失败，5秒后重试$O
+"
+  sleep 5
+done
+echo "
 $Y- 正在构建 Docker 容器$O
 "
 mktmp&&cd "$TMP"
