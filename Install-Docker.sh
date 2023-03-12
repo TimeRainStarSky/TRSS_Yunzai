@@ -1,5 +1,5 @@
 #TRSS Yunzai Docker 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202303090
+NAME=v1.0.0;VERSION=202303120
 R="[1;31m" G="[1;32m" Y="[1;33m" C="[1;36m" B="[1;m" O="[m"
 echo "$B———————————————————————————
 $R TRSS$Y Yunzai$G Docker$C Script$O
@@ -13,7 +13,7 @@ DIR="${DIR:-$HOME/TRSS_Yunzai}"
 CMD="${CMD:-tsyz}"
 CMDPATH="${CMDPATH:-/usr/local/bin}"
 DKNAME="${DKNAME:-TRSS_Yunzai}"
-DKURL="${DKURL:-dockerproxy.com}"
+DKURL="${DKURL:-mirror.baidubce.com}"
 abort(){ echo "
 $R! $@$O";exit 1;}
 mktmp(){ TMP="$DIR/tmp"&&rm -rf "$TMP"&&mkdir -p "$TMP"||abort "缓存目录创建失败";}
