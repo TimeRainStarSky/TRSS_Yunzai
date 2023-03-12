@@ -69,7 +69,7 @@ node \"$(cygpath -w /win/node/node_modules/pnpm/bin/pnpm.cjs)\" %*">/win/node/pn
 echo -n "@echo off
 node \"$(cygpath -w /win/node/node_modules/pnpm/bin/pnpx.cjs)\" %*">/win/node/pnpx.cmd||abort "安装失败";}
 
-type chrome &>/dev/null||{ echo "
+type chromium &>/dev/null||{ echo "
 $Y- 正在安装 chromium$O
 "
 mktmp
