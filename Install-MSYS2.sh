@@ -1,5 +1,5 @@
 #TRSS Yunzai MSYS2 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202303121
+NAME=v1.0.0;VERSION=202303122
 R="[1;31m" G="[1;32m" Y="[1;33m" C="[1;36m" B="[1;m" O="[m"
 echo "$B————————————————————————————
 $R TRSS$Y Yunzai$G Install$C Script$O
@@ -79,6 +79,7 @@ geturl "$GETURL${GETVER}chromium-win64.zip">"$TMP/chromium.zip"||abort "下载�
 unzip -o "$TMP/chromium.zip" -d "$TMP"&&
 rm -rf /win/chromium&&
 mv -vf "$TMP/"*/ /win/chromium&&
+ln -vsf chrome /win/chromium/chromium&&
 mkpath /win/chromium||abort "安装失败";}
 
 type python &>/dev/null||{ GETVER="3.10.9"
