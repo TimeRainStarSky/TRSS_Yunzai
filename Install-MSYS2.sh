@@ -1,5 +1,5 @@
 #TRSS Yunzai MSYS2 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202303120
+NAME=v1.0.0;VERSION=202303121
 R="[1;31m" G="[1;32m" Y="[1;33m" C="[1;36m" B="[1;m" O="[m"
 echo "$B————————————————————————————
 $R TRSS$Y Yunzai$G Install$C Script$O
@@ -68,6 +68,18 @@ echo -n "@echo off
 node \"$(cygpath -w /win/node/node_modules/pnpm/bin/pnpm.cjs)\" %*">/win/node/pnpm.cmd&&
 echo -n "@echo off
 node \"$(cygpath -w /win/node/node_modules/pnpm/bin/pnpx.cjs)\" %*">/win/node/pnpx.cmd||abort "安装失败";}
+
+type chrome &>/dev/null||{ echo "
+$Y- 正在安装 chromium$O
+"
+mktmp
+GETURL="https://registry.npmmirror.com/-/binary/playwright/builds/chromium/"
+GETVER="$(geturl "$GETURL"|tr -d ' "'|tr -s "{[,]}" "\n"|sed -nE "s/^name://p"|tail -n1)"&&
+geturl "$GETURL${GETVER}chromium-win64.zip">"$TMP/chromium.zip"||abort "下载失败"
+unzip -o "$TMP/chromium.zip" -d "$TMP"&&
+rm -rf /win/chromium&&
+mv -vf "$TMP/"*/ /win/chromium&&
+mkpath /win/chromium||abort "安装失败";}
 
 type python &>/dev/null||{ GETVER="3.10.9"
 echo "
