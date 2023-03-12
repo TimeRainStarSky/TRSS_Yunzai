@@ -132,7 +132,7 @@ RUN ln -vsf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime\
  && locale-gen\
  && pacman -Syu --noconfirm --needed --overwrite "*" curl dialog git tmux tmate perl micro ranger fastfetch unzip fish btop htop nethogs ncdu ripgrep fd fzf bat catimg proxychains-ng ffmpeg python-poetry noto-fonts-emoji alsa-lib at-spi2-core cairo libcups dbus libdrm mesa glib2 nspr nss pango wayland libx11 libxcb libxcomposite libxdamage libxext libxfixes libxkbcommon libxrandr\
  && rm -rf /var/cache
-RUN pacman -Syu --noconfirm --needed --overwrite "*" nodejs pnpm redis\
+RUN pacman -Syu --noconfirm --needed --overwrite "*" nodejs pnpm redis chromium --assume-installed adobe-source-code-pro-fonts --assume-installed cantarell-fonts --assume-installed ttf-liberation\
  && rm -rf /var/cache
 RUN echo -n '\''exec bash /root/TRSS_Yunzai/Main.sh "$@"'\''>/usr/local/bin/tsyz\
  && chmod 755 /usr/local/bin/tsyz
