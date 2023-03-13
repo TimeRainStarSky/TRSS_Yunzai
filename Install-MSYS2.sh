@@ -55,19 +55,7 @@ mkpath /win/node||abort "安装失败";}
 type pnpm &>/dev/null||{ echo "
 $Y- 正在安装 pnpm$O
 "
-mktmp
-GETVER="$(geturl "https://registry.npmmirror.com/pnpm/latest"|sed 's/.*"version":"//;s/",.*//')"&&
-geturl "https://registry.npmmirror.com/pnpm/-/pnpm-$GETVER.tgz">"$TMP/pnpm.tgz"||abort "下载失败"
-tar -xzf "$TMP/pnpm.tgz" -C "$TMP"||abort "解压失败"
-rm -rf /win/node/node_modules/pnpm&&
-mkdir -vp /win/node/node_modules&&
-mv -vf "$TMP/package" /win/node/node_modules/pnpm&&
-echo -n 'exec /win/node/node_modules/pnpm/bin/pnpm.cjs "$@"'>/win/node/pnpm&&
-echo -n 'exec /win/node/node_modules/pnpm/bin/pnpx.cjs "$@"'>/win/node/pnpx&&
-echo -n "@echo off
-node \"$(cygpath -w /win/node/node_modules/pnpm/bin/pnpm.cjs)\" %*">/win/node/pnpm.cmd&&
-echo -n "@echo off
-node \"$(cygpath -w /win/node/node_modules/pnpm/bin/pnpx.cjs)\" %*">/win/node/pnpx.cmd||abort "安装失败";}
+npm i --registry "https://registry.npmmirror.com" -g pnpm||abort "安装失败";}
 
 type chromium &>/dev/null||{ echo "
 $Y- 正在安装 chromium$O
@@ -105,12 +93,12 @@ $Y- 正在安装 pip$O
 "
 mktmp
 git_clone "https://gitee.com/TimeRainStarSky/pip" "$TMP"||abort "下载失败"
-python "$TMP/pip.pyz" install -i "https://mirrors.bfsu.edu.cn/pypi/web/simple" -U pip||abort "安装失败";}
+python "$TMP/pip.pyz" install -Ui "https://mirrors.bfsu.edu.cn/pypi/web/simple" pip||abort "安装失败";}
 
 type poetry &>/dev/null||{ echo "
 $Y- 正在安装 Poetry$O
 "
-pip install -i "https://mirrors.bfsu.edu.cn/pypi/web/simple" -U poetry||abort "安装失败";}
+pip install -Ui "https://mirrors.bfsu.edu.cn/pypi/web/simple" poetry||abort "安装失败";}
 
 abort_update(){ echo "
 $R! $@$O";[ "$N" -lt 10 ]&&{ ((N++));download;}||abort "脚本下载失败，请检查网络，并尝试重新下载";}
@@ -141,10 +129,10 @@ mkdir -vp "$DIR"
 geturl "$URL/Main.sh">"$DIR/Main.sh"||abort_update "下载失败"
 [ "$(md5sum "$DIR/Main.sh"|head -c 32)" != "$NEWMD5" ]&&abort_update "下载文件校验错误"
 mkdir -vp "$CMDPATH"&&echo -n "exec bash '$DIR/Main.sh' "'"$@"'>"$CMDPATH/$CMD"&&chmod 755 "$CMDPATH/$CMD"||abort "脚本执行命令 $CMDPATH/$CMD 设置失败，手动执行命令：bash '$DIR/Main.sh'"
-type powershell.exe &>/dev/null&&echo '$ShortCut=(New-Object -ComObject WScript.Shell).CreateShortcut([System.Environment]::GetFolderPath("Desktop")+"\'"$(basename "$DIR"|tr '_' ' ')"'.lnk")
+type powershell &>/dev/null&&echo '$ShortCut=(New-Object -ComObject WScript.Shell).CreateShortcut([System.Environment]::GetFolderPath("Desktop")+"\'"$(basename "$DIR"|tr '_' ' ')"'.lnk")
 $ShortCut.TargetPath="'"$(cygpath -w /ucrt64.exe)"'"
 $ShortCut.Arguments="'"$CMD"'"
-$ShortCut.Save()'|USERPROFILE="$HOMEDRIVE$HOMEPATH" powershell.exe
+$ShortCut.Save()'|USERPROFILE="$HOMEDRIVE$HOMEPATH" powershell
 echo "
 $G- 脚本安装完成，启动命令：$C$CMD$O";exit;}
 echo "
