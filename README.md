@@ -60,9 +60,9 @@
 
 ## 赞助支持
 
-- 爱发电：<https://afdian.net/a/TimeRainStarSky>
-- Partme：<https://partme.com/TimeRainStarSky>
-- 感谢名单：<https://github.com/TimeRainStarSky/SponsorList>
+- [爱发电](https://afdian.net/a/TimeRainStarSky)
+- [Partme](https://partme.com/TimeRainStarSky)
+- [感谢名单](https://github.com/TimeRainStarSky/SponsorList)
 
 ## 相关项目
 
