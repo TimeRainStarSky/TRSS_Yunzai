@@ -1,5 +1,5 @@
 #TRSS Yunzai Docker 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202303120
+NAME=v1.0.0;VERSION=202303150
 R="[1;31m" G="[1;32m" Y="[1;33m" C="[1;36m" B="[1;m" O="[m"
 echo "$B———————————————————————————
 $R TRSS$Y Yunzai$G Docker$C Script$O
@@ -13,7 +13,7 @@ DIR="${DIR:-$HOME/TRSS_Yunzai}"
 CMD="${CMD:-tsyz}"
 CMDPATH="${CMDPATH:-/usr/local/bin}"
 DKNAME="${DKNAME:-TRSS_Yunzai}"
-DKURL="${DKURL:-mirror.baidubce.com}"
+DKURL="${DKURL:-docker.nju.edu.cn}"
 abort(){ echo "
 $R! $@$O";exit 1;}
 mktmp(){ TMP="$DIR/tmp"&&rm -rf "$TMP"&&mkdir -p "$TMP"||abort "缓存目录创建失败";}
@@ -69,14 +69,21 @@ geturl "$URL/Main.sh">"$DIR/Main.sh"||abort_update "下载失败"
 [ "$(md5sum "$DIR/Main.sh"|head -c 32)" = "$NEWMD5" ]||abort_update "下载文件校验错误"
 echo "
 $G- 脚本下载完成$O
-
-$Y- 正在下载 Docker 容器$O
 "
-until docker pull "$DKURL/menci/archlinuxarm";do
+docker pull "$DKURL/menci/archlinuxarm";do
   echo "
-$R! 下载失败，5秒后重试$O
+$R! 下载失败，5秒后切换镜像源$O
 "
   sleep 5
+  ((N++))
+  case "$N" in
+    1)DKURL="docker.nju.edu.cn";;
+    2)DKURL="mirror.ccs.tencentyun.com";;
+    3)DKURL="mirror.baidubce.com";;
+    4)DKURL="dockerproxy.com";;
+    5)DKURL="docker.m.daocloud.io";;
+    *)DKURL="docker.io";N=0
+  esac
 done
 echo "
 $Y- 正在构建 Docker 容器$O
