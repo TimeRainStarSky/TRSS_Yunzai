@@ -75,8 +75,7 @@ $Y- 正在从 $C$DKURL$Y 下载 Docker 容器$O
 "
 docker pull "$DKURL/menci/archlinuxarm";do
   echo "
-$R! 下载失败，5秒后切换镜像源$O
-"
+$R! 下载失败，5秒后切换镜像源$O"
   sleep 5
   ((N++))
   case "$N" in
