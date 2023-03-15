@@ -68,7 +68,10 @@ mkdir -vp "$DIR"
 geturl "$URL/Main.sh">"$DIR/Main.sh"||abort_update "下载失败"
 [ "$(md5sum "$DIR/Main.sh"|head -c 32)" = "$NEWMD5" ]||abort_update "下载文件校验错误"
 echo "
-$G- 脚本下载完成$O
+$G- 脚本下载完成$O"
+N=1
+until echo "
+$Y- 正在从 $C$DKURL$Y 下载 Docker 容器$O
 "
 docker pull "$DKURL/menci/archlinuxarm";do
   echo "
