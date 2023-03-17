@@ -1,5 +1,5 @@
 #TRSS Yunzai Docker 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202303150
+NAME=v1.0.0;VERSION=202303170
 R="[1;31m" G="[1;32m" Y="[1;33m" C="[1;36m" B="[1;m" O="[m"
 echo "$B———————————————————————————
 $R TRSS$Y Yunzai$G Docker$C Script$O
@@ -145,7 +145,8 @@ RUN pacman -Syu --noconfirm --needed --overwrite "*" nodejs pnpm redis chromium 
  && rm -rf /var/cache
 RUN echo -n '\''exec bash /root/TRSS_Yunzai/Main.sh "$@"'\''>/usr/local/bin/tsyz\
  && chmod 755 /usr/local/bin/tsyz
-WORKDIR /root/TRSS_Yunzai'>Dockerfile
+WORKDIR /root/TRSS_Yunzai
+CMD ["bash","-c","bash AutoStart.sh;while bash Main.sh;do bash Main.sh docker;done"]'>Dockerfile
 docker build -t trss:yunzai .||abort "Docker 容器构建失败"
 echo "
 $Y- 正在启动 Docker 容器$O
@@ -154,8 +155,8 @@ docker rm -f $DKNAME 2>/dev/null
 docker image prune -f
 docker run -itd -h TRSS-Yunzai --name $DKNAME -v "$DIR":/root/TRSS_Yunzai --restart always $([ $DKNAME = TRSS_Yunzai ]&&echo "-p 50831:50831 -p 54980:54980"||echo "-p 50831 -p 54980") trss:yunzai||abort "Docker 容器启动失败"
 mkdir -vp "$CMDPATH"&&
-echo -n "exec docker exec -it $DKNAME bash Main.sh "'"$@"'>"$CMDPATH/$CMD"&&
-chmod 755 "$CMDPATH/$CMD"||abort "脚本执行命令 $CMDPATH/$CMD 设置失败，手动执行命令：docker exec -it $DKNAME bash Main.sh"
+echo -n 'if [ -n "$1" ];then exec docker exec -it '$DKNAME' bash Main.sh "$@";else exec docker attach '$DKNAME';fi'>"$CMDPATH/$CMD"&&
+chmod 755 "$CMDPATH/$CMD"||abort "脚本执行命令 $CMDPATH/$CMD 设置失败，手动执行命令：docker attach $DKNAME"
 echo "
 $G- Docker 容器安装完成，启动命令：$C$CMD$O";exit;}
 echo "
