@@ -61,9 +61,9 @@ type chromium &>/dev/null||{ echo "
 $Y- 正在安装 chromium$O
 "
 if [ -s "/c/Program Files/Google/Chrome/Application/chrome.exe" ];then
-  ln -vsf "/c/Program Files/Google/Chrome/Application/chrome.exe" /usr/bin/chromium
+  ln -vsf "/c/Program Files/Google/Chrome/Application/chrome.exe" "$CMDPATH/chromium"
 elif [ -s "/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe" ];then
-  ln -vsf "/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe" /usr/bin/chromium
+  ln -vsf "/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe" "$CMDPATH/chromium"
 else
   mktmp
   GETURL="https://registry.npmmirror.com/-/binary/playwright/builds/chromium/"
