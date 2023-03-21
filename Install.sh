@@ -1,5 +1,5 @@
 #TRSS Yunzai 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202303140
+NAME=v1.0.0;VERSION=202303210
 R="[1;31m" G="[1;32m" Y="[1;33m" C="[1;36m" B="[1;m" O="[m"
 echo "$B————————————————————————————
 $R TRSS$Y Yunzai$G Install$C Script$O
@@ -51,8 +51,10 @@ $B  最新版本：$G$NEWNAME$C ($NEWVER)$O
   开始下载"
 mkdir -vp "$DIR"
 geturl "$URL/Main.sh">"$DIR/Main.sh"||abort_update "下载失败"
-[ "$(md5sum "$DIR/Main.sh"|head -c 32)" != "$NEWMD5" ]&&abort_update "下载文件校验错误"
-mkdir -vp "$CMDPATH"&&echo -n "exec bash '$DIR/Main.sh' "'"$@"'>"$CMDPATH/$CMD"&&chmod 755 "$CMDPATH/$CMD"||abort "脚本执行命令 $CMDPATH/$CMD 设置失败，手动执行命令：bash '$DIR/Main.sh'"
+[ "$(md5sum "$DIR/Main.sh"|head -c 32)" = "$NEWMD5" ]||abort_update "下载文件校验错误"
+mkdir -vp "$CMDPATH"&&
+echo -n "exec bash '$DIR/Main.sh' "'"$@"'>"$CMDPATH/$CMD"&&
+chmod 755 "$CMDPATH/$CMD"||abort "脚本执行命令 $CMDPATH/$CMD 设置失败，手动执行命令：bash '$DIR/Main.sh'"
 type wsl.exe powershell.exe &>/dev/null&&powershell.exe -c '$ShortCut=(New-Object -ComObject WScript.Shell).CreateShortcut([System.Environment]::GetFolderPath("Desktop")+"\'"$(basename "$DIR"|tr '_' ' ')"'.lnk")
 $ShortCut.TargetPath="'"$(command -v wsl.exe|sed -E 's|/mnt/([a-z]*)/|\1:\\|;s|/|\\|g')"'"
 $ShortCut.Arguments="'"$CMD"'"

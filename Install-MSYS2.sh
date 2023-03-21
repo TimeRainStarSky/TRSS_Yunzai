@@ -1,5 +1,5 @@
 #TRSS Yunzai MSYS2 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202303190
+NAME=v1.0.0;VERSION=202303210
 R="[1;31m" G="[1;32m" Y="[1;33m" C="[1;36m" B="[1;m" O="[m"
 echo "$B————————————————————————————
 $R TRSS$Y Yunzai$G Install$C Script$O
@@ -60,6 +60,7 @@ npm i --registry "https://registry.npmmirror.com" -g pnpm||abort "安装失败";
 type chromium &>/dev/null||{ echo "
 $Y- 正在安装 chromium$O
 "
+mkdir -vp "$CMDPATH"&&
 if [ -s "/c/Program Files/Google/Chrome/Application/chrome.exe" ];then
   ln -vsf "/c/Program Files/Google/Chrome/Application/chrome.exe" "$CMDPATH/chromium"
 elif [ -s "/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe" ];then
@@ -133,8 +134,9 @@ $B  最新版本：$G$NEWNAME$C ($NEWVER)$O
   开始下载"
 mkdir -vp "$DIR"
 geturl "$URL/Main.sh">"$DIR/Main.sh"||abort_update "下载失败"
-[ "$(md5sum "$DIR/Main.sh"|head -c 32)" != "$NEWMD5" ]&&abort_update "下载文件校验错误"
-mkdir -vp "$CMDPATH"&&echo -n "exec bash '$DIR/Main.sh' "'"$@"'>"$CMDPATH/$CMD"&&chmod 755 "$CMDPATH/$CMD"||abort "脚本执行命令 $CMDPATH/$CMD 设置失败，手动执行命令：bash '$DIR/Main.sh'"
+[ "$(md5sum "$DIR/Main.sh"|head -c 32)" = "$NEWMD5" ]||abort_update "下载文件校验错误"
+mkdir -vp "$CMDPATH"&&
+echo -n "exec bash '$DIR/Main.sh' "'"$@"'>"$CMDPATH/$CMD"||abort "脚本执行命令 $CMDPATH/$CMD 设置失败，手动执行命令：bash '$DIR/Main.sh'"
 type powershell &>/dev/null&&USERPROFILE="$HOMEDRIVE$HOMEPATH" powershell -c '$ShortCut=(New-Object -ComObject WScript.Shell).CreateShortcut([System.Environment]::GetFolderPath("Desktop")+"\'"$(basename "$DIR"|tr '_' ' ')"'.lnk")
 $ShortCut.TargetPath="'"$(cygpath -w /ucrt64.exe)"'"
 $ShortCut.Arguments="'"$CMD"'"
