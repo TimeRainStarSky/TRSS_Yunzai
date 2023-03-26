@@ -1,16 +1,17 @@
-#TRSS Yunzai 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202303210
+#TRSS AllBot 安装脚本 作者：时雨🌌星空
+NAME=v1.0.0;VERSION=202303260
 R="[1;31m" G="[1;32m" Y="[1;33m" C="[1;36m" B="[1;m" O="[m"
 echo "$B————————————————————————————
-$R TRSS$Y Yunzai$G Install$C Script$O
+$R TRSS$Y AllBot$G Install$C Script$O
      $G$NAME$C ($VERSION)$O
 $B————————————————————————————
       $G作者：$C时雨🌌星空$O"
 abort(){ echo "
 $R! $@$O";exit 1;}
 export LANG=zh_CN.UTF-8
-DIR="${DIR:-$HOME/TRSS_Yunzai}"
-CMD="${CMD:-tsyz}"
+[ "$(uname)" = Linux ]||export MSYS=winsymlinks
+DIR="${DIR:-$HOME/TRSS_AllBot}"
+CMD="${CMD:-tsab}"
 CMDPATH="${CMDPATH:-/usr/local/bin}"
 type locale-gen &>/dev/null&&{ echo "
 $Y- 正在设置语言$O
@@ -27,16 +28,16 @@ pacman -Syu --noconfirm --needed --overwrite "*" curl dialog||abort "依赖安�
 abort_update(){ echo "
 $R! $@$O";[ "$N" -lt 10 ]&&{ ((N++));download;}||abort "脚本下载失败，请检查网络，并尝试重新下载";}
 download(){ case "$N" in
-  2)Server="GitHub" URL="https://github.com/TimeRainStarSky/TRSS_Yunzai/raw/main";;
-  1)Server="Gitee" URL="https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main";;
-  3)Server="Agit" URL="https://agit.ai/TimeRainStarSky/TRSS_Yunzai/raw/branch/main";;
-  4)Server="Coding" URL="https://trss.coding.net/p/TRSS/d/Yunzai/git/raw/main";;
-  5)Server="GitLab" URL="https://gitlab.com/TimeRainStarSky/TRSS_Yunzai/raw/main";;
-  6)Server="GitCode" URL="https://gitcode.net/TimeRainStarSky1/TRSS_Yunzai/raw/main";;
-  7)Server="GitLink" URL="https://gitlink.org.cn/api/TimeRainStarSky/TRSS_Yunzai/raw?ref=main&filepath=";;
-  8)Server="JiHuLab" URL="https://jihulab.com/TimeRainStarSky/TRSS_Yunzai/raw/main";;
-  9)Server="Jsdelivr" URL="https://cdn.jsdelivr.net/gh/TimeRainStarSky/TRSS_Yunzai@main";;
-  10)Server="Bitbucket" URL="https://bitbucket.org/TimeRainStarSky/TRSS_Yunzai/raw/main"
+  2)Server="GitHub" URL="https://github.com/TimeRainStarSky/TRSS_AllBot/raw/main";;
+  1)Server="Gitee" URL="https://gitee.com/TimeRainStarSky/TRSS_AllBot/raw/main";;
+  3)Server="Agit" URL="https://agit.ai/TimeRainStarSky/TRSS_AllBot/raw/branch/main";;
+  4)Server="Coding" URL="https://trss.coding.net/p/TRSS/d/AllBot/git/raw/main";;
+  5)Server="GitLab" URL="https://gitlab.com/TimeRainStarSky/TRSS_AllBot/raw/main";;
+  6)Server="GitCode" URL="https://gitcode.net/TimeRainStarSky1/TRSS_AllBot/raw/main";;
+  7)Server="GitLink" URL="https://gitlink.org.cn/api/TimeRainStarSky/TRSS_AllBot/raw?ref=main&filepath=";;
+  8)Server="JiHuLab" URL="https://jihulab.com/TimeRainStarSky/TRSS_AllBot/raw/main";;
+  9)Server="Jsdelivr" URL="https://cdn.jsdelivr.net/gh/TimeRainStarSky/TRSS_AllBot@main";;
+  10)Server="Bitbucket" URL="https://bitbucket.org/TimeRainStarSky/TRSS_AllBot/raw/main"
 esac
 echo "
   正在从 $Server 服务器 下载版本信息"
@@ -55,10 +56,19 @@ geturl "$URL/Main.sh">"$DIR/Main.sh"||abort_update "下载失败"
 mkdir -vp "$CMDPATH"&&
 echo -n "exec bash '$DIR/Main.sh' "'"$@"'>"$CMDPATH/$CMD"&&
 chmod 755 "$CMDPATH/$CMD"||abort "脚本执行命令 $CMDPATH/$CMD 设置失败，手动执行命令：bash '$DIR/Main.sh'"
-type wsl.exe powershell.exe &>/dev/null&&powershell.exe -c '$ShortCut=(New-Object -ComObject WScript.Shell).CreateShortcut([System.Environment]::GetFolderPath("Desktop")+"\'"$(basename "$DIR"|tr '_' ' ')"'.lnk")
+if [ -n "$MSYS" ];then
+  type powershell &>/dev/null&&
+  powershell -c '$ShortCut=(New-Object -ComObject WScript.Shell).CreateShortcut([System.Environment]::GetFolderPath("Desktop")+"\'"$(basename "$DIR"|tr '_' ' ')"'.lnk")
+$ShortCut.TargetPath="'"$(cygpath -w /msys2.exe)"'"
+$ShortCut.Arguments="'"$CMD"'"
+$ShortCut.Save()'
+else
+  type wsl.exe powershell.exe &>/dev/null&&
+  powershell.exe -c '$ShortCut=(New-Object -ComObject WScript.Shell).CreateShortcut([System.Environment]::GetFolderPath("Desktop")+"\'"$(basename "$DIR"|tr '_' ' ')"'.lnk")
 $ShortCut.TargetPath="'"$(command -v wsl.exe|sed -E 's|/mnt/([a-z]*)/|\1:\\|;s|/|\\|g')"'"
 $ShortCut.Arguments="'"$CMD"'"
 $ShortCut.Save()'
+fi
 echo "
 $G- 脚本安装完成，启动命令：$C$CMD$O";exit;}
 echo "

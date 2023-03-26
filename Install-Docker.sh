@@ -1,18 +1,18 @@
-#TRSS Yunzai Docker 安装脚本 作者：时雨🌌星空
-NAME=v1.0.0;VERSION=202303170
+#TRSS AllBot Docker 安装脚本 作者：时雨🌌星空
+NAME=v1.0.0;VERSION=202303240
 R="[1;31m" G="[1;32m" Y="[1;33m" C="[1;36m" B="[1;m" O="[m"
 echo "$B———————————————————————————
-$R TRSS$Y Yunzai$G Docker$C Script$O
+$R TRSS$Y AllBot$G Docker$C Script$O
     $G$NAME$C ($VERSION)$O
 $B———————————————————————————
      $G作者：$C时雨🌌星空$O
 
 $Y- 正在检查环境$O
 "
-DIR="${DIR:-$HOME/TRSS_Yunzai}"
-CMD="${CMD:-tsyz}"
+DIR="${DIR:-$HOME/TRSS_AllBot}"
+CMD="${CMD:-tsab}"
 CMDPATH="${CMDPATH:-/usr/local/bin}"
-DKNAME="${DKNAME:-TRSS_Yunzai}"
+DKNAME="${DKNAME:-TRSS_AllBot}"
 DKURL="${DKURL:-docker.nju.edu.cn}"
 abort(){ echo "
 $R! $@$O";exit 1;}
@@ -42,16 +42,16 @@ $G- Docker 已启动$O"||abort "Docker 启动失败"
 abort_update(){ echo "
 $R! $@$O";[ "$N" -lt 10 ]&&{ ((N++));download;}||abort "脚本下载失败，请检查网络，并尝试重新下载";}
 download(){ case "$N" in
-  2)Server="GitHub" URL="https://github.com/TimeRainStarSky/TRSS_Yunzai/raw/main";;
-  1)Server="Gitee" URL="https://gitee.com/TimeRainStarSky/TRSS_Yunzai/raw/main";;
-  3)Server="Agit" URL="https://agit.ai/TimeRainStarSky/TRSS_Yunzai/raw/branch/main";;
-  4)Server="Coding" URL="https://trss.coding.net/p/TRSS/d/Yunzai/git/raw/main";;
-  5)Server="GitLab" URL="https://gitlab.com/TimeRainStarSky/TRSS_Yunzai/raw/main";;
-  6)Server="GitCode" URL="https://gitcode.net/TimeRainStarSky1/TRSS_Yunzai/raw/main";;
-  7)Server="GitLink" URL="https://gitlink.org.cn/api/TimeRainStarSky/TRSS_Yunzai/raw?ref=main&filepath=";;
-  8)Server="JiHuLab" URL="https://jihulab.com/TimeRainStarSky/TRSS_Yunzai/raw/main";;
-  9)Server="Jsdelivr" URL="https://cdn.jsdelivr.net/gh/TimeRainStarSky/TRSS_Yunzai@main";;
-  10)Server="Bitbucket" URL="https://bitbucket.org/TimeRainStarSky/TRSS_Yunzai/raw/main"
+  2)Server="GitHub" URL="https://github.com/TimeRainStarSky/TRSS_AllBot/raw/main";;
+  1)Server="Gitee" URL="https://gitee.com/TimeRainStarSky/TRSS_AllBot/raw/main";;
+  3)Server="Agit" URL="https://agit.ai/TimeRainStarSky/TRSS_AllBot/raw/branch/main";;
+  4)Server="Coding" URL="https://trss.coding.net/p/TRSS/d/AllBot/git/raw/main";;
+  5)Server="GitLab" URL="https://gitlab.com/TimeRainStarSky/TRSS_AllBot/raw/main";;
+  6)Server="GitCode" URL="https://gitcode.net/TimeRainStarSky1/TRSS_AllBot/raw/main";;
+  7)Server="GitLink" URL="https://gitlink.org.cn/api/TimeRainStarSky/TRSS_AllBot/raw?ref=main&filepath=";;
+  8)Server="JiHuLab" URL="https://jihulab.com/TimeRainStarSky/TRSS_AllBot/raw/main";;
+  9)Server="Jsdelivr" URL="https://cdn.jsdelivr.net/gh/TimeRainStarSky/TRSS_AllBot@main";;
+  10)Server="Bitbucket" URL="https://bitbucket.org/TimeRainStarSky/TRSS_AllBot/raw/main"
 esac
 echo "
   正在从 $Server 服务器 下载版本信息"
@@ -139,21 +139,18 @@ RUN ln -vsf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime\
  && echo "LANG=zh_CN.UTF-8">/etc/locale.conf\
  && echo "zh_CN.UTF-8 UTF-8">/etc/locale.gen\
  && locale-gen\
- && pacman -Syu --noconfirm --needed --overwrite "*" curl dialog git tmux tmate perl micro ranger fastfetch unzip fish btop htop nethogs ncdu ripgrep fd fzf bat catimg proxychains-ng ffmpeg python-poetry noto-fonts-emoji alsa-lib at-spi2-core cairo libcups dbus libdrm mesa glib2 nspr nss pango wayland libx11 libxcb libxcomposite libxdamage libxext libxfixes libxkbcommon libxrandr\
- && rm -rf /var/cache
-RUN pacman -Syu --noconfirm --needed --overwrite "*" nodejs pnpm redis chromium --assume-installed adobe-source-code-pro-fonts --assume-installed cantarell-fonts --assume-installed ttf-liberation\
- && rm -rf /var/cache
-RUN echo -n '\''exec bash /root/TRSS_Yunzai/Main.sh "$@"'\''>/usr/local/bin/tsyz\
- && chmod 755 /usr/local/bin/tsyz
-WORKDIR /root/TRSS_Yunzai
-CMD ["bash","-c","bash AutoStart.sh;while bash Main.sh;do bash Main.sh docker;done"]'>Dockerfile
-docker build -t trss:yunzai .||abort "Docker 容器构建失败"
+ && echo -n '\''exec bash /root/TRSS_AllBot/Main.sh "$@"'\''>/usr/local/bin/tsab\
+ && chmod 755 /usr/local/bin/tsab
+WORKDIR /root/TRSS_AllBot
+CMD ["bash","-c","bash AutoStart.sh;while bash Main.sh;do bash Main.sh docker;done"]
+EXPOSE 8080-8081 8088 13579 50831 54980'>Dockerfile
+docker build -t trss:allbot .||abort "Docker 容器构建失败"
 echo "
 $Y- 正在启动 Docker 容器$O
 "
 docker rm -f $DKNAME 2>/dev/null
 docker image prune -f
-docker run -itd -h TRSS-Yunzai --name $DKNAME -v "$DIR":/root/TRSS_Yunzai --restart always $([ $DKNAME = TRSS_Yunzai ]&&echo "-p 50831:50831 -p 54980:54980"||echo "-p 50831 -p 54980") trss:yunzai||abort "Docker 容器启动失败"
+docker run -itd -h TRSS-AllBot --name $DKNAME -v "$DIR":/root/TRSS_AllBot --restart always $([ $DKNAME = TRSS_AllBot ]&&echo "-p 8080-8081:8080-8081 -p 8088:8088 -p 13579:13579 -p 50831:50831 -p 54980:54980"||echo "-P") trss:allbot||abort "Docker 容器启动失败"
 mkdir -vp "$CMDPATH"&&
 echo -n 'if [ -n "$1" ];then exec docker exec -it '$DKNAME' bash Main.sh "$@";else exec docker attach '$DKNAME';fi'>"$CMDPATH/$CMD"&&
 chmod 755 "$CMDPATH/$CMD"||abort "脚本执行命令 $CMDPATH/$CMD 设置失败，手动执行命令：docker attach $DKNAME"
